@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECIP - Reconhecimento Inovação com Propósito</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Define a fonte Inter */
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Estilo para o menu lateral fixo em telas grandes */
+        .sidebar-fixed {
+            position: sticky;
+            top: 4rem; /* Abaixo do header */
+            height: calc(100vh - 4rem); /* Altura restante da viewport */
+            overflow-y: auto; /* Permite scroll se o menu for muito longo */
+        }
+        
+        /* Estilo básico do modal */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Classes de estilo customizadas para o radar SVG */
+        .radar-axis { stroke: #d1d5db; stroke-width: 1; }
+        .radar-point { cursor: pointer; transition: fill 0.2s, r 0.2s; } 
+        .radar-point:hover { fill: #f59e0b; } /* Amarelo/Laranja ao passar o mouse */
+
+        /* Estilo do container do radar, garantindo que ele seja um quadrado */
+        .radar-container {
+            width: 100%;
+            padding-bottom: 100%; /* Truque para manter o aspecto 1:1 */
+            position: relative;
+        }
+        .radar-container svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estilo para a tab ativa */
+        .tab-button.active {
+            border-bottom: 3px solid #10b981; /* Borda inferior verde para destacar */
+            color: #10b981; 
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="fixed top-0 w-full bg-white border-b border-gray-200 py-3 px-6 z-50 shadow-md">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+            <h1 class="text-xl md:text-2xl font-extrabold text-blue-800 tracking-tight">
+                RECIP <span class="text-green-600 font-medium text-base md:text-xl">| Reconhecimento Inovação com Propósito</span>
+            </h1>
+            
+            <button id="menu-toggle" class="lg:hidden p-2 text-gray-700 hover:text-blue-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+
+            <div class="hidden sm:flex items-center space-x-2">
+                <span class="text-sm font-semibold text-gray-500 hidden sm:block">Apoio:</span>
+                <div class="h-8 w-24 bg-green-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white text-xs font-bold">SICREDI</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto flex flex-col lg:flex-row pt-16">
+        
+        <nav role="navigation" id="sidebar" class="w-full lg:w-64 bg-white border-b lg:border-r border-gray-200 p-4 lg:p-6 lg:sidebar-fixed hidden lg:block" aria-hidden="true">
+            <h2 class="text-lg font-bold text-gray-700 mb-4 border-b pb-2 hidden lg:block">Navegação</h2>
+            
+            <ul class="space-y-2">
+                <li>
+                    <a href="#o-que-e" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold transition-colors bg-blue-50 text-blue-700" data-content="intro" aria-current="page">
+                        O que é o RECIP?
+                    </a>
+                </li>
+                
+                <li class="pt-2">
+                    <span class="text-sm font-bold text-gray-500 uppercase block mb-1">Dimensões de Inovação</span>
+                </li>
+
+                <li>
+                    <a href="#participativa" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="participativa">
+                        1. Participativa
+                    </a>
+                </li>
+                <li>
+                    <a href="#colaborativa" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="colaborativa">
+                        2. Colaborativa
+                    </a>
+                </li>
+                <li>
+                    <a href="#capacidades" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="capacidades">
+                        3. Desenvolvimento de Capacidades
+                    </a>
+                </li>
+                <li>
+                    <a href="#esg" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="esg">
+                        4. ESG
+                    </a>
+                </li>
+                <li>
+                    <a href="#financas-verdes" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="financas-verdes">
+                        5. Finanças Verdes
+                    </a>
+                </li>
+
+                <li class="pt-4">
+                    <a href="#radar" class="menu-item block px-3 py-2 rounded-lg text-white bg-green-600 hover:bg-green-700 font-bold transition-colors" data-content="radar">
+                        <svg class="w-5 h-5 inline mr-2 align-text-bottom" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Análise de Projetos
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="flex-1 p-6 lg:p-8 bg-white lg:min-h-screen" id="main-content">
+            
+            <div id="content-intro" class="content-section">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">O que é o Reconhecimento Inovação com Propósito (RECIP)?</h2>
+                <p class="text-gray-700 mb-4">
+                    O Prêmio RECIP, promovido pela Fenasbac com apoio do Banco Central e do Sistema OCB, é uma iniciativa que identifica, valoriza e divulga a **inovação social e a excelência na gestão** dentro do cooperativismo financeiro brasileiro. Ele reconhece cooperativas de crédito que conseguem aliar o seu propósito (foco no associado e na comunidade) com a capacidade de inovar, gerando impacto socioeconômico e ambiental positivo.
+                </p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Conectando Propósito e Inovação</h3>
+                <p class="text-gray-600">
+                    O programa busca mapear iniciativas que integram transições sustentáveis, impacto social e transformação sistêmica, sempre em sintonia com os princípios do cooperativismo. A avaliação é feita através de cinco dimensões-chave que você pode explorar no menu ao lado.
+                </p>
+            </div>
+
+            <div id="content-radar" class="content-section hidden">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Análise de Projetos: Duas Visões</h2>
+                
+                <div class="flex space-x-4 mb-6 border-b border-gray-200">
+                    <button onclick="switchRadarView('multidimensional')" id="tab-multidimensional" class="tab-button py-2 px-4 text-lg text-gray-700 hover:text-blue-700 transition-colors active">Visão Multidimensional</button>
+                    <button onclick="switchRadarView('single-radar')" id="tab-single-radar" class="tab-button py-2 px-4 text-lg text-gray-700 hover:text-blue-700 transition-colors">Radar de Projetos</button>
+                </div>
+
+                
+                <div id="view-multidimensional" class="view-content">
+                    <p class="text-gray-700 mb-6">
+                        Selecione um projeto na lista para visualizar como ele se encaixa em cada uma das cinco dimensões do RECIP e leia sua descrição completa.
+                    </p>
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <div class="w-full lg:w-1/3 p-4 bg-gray-50 rounded-xl shadow-inner">
+                            <h3 class="text-xl font-bold text-gray-700 mb-3 border-b pb-2">Projetos em Destaque</h3>
+                            <ul id="project-list" class="space-y-1">
+                                </ul>
+                        </div>
+                        <div class="w-full lg:w-2/3">
+                            <div class="mb-4 text-sm text-gray-600 p-2 bg-gray-100 rounded-lg">
+                                **Legenda (Teia):** A distância do centro indica a pontuação (Próximo à borda = 1.0, Alto Impacto).
+                            </div>
+                            <div class="radar-container mx-auto max-w-md">
+                                <svg id="dynamic-radar-chart"></svg>
+                            </div>
+                            <div id="project-details" class="mt-6 p-4 border border-blue-200 bg-blue-50 rounded-lg hidden">
+                                <h4 id="details-title" class="text-xl font-bold text-blue-800 mb-2">Selecione um Projeto</h4>
+                                <p class="text-sm font-semibold text-gray-600 mb-2">Encaixe Forte em: <span id="details-dimensions" class="text-green-600"></span></p>
+                                <p id="details-description" class="text-gray-700"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="view-single-radar" class="view-content hidden">
+                    <p class="text-gray-700 mb-6">
+                        Nesta visão, os projetos são mapeados para sua **dimensão principal**. Passe o mouse para ver o nome e **clique** para abrir a descrição detalhada.
+                    </p>
+                    <div class="radar-container mx-auto max-w-3xl">
+                        <svg id="single-point-radar-chart"></svg>
+                    </div>
+                     <div id="project-tooltip-single" class="absolute bg-gray-800 text-white text-xs px-2 py-1 rounded-lg shadow-lg pointer-events-none opacity-0 transition-opacity duration-300" style="z-index: 100;"></div>
+                </div>
+                
+            </div>
+
+            <div id="content-participativa" class="content-section hidden">
+                <h2 class="text-3xl font-bold text-blue-700 mb-4">1. Dimensão Participativa</h2>
+                <p class="text-gray-700">Foco no **fortalecimento da voz dos associados**, promovendo a participação ativa e democrática. Exemplos: Criação de canais de diálogo direto, fóruns de deliberação digital e pesquisas aprofundadas sobre as necessidades da comunidade.</p>
+            </div>
+            <div id="content-colaborativa" class="content-section hidden">
+                <h2 class="text-3xl font-bold text-blue-700 mb-4">2. Dimensão Colaborativa</h2>
+                <p class="text-gray-700">Relacionada à **intercooperação e parcerias estratégicas**. Avalia como a cooperativa compartilha conhecimento, colabora com o ecossistema (startups, outras instituições) para cocriar soluções e difundir o bem-estar social.</p>
+            </div>
+            <div id="content-capacidades" class="content-section hidden">
+                <h2 class="text-3xl font-bold text-blue-700 mb-4">3. Dimensão Desenvolvimento de Capacidades</h2>
+                <p class="text-gray-700">Concentrada em **formação, capacitação e educação**. Reconhece ações voltadas a elevar as competências (financeiras, digitais, empreendedoras) de associados e colaboradores, preparando-os para o futuro.</p>
+            </div>
+            <div id="content-esg" class="content-section hidden">
+                <h2 class="text-3xl font-bold text-blue-700 mb-4">4. Dimensão ESG</h2>
+                <p class="text-gray-700">Abrange as práticas de **Ambiental, Social e Governança**. Avalia o compromisso da cooperativa com metas de inclusão, diversidade, ética, sustentabilidade interna e governança transparente.</p>
+            </div>
+            <div id="content-financas-verdes" class="content-section hidden">
+                <h2 class="text-3xl font-bold text-blue-700 mb-4">5. Dimensão Finanças Verdes</h2>
+                <p class="text-gray-700">Avalia o direcionamento de recursos para a **sustentabilidade ambiental**. Isso inclui linhas de crédito específicas para energia renovável, agricultura sustentável, ou qualquer produto financeiro que mitigue as mudanças climáticas.</p>
+            </div>
+
+        </section>
+
+    </main>
+    
+    <div id="project-modal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center opacity-0 pointer-events-none p-4" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 transform transition-transform duration-300 scale-95">
+            <h3 id="modal-title" class="text-2xl font-bold text-blue-800 mb-3">Título do Projeto</h3>
+            <div id="modal-details" class="mb-4 text-gray-700">
+                <p><strong>Dimensão Principal:</strong> <span id="modal-dimension" class="font-semibold text-green-600"></span></p>
+            </div>
+            <p id="modal-description" class="text-gray-600 border-t pt-4"></p>
+            <button onclick="closeModal()" id="modal-close-button" class="mt-6 w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Dados de todas as dimensões e projetos
+        const dimensions = [
+            'Participativa',
+            'Colaborativa',
+            'Desenvolvimento de Capacidades',
+            'ESG',
+            'Finanças Verdes'
+        ];
+
+        // Projetos de exemplo com SCORES (0.0 a 1.0) para cada dimensão
+        const projects = [
+            // Scores: [Partic., Colab., Capacidades, ESG, Fin. Verdes]
+            { id: 'proj-1', name: 'Plataforma de Voto Digital', dimension: 'Participativa', description: 'Sistema que permite aos associados votar em assembleias e decisões importantes de forma remota, segura e transparente, aumentando o engajamento.', scores: [0.9, 0.2, 0.6, 0.5, 0.1] },
+            { id: 'proj-2', name: 'Programa de Educação Financeira', dimension: 'Desenvolvimento de Capacidades', description: 'Série de workshops e cursos online para capacitar associados em gestão de finanças pessoais e investimentos, promovendo a prosperidade.', scores: [0.5, 0.4, 0.9, 0.7, 0.3] },
+            { id: 'proj-3', name: 'Linha de Crédito Solar', dimension: 'Finanças Verdes', description: 'Crédito com taxa especial para a aquisição de sistemas de energia solar por empresas e residências, incentivando a sustentabilidade energética.', scores: [0.1, 0.3, 0.4, 0.8, 1.0] },
+            { id: 'proj-4', name: 'Parceria com Fintech Local', dimension: 'Colaborativa', description: 'Acordo de intercooperação com uma startup local para integrar novas soluções digitais e ampliar o alcance dos serviços cooperativos.', scores: [0.4, 0.9, 0.7, 0.6, 0.2] },
+            { id: 'proj-5', name: 'Relatório de Impacto Social Anual', dimension: 'ESG', description: 'Documento público que mede e divulga os resultados não-financeiros da cooperativa, incluindo métricas de diversidade, apoio social e ambiental.', scores: [0.6, 0.5, 0.3, 1.0, 0.5] },
+            { id: 'proj-6', name: 'Fundo de Microcrédito Comunitário', dimension: 'Participativa', description: 'Fundo gerido em conjunto com a comunidade para apoiar microempreendedores locais em situação de vulnerabilidade.', scores: [0.8, 0.6, 0.5, 0.7, 0.4] }
+        ];
+
+        // VARIÁVEIS DO RADAR (GEOMETRIA)
+        const RADAR_VIEW_SIZE = 120; 
+        const CENTER = RADAR_VIEW_SIZE / 2;
+        const PADDING = 10;
+        const MAX_RADIUS = CENTER - PADDING;
+        const NUM_AXES = dimensions.length;
+        const startAngle = Math.PI / 2;
+        const angleStep = (2 * Math.PI) / NUM_AXES;
+
+        // --- Pré-processamento de dados (Melhoria de Manutenção) ---
+
+        /**
+         * Pré-calcula a string de dimensões principais para cada projeto.
+         */
+        function preProcessProjects() {
+            projects.forEach(project => {
+                const mainDimensions = project.scores
+                    .map((score, index) => ({ score, name: dimensions[index] }))
+                    .filter(d => d.score >= 0.7) 
+                    .sort((a, b) => b.score - a.score)
+                    .map(d => d.name)
+                    .join(', ');
+                
+                project.mainDimensionsText = mainDimensions || 'Múltiplas Dimensões';
+            });
+        }
+        preProcessProjects();
+
+
+        // --- Funções de Geometria e Desenho de Fundo ---
+
+        /**
+         * Converte coordenadas polares (ângulo e raio) para coordenadas cartesianas (x, y).
+         */
+        function getCoords(angle, radius) {
+            const r = radius * MAX_RADIUS;
+            return {
+                x: CENTER + r * Math.cos(angle),
+                y: CENTER + r * Math.sin(angle)
+            };
+        }
+
+        /**
+         * Desenha o gráfico de radar de fundo (eixos, anéis e rótulos).
+         */
+        function drawRadarBackground(svg) {
+            
+            // 1. Desenha os anéis de fundo
+            for (let i = 1; i <= 3; i++) {
+                const ringRadius = (MAX_RADIUS / 3) * i;
+                const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                ring.setAttribute('cx', CENTER);
+                ring.setAttribute('cy', CENTER);
+                ring.setAttribute('r', ringRadius);
+                ring.setAttribute('fill', 'none');
+                ring.setAttribute('stroke', '#e5e7eb');
+                svg.appendChild(ring);
+            }
+
+            // 2. Desenha os eixos e rótulos das dimensões (Ajustado para ancoragem melhor)
+            dimensions.forEach((dimName, index) => {
+                const angle = startAngle - (index * angleStep);
+                const end = getCoords(angle, 1);
+                
+                // Linha do eixo
+                const axisLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                axisLine.setAttribute('x1', CENTER);
+                axisLine.setAttribute('y1', CENTER);
+                axisLine.setAttribute('x2', end.x);
+                axisLine.setAttribute('y2', end.y);
+                axisLine.setAttribute('class', 'radar-axis');
+                svg.appendChild(axisLine);
+
+                // Rótulo da dimensão
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                const textPos = getCoords(angle, 1.1);
+                
+                // Ancoragem horizontal
+                let textAnchor = 'middle';
+                if (textPos.x > CENTER + 1) textAnchor = 'start';
+                else if (textPos.x < CENTER - 1) textAnchor = 'end';
+                
+                // Ajuste vertical (dy)
+                let dy = 0.5; // Padrão
+                if (Math.abs(Math.cos(angle)) < 0.05) { // Vertical (topo/base)
+                    dy = (Math.sin(angle) > 0) ? -1 : 4; 
+                } else if (Math.sin(angle) < 0) { // Parte de baixo
+                    dy = 4;
+                }
+
+                text.setAttribute('x', textPos.x);
+                text.setAttribute('y', textPos.y + dy); 
+                text.setAttribute('text-anchor', textAnchor);
+                text.setAttribute('fill', '#4b5563');
+                text.setAttribute('font-size', '3');
+                text.setAttribute('font-weight', 'bold');
+                text.textContent = dimName;
+                svg.appendChild(text);
+            });
+        }
+
+        // --- Funções da Visão Multidimensional (Teia) ---
+
+        /**
+         * Desenha a "teia" (polígono) de um projeto com base nos seus scores.
+         */
+        function drawProjectWeb(scores) {
+            const svg = document.getElementById('dynamic-radar-chart');
+            if (!svg) return;
+            svg.innerHTML = ''; 
+            svg.setAttribute('viewBox', `0 0 ${RADAR_VIEW_SIZE} ${RADAR_VIEW_SIZE}`); 
+
+            drawRadarBackground(svg);
+
+            let pathD = '';
+            let pointsCoords = []; // Para desenhar os pontos após o polígono
+
+            scores.forEach((score, index) => {
+                const angle = startAngle - (index * angleStep);
+                const coords = getCoords(angle, score); 
+                pointsCoords.push(coords);
+                
+                if (index === 0) {
+                    pathD += `M ${coords.x} ${coords.y}`;
+                } else {
+                    pathD += ` L ${coords.x} ${coords.y}`;
+                }
+            });
+            pathD += ' Z'; 
+
+            const polygon = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            polygon.setAttribute('d', pathD);
+            polygon.setAttribute('fill', '#10b981'); 
+            polygon.setAttribute('fill-opacity', 0.5);
+            polygon.setAttribute('stroke', '#047857');
+            polygon.setAttribute('stroke-width', 0.8);
+            svg.appendChild(polygon);
+
+            // Desenha os pontos (círculos) no polígono
+            pointsCoords.forEach(coords => {
+                const point = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                point.setAttribute('cx', coords.x);
+                point.setAttribute('cy', coords.y);
+                point.setAttribute('r', 1.5);
+                point.setAttribute('fill', '#047857');
+                svg.appendChild(point);
+            });
+        }
+
+        /**
+         * Popula a lista de projetos na interface.
+         */
+        function populateProjectList() {
+            const ul = document.getElementById('project-list');
+            if (!ul) return;
+            ul.innerHTML = '';
+
+            projects.forEach(project => {
+                const li = document.createElement('li');
+                li.className = 'cursor-pointer px-3 py-2 rounded-lg hover:bg-green-100 transition-colors project-item';
+                li.textContent = project.name;
+                li.dataset.projectId = project.id;
+                // Adiciona atributo de estado (data-active)
+                li.dataset.active = 'false'; 
+
+                li.addEventListener('click', () => selectProject(project.id));
+                ul.appendChild(li);
+            });
+            
+            // Seleciona o primeiro projeto por padrão
+            if (projects.length > 0) {
+                selectProject(projects[0].id);
+            }
+        }
+
+        /**
+         * Seleciona um projeto, atualiza a descrição e o gráfico (Multidimensional).
+         */
+        function selectProject(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            // Remove o estado ativo de todos e adiciona ao selecionado
+            document.querySelectorAll('.project-item').forEach(item => {
+                item.classList.remove('bg-green-200', 'font-bold');
+                item.dataset.active = 'false';
+            });
+
+            const selectedItem = document.querySelector(`[data-project-id="${projectId}"]`);
+            if (selectedItem) {
+                selectedItem.classList.add('bg-green-200', 'font-bold');
+                selectedItem.dataset.active = 'true';
+            }
+
+            document.getElementById('details-title').textContent = project.name;
+            
+            // Usa o texto pré-calculado (Melhoria de Manutenção)
+            document.getElementById('details-dimensions').textContent = project.mainDimensionsText;
+            document.getElementById('details-description').textContent = project.description;
+            document.getElementById('project-details').classList.remove('hidden');
+
+            drawProjectWeb(project.scores);
+        }
+
+        // --- Funções da Visão Radar de Pontos (Single-Radar) ---
+
+        /**
+         * Desenha o radar com um ponto fixo por projeto na sua dimensão principal.
+         */
+        function drawSinglePointRadar() {
+            const svg = document.getElementById('single-point-radar-chart');
+            if (!svg) return;
+            svg.innerHTML = ''; 
+            svg.setAttribute('viewBox', `0 0 ${RADAR_VIEW_SIZE} ${RADAR_VIEW_SIZE}`); 
+
+            drawRadarBackground(svg);
+
+            const FIXED_RADIUS = 0.8; 
+
+            projects.forEach(project => {
+                const dimensionIndex = dimensions.indexOf(project.dimension);
+                
+                if (dimensionIndex === -1) return; 
+
+                const angle = startAngle - (dimensionIndex * angleStep);
+                const coords = getCoords(angle, FIXED_RADIUS);
+
+                const point = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                point.setAttribute('cx', coords.x);
+                point.setAttribute('cy', coords.y);
+                point.setAttribute('r', 2.5); 
+                point.setAttribute('fill', '#f59e0b'); 
+                point.setAttribute('stroke', '#b45309');
+                point.setAttribute('stroke-width', 0.5);
+                point.setAttribute('class', 'radar-point'); 
+                point.dataset.projectId = project.id;
+
+                // Eventos de MOUSEOVER (Tooltip)
+                point.addEventListener('mouseenter', (e) => showTooltipSingle(e, project.name));
+                point.addEventListener('mouseleave', hideTooltipSingle);
+                
+                // Evento de clique (Modal)
+                point.addEventListener('click', () => openModal(project));
+                
+                svg.appendChild(point);
+            });
+        }
+
+        function showTooltipSingle(e, text) {
+            const tooltip = document.getElementById('project-tooltip-single');
+            tooltip.textContent = text;
+            
+            // Lógica de ajuste de posição para evitar sair da tela
+            let x = e.clientX + 15;
+            let y = e.clientY + 15;
+
+            // Determina a posição da janela de visualização
+            const vw = window.innerWidth || document.documentElement.clientWidth;
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            
+            // Se o tooltip for para além da borda direita, move para a esquerda do cursor
+            if (x + tooltip.offsetWidth > vw - 10) {
+                x = e.clientX - tooltip.offsetWidth - 15;
+            }
+            
+            // Se o tooltip for para além da borda inferior, move para cima do cursor
+            if (y + tooltip.offsetHeight > vh - 10) {
+                y = e.clientY - tooltip.offsetHeight - 15;
+            }
+
+            tooltip.style.left = `${x}px`; 
+            tooltip.style.top = `${y}px`;
+            
+            tooltip.style.opacity = '1';
+        }
+
+        function hideTooltipSingle() {
+            const tooltip = document.getElementById('project-tooltip-single');
+            tooltip.style.opacity = '0';
+        }
+
+        // --- Funções de Modal e Acessibilidade ---
+
+        function openModal(project) {
+            document.getElementById('modal-title').textContent = project.name;
+            document.getElementById('modal-dimension').textContent = project.dimension;
+            document.getElementById('modal-description').textContent = project.description;
+            
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            // Torna o conteúdo do modal acessível ao leitor de tela
+            modal.setAttribute('aria-hidden', 'false'); 
+
+            // Aplica a transição visual
+            modal.querySelector('div').classList.remove('scale-95');
+            modal.querySelector('div').classList.add('scale-100');
+            
+            // Foca no botão de fechar para acessibilidade
+            document.getElementById('modal-close-button').focus();
+
+            // Adiciona listener para fechar com ESC (Acessibilidade)
+            document.addEventListener('keydown', handleEscapeKey);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.setAttribute('aria-hidden', 'true'); 
+            }, 100); 
+
+            // Remove listener do ESC
+            document.removeEventListener('keydown', handleEscapeKey);
+        }
+
+        function handleEscapeKey(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        }
+        
+        // --- Funções de Navegação e Conteúdo ---
+
+        /**
+         * Alterna entre as duas visualizações do radar.
+         */
+        function switchRadarView(viewId) {
+            // Esconde/Mostra os containers de visualização
+            document.querySelectorAll('#content-radar .view-content').forEach(view => {
+                view.classList.add('hidden');
+            });
+            document.getElementById(`view-${viewId}`).classList.remove('hidden');
+
+            // Atualiza o estilo dos botões/tabs (Usando a nova classe 'active')
+            document.querySelectorAll('#content-radar .tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            const activeTab = document.getElementById(`tab-${viewId}`);
+            activeTab.classList.add('active');
+
+            // Inicializa a view selecionada
+            if (viewId === 'multidimensional') {
+                populateProjectList();
+            } else if (viewId === 'single-radar') {
+                drawSinglePointRadar();
+            }
+        }
+        
+        /**
+         * Gerencia a troca de conteúdo na área principal.
+         */
+        function switchContent(contentId) {
+            // Esconde todas as seções de conteúdo
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Mostra a seção desejada
+            const target = document.getElementById(`content-${contentId}`);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            // Se for o radar, carrega a view padrão (Multidimensional)
+            if (contentId === 'radar') {
+                switchRadarView('multidimensional');
+            }
+
+            // Atualiza o estado ativo no menu lateral (A11y: aria-current)
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('bg-blue-50', 'text-blue-700', 'font-semibold');
+                item.classList.add('text-gray-700');
+                item.removeAttribute('aria-current');
+            });
+            const activeItem = document.querySelector(`[data-content="${contentId}"]`);
+            if (activeItem) {
+                activeItem.classList.add('bg-blue-50', 'text-blue-700', 'font-semibold');
+                activeItem.classList.remove('text-gray-700');
+                activeItem.setAttribute('aria-current', 'page');
+            }
+            
+            // Oculta o menu lateral em mobile após a seleção
+            if (window.innerWidth < 1024) {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.add('hidden');
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        // --- Inicialização e Eventos ---
+        window.onload = function() {
+            
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menu-toggle');
+            
+            // Listener para o botão de menu móvel (Hambúrguer)
+            menuToggle.addEventListener('click', function() {
+                const isHidden = sidebar.classList.toggle('hidden');
+                sidebar.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
+            });
+            
+            // Adiciona listeners para os itens do menu
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const contentId = this.getAttribute('data-content');
+                    switchContent(contentId);
+                    
+                    if (window.innerWidth < 1024) {
+                        document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Exibe a introdução ao carregar
+            switchContent('intro');
+            
+            // Se o hash na URL for o radar, carrega o radar
+            if (window.location.hash === '#radar') {
+                switchContent('radar');
+            }
+        };
+
+        // Redesenha o radar em caso de redimensionamento da janela
+        window.addEventListener('resize', () => {
+            const radarContainer = document.getElementById('content-radar');
+            if (!radarContainer.classList.contains('hidden')) {
+                // Checa qual view está ativa
+                if (!document.getElementById('view-multidimensional').classList.contains('hidden')) {
+                    // Visão Multidimensional
+                    const activeProject = document.querySelector('.project-item[data-active="true"]');
+                    if (activeProject) {
+                        selectProject(activeProject.dataset.projectId);
+                    } else if (projects.length > 0) {
+                        drawProjectWeb(projects[0].scores); 
+                    }
+                } else if (!document.getElementById('view-single-radar').classList.contains('hidden')) {
+                    // Visão Radar de Pontos
+                    drawSinglePointRadar();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
