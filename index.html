@@ -7,684 +7,649 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /* Define a fonte Inter */
+        /* Estilos originais do RECIP */
         body { font-family: 'Inter', sans-serif; }
-        
-        /* Estilo para o menu lateral fixo em telas grandes */
         .sidebar-fixed {
             position: sticky;
             top: 4rem; /* Abaixo do header */
             height: calc(100vh - 4rem); /* Altura restante da viewport */
             overflow-y: auto; /* Permite scroll se o menu for muito longo */
         }
+        .modal { transition: opacity 0.3s ease-in-out; }
+
+        /* Estilos customizados para o NOVO RADAR SEMICIRCULAR */
         
-        /* Estilo básico do modal */
-        .modal {
-            transition: opacity 0.3s ease-in-out;
+        /* Estilo para a seção de explicação do radar */
+        .explanation-section {
+            max-width: 900px;
+            width: 95%;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #4b5563;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin: 0 auto;
         }
-
-        /* Classes de estilo customizadas para o radar SVG */
-        .radar-axis { stroke: #d1d5db; stroke-width: 1; }
-        .radar-point { cursor: pointer; transition: fill 0.2s, r 0.2s; } 
-        .radar-point:hover { fill: #f59e0b; } /* Amarelo/Laranja ao passar o mouse */
-
-        /* Estilo do container do radar, garantindo que ele seja um quadrado */
-        .radar-container {
-            width: 100%;
-            padding-bottom: 100%; /* Truque para manter o aspecto 1:1 */
-            position: relative;
-        }
-        .radar-container svg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Estilo para a tab ativa */
-        .tab-button.active {
-            border-bottom: 3px solid #10b981; /* Borda inferior verde para destacar */
-            color: #10b981; 
+        .explanation-section strong {
+            color: #3FA110;
             font-weight: 700;
+        }
+        .explanation-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        .explanation-list li {
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para os botões de filtro */
+        .content-filter-section { margin: 32px auto 0 auto; max-width: 900px; }
+        .content-item {
+            background: #f0f0f0;
+            color: #212121;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 16px;
+            padding: 10px 28px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            border: none;
+            margin-bottom: 8px;
+        }
+        .content-item.active,
+        .content-item:hover {
+            background: #3FA110;
+            color: #ffffff;
+        }
+
+        /* Contêiner e SVG do Radar */
+        .radar-container {
+            position: relative;
+            margin: 0 auto 32px auto;
+        }
+        .radar-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Card de Detalhes Selecionado (Ajuste para cobrir mais espaço) */
+        .selected-card-container {
+            width: 100%; /* Garante que o container use a largura total da seção */
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+            margin-bottom: 32px;
+        }
+        .selected-card {
+            background: #ffffff; border: 1px solid #3FA110;
+            border-radius: 22px;
+            padding: 28px 36px;
+            min-width: 320px;
+            max-width: 800px; /* AUMENTADO: Permite que o card ocupe mais espaço na seção */
+            width: 95%; /* Garante que ele se adapte bem em telas menores */
+            box-shadow: 0 4px 16px rgba(63, 161, 16, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-left: 10px solid #3FA110;
+            font-size: 1.1rem;
+            animation: fadeIn 0.3s;
+        }
+        .card-maturity {
+            font-weight: 600;
+            color: #3FA110;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e0e0e0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: fixed;
+            background: #3FA110;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 4px 24px rgba(63, 161, 16, 0.4);
+            display: none;
+            max-width: 250px;
+            word-break: break-word;
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 min-h-screen">
 
-    <header class="fixed top-0 w-full border-b border-gray-400 py-3 px-6 z-50 shadow-md" style="background-color: #3FA110;">
-        <div class="flex items-center justify-between max-w-7xl mx-auto">
-            <h1 class="text-xl md:text-2xl font-extrabold text-white tracking-tight">
-                RECIP <span class="text-gray-200 font-medium text-base md:text-xl">| Reconhecimento Inovação com Propósito</span>
-            </h1>
-            
-            <button id="menu-toggle" class="lg:hidden p-2 text-white hover:text-gray-200">
+    <header class="fixed top-0 left-0 right-0 h-16 bg-[#3FA110] shadow-md z-50 flex items-center justify-between px-4 lg:px-8">
+        <div class="flex items-center space-x-4">
+            <button id="menu-toggle" class="lg:hidden p-2 text-white hover:bg-[#327a0d] rounded-md">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
-
-            <div class="hidden sm:flex items-center space-x-3">
-                <img src="img/inovacao-logo.png" alt="Logo Inovação" class="h-8 md:h-9">
-                <img src="img/sicredi-logo.png" alt="Logo Sicredi" class="h-8 md:h-9">
-            </div>
+            <h1 class="text-xl lg:text-2xl font-bold text-white tracking-wider">RECIP | Reconhecimento Inovação com Propósito</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <img src="img/sicredi-logo.png" alt="Logo Sicredi" class="h-8 hidden sm:block">
+            <img src="img/inovacao-logo.png" alt="Logo Inovação" class="h-8 hidden md:block">
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto flex flex-col lg:flex-row pt-16">
-        
-        <nav role="navigation" id="sidebar" class="w-full lg:w-64 bg-white border-b lg:border-r border-gray-200 p-4 lg:p-6 lg:sidebar-fixed hidden lg:block" aria-hidden="true">
-            <h2 class="text-lg font-bold text-gray-700 mb-4 border-b pb-2 hidden lg:block">Navegação</h2>
-            
-            <ul class="space-y-2">
-                <li>
-                    <a href="#o-que-e" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold transition-colors bg-blue-50 text-blue-700" data-content="intro" aria-current="page">
-                        O que é o RECIP?
-                    </a>
-                </li>
+    <main class="pt-16 flex">
+
+        <nav id="sidebar" class="fixed top-16 left-0 w-64 bg-white shadow-xl h-[calc(100vh-4rem)] overflow-y-auto z-40 lg:block hidden">
+            <div class="p-4 space-y-2">
+                <a href="#intro" data-content-id="intro" class="menu-item block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out" aria-current="true">
+                    <span class="font-bold text-[#3FA110]">⚫</span> Introdução
+                </a>
                 
-                <li class="pt-2">
-                    <span class="text-sm font-bold text-gray-500 uppercase block mb-1">Dimensões de Inovação</span>
-                </li>
+                <h3 class="px-4 pt-4 text-xs font-semibold uppercase text-gray-400">Dimensões de Inovação</h3>
+                <a href="#dimensao-participativa" data-content-id="dimensao-participativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="font-bold text-[#3FA110]">1.</span> Participativa
+                </a>
+                <a href="#dimensao-colaborativa" data-content-id="dimensao-colaborativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="font-bold text-[#3FA110]">2.</span> Colaborativa
+                </a>
+                <a href="#dimensao-capacidades" data-content-id="dimensao-capacidades" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="font-bold text-[#3FA110]">3.</span> Desenvolvimento de Capacidades
+                </a>
+                <a href="#dimensao-esg" data-content-id="dimensao-esg" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="font-bold text-[#3FA110]">4.</span> ESG
+                </a>
+                <a href="#dimensao-financas-verdes" data-content-id="dimensao-financas-verdes" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <span class="font-bold text-[#3FA110]">5.</span> Finanças Verdes
+                </a>
 
-                <li>
-                    <a href="#participativa" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="participativa">
-                        1. Participativa
-                    </a>
-                </li>
-                <li>
-                    <a href="#colaborativa" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="colaborativa">
-                        2. Colaborativa
-                    </a>
-                </li>
-                <li>
-                    <a href="#capacidades" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="capacidades">
-                        3. Desenvolvimento de Capacidades
-                    </a>
-                </li>
-                <li>
-                    <a href="#esg" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="esg">
-                        4. ESG
-                    </a>
-                </li>
-                <li>
-                    <a href="#financas-verdes" class="menu-item block px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors" data-content="financas-verdes">
-                        5. Finanças Verdes
-                    </a>
-                </li>
-
-                <li class="pt-4">
-                    <a href="#radar" class="menu-item block px-3 py-2 rounded-lg text-white bg-green-600 hover:bg-green-700 font-bold transition-colors" data-content="radar">
-                        <svg class="w-5 h-5 inline mr-2 align-text-bottom" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        Práticas realizadas 
-                    </a>
-                </li>
-            </ul>
+                <h3 class="px-4 pt-4 text-xs font-semibold uppercase text-gray-400">Visão Geral</h3>
+                <a href="#radar" data-content-id="radar" class="menu-item block px-4 py-2 text-sm font-bold bg-[#3FA110] text-white rounded-lg transition duration-150 ease-in-out">
+                    <svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Radar de Práticas
+                </a>
+            </div>
         </nav>
 
-        <section class="flex-1 p-6 lg:p-8 bg-white lg:min-h-screen" id="main-content">
+        <section id="main-content" class="flex-grow p-4 lg:p-8 lg:ml-64">
             
-            <div id="content-intro" class="content-section">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">O que é o Reconhecimento Inovação com Propósito (RECIP)?</h2>
-                <p class="text-gray-700 mb-4">
-                    O Prêmio RECIP, promovido pela Fenasbac com apoio do Banco Central e do Sistema OCB, é uma iniciativa que identifica, valoriza e divulga a **inovação social e a excelência na gestão** dentro do cooperativismo financeiro brasileiro. Ele reconhece cooperativas de crédito que conseguem aliar o seu propósito (foco no associado e na comunidade) com a capacidade de inovar, gerando impacto socioeconômico e ambiental positivo.
-                </p>
-                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Conectando Propósito e Inovação</h3>
-                <p class="text-gray-600">
-                    O programa busca mapear iniciativas que integram transições sustentáveis, impacto social e transformação sistêmica, sempre em sintonia com os princípios do cooperativismo. A avaliação é feita através de cinco dimensões-chave que você pode explorar no menu ao lado.
-                </p>
+            <div id="content-intro" class="content-section bg-white p-6 rounded-lg shadow-xl w-full max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">RECIP: Reconhecimento Inovação com Propósito</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p>Bem-vindo ao relatório interativo do RECIP, uma iniciativa para reconhecer e catalisar a inovação dentro do sistema cooperativo, sempre alinhada ao nosso propósito de construir uma sociedade mais próspera.</p>
+                    <p>Nossas inovações são categorizadas em cinco dimensões estratégicas, garantindo que o desenvolvimento de novas soluções e práticas atenda a um espectro amplo de necessidades e gere valor sustentável para os associados e a comunidade:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li><strong>Participativa:</strong> Fortalecimento da voz, do engajamento e da governança ativa dos associados.</li>
+                        <li><strong>Colaborativa:</strong> Promoção da intercooperação, alianças estratégicas e da cocriação de valor com ecossistemas externos.</li>
+                        <li><strong>Desenvolvimento de Capacidades:</strong> Foco na formação contínua, na educação financeira e na capacitação digital para a sustentabilidade futura.</li>
+                        <li><strong>ESG:</strong> Integração de práticas Ambientais, Sociais e de Governança para um impacto positivo e responsável.</li>
+                        <li><strong>Finanças Verdes:</strong> Alocação estratégica de recursos e crédito para projetos de sustentabilidade ambiental e transição energética.</li>
+                    </ul>
+                    <p>Explore as seções ao lado e veja como cada dimensão contribui para a inovação com propósito. A seção "Radar de Práticas" oferece uma visão consolidada de onde estamos em termos de maturidade de adoção.</p>
+                </div>
             </div>
 
-            <div id="content-radar" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Análise de Projetos: Duas Visões</h2>
-                
-                <div class="flex space-x-4 mb-6 border-b border-gray-200">
-                    <button onclick="switchRadarView('multidimensional')" id="tab-multidimensional" class="tab-button py-2 px-4 text-lg text-gray-700 hover:text-blue-700 transition-colors active">Visão Multidimensional</button>
-                    <button onclick="switchRadarView('single-radar')" id="tab-single-radar" class="tab-button py-2 px-4 text-lg text-gray-700 hover:text-blue-700 transition-colors">Radar de Projetos</button>
+            <div id="content-dimensao-participativa" class="content-section bg-white p-6 rounded-lg shadow-xl w-full max-w-7xl mx-auto hidden">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Dimensão 1: Participativa</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p>Esta dimensão foca em inovar nos mecanismos que <strong>fortalecem a voz e a influência dos associados</strong> na gestão e nos rumos da cooperativa. Trata-se de ir além do voto tradicional, buscando ferramentas e processos que promovam o engajamento contínuo e a tomada de decisão coletiva de forma ágil e transparente.</p>
+                    <p>Iniciativas nesta área incluem:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>Desenvolvimento de plataformas digitais para assembleias e votações online, maximizando a taxa de participação.</li>
+                        <li>Criação de canais de diálogo constante (como *hubs* de ideias e fóruns virtuais) que garantam que as sugestões dos associados influenciem diretamente o desenvolvimento de produtos e serviços.</li>
+                        <li>Adoção de modelos de governança mais dinâmicos e representativos que reflitam a diversidade e os interesses da base social.</li>
+                    </ul>
+                    <p class="font-semibold text-[#3FA110]"><strong>Propósito Central:</strong> Assegurar que o princípio democrático do cooperativismo seja atualizado e potencializado pela tecnologia e pela inovação social.</p>
+                </div>
+            </div>
+            
+            <div id="content-dimensao-colaborativa" class="content-section bg-white p-6 rounded-lg shadow-xl w-full max-w-7xl mx-auto hidden">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Dimensão 2: Colaborativa</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p>A inovação colaborativa reside na capacidade de transcender as fronteiras internas da cooperativa para <strong>construir valor em parceria</strong>. Isso envolve o aprofundamento do sétimo princípio cooperativista (Intercooperação) e a busca ativa por alianças estratégicas com *startups*, *fintechs*, universidades e outras instituições.</p>
+                    <p>Esta dimensão valoriza projetos que:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>Geram soluções conjuntas com outras cooperativas do sistema, otimizando custos e ampliando o alcance geográfico.</li>
+                        <li>Estabelecem programas de *open innovation* (Inovação Aberta), trazendo soluções externas para desafios internos complexos.</li>
+                        <li>Promovem a criação de ecossistemas regionais, onde a cooperativa atua como catalisadora de desenvolvimento, unindo empresas, associados e o poder público em prol de objetivos comuns.</li>
+                    </ul>
+                    <p class="font-semibold text-[#3FA110]"><strong>Propósito Central:</strong> Multiplicar o potencial de inovação e o impacto da cooperativa, aproveitando o conhecimento e os recursos de um ecossistema ampliado.</p>
+                </div>
+            </div>
+            
+            <div id="content-dimensao-capacidades" class="content-section bg-white p-6 rounded-lg shadow-xl w-full max-w-7xl mx-auto hidden">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Dimensão 3: Desenvolvimento de Capacidades</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p>Inovar no Desenvolvimento de Capacidades significa reconhecer que o principal ativo da cooperativa é o seu capital humano (colaboradores e associados). O foco é garantir que todos tenham as <strong>habilidades e o conhecimento necessários para prosperar</strong> em um mundo em rápida transformação, especialmente na era digital.</p>
+                    <p>Os projetos nesta dimensão incluem:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>Criação de programas contínuos de educação financeira para associados, fomentando o uso consciente e estratégico dos recursos.</li>
+                        <li>Implantação de academias internas e trilhas de aprendizado em temas como IA, *data science* e metodologias ágeis para colaboradores.</li>
+                        <li>Iniciativas de letramento digital e inclusão para associados mais vulneráveis, garantindo que a digitalização não deixe ninguém para trás.</li>
+                        <li>Desenvolvimento de novas lideranças focadas na mentalidade de inovação e adaptabilidade.</li>
+                    </ul>
+                    <p class="font-semibold text-[#3FA110]"><strong>Propósito Central:</strong> Construir um futuro sustentável através do investimento no conhecimento e na elevação das competências de toda a comunidade cooperativista.</p>
+                </div>
+            </div>
+            
+            <div id="content-dimensao-esg" class="content-section bg-white p-6 rounded-lg shadow-xl w-full max-w-7xl mx-auto hidden">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Dimensão 4: ESG (Ambiental, Social e Governança)</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p>A inovação ESG vai além do cumprimento regulatório, buscando incorporar ativamente a sustentabilidade e a responsabilidade social em todas as operações e decisões de negócio. A cooperativa assume um papel de liderança, <strong>mensurando e gerenciando seu impacto</strong> sobre o meio ambiente, a sociedade e a qualidade da sua governança.</p>
+                    <p>Exemplos de práticas inovadoras em ESG:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>Desenvolvimento de métricas robustas para medir o Retorno Social do Investimento (SROI) de projetos e publicá-lo em relatórios anuais.</li>
+                        <li>Implementação de políticas inovadoras de diversidade, equidade e inclusão no quadro de colaboradores e na alta gestão.</li>
+                        <li>Adoção de tecnologias para monitorar e reduzir a pegada de carbono das operações internas (consumo de energia, papel, logística).</li>
+                        <li>Fortalecimento dos comitês e processos de governança para garantir a ética, a transparência e a resiliência institucional de longo prazo.</li>
+                    </ul>
+                    <p class="font-semibold text-[#3FA110]"><strong>Propósito Central:</strong> Garantir que o crescimento da cooperativa seja sinérgico com a responsabilidade social e ambiental, criando valor duradouro para as futuras gerações.</p>
+                </div>
+            </div>
+            
+            <div id="content-dimensao-financas-verdes" class="content-section bg-white p-6 rounded-lg shadow-xl w-full max-w-7xl mx-auto hidden">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Dimensão 5: Finanças Verdes</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p>Esta dimensão é o motor da <strong>transição para uma economia de baixo carbono</strong>, utilizando o poder do crédito e dos investimentos para promover a sustentabilidade ambiental. A inovação aqui reside em criar produtos financeiros que incentivam práticas ecologicamente corretas entre os associados e comunidades.</p>
+                    <p>São projetos cruciais para esta área:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>Estruturação de linhas de crédito específicas para <strong>energia renovável</strong> (ex: painéis solares, sistemas de biogás), tornando a adoção mais acessível.</li>
+                        <li>Desenvolvimento de produtos de investimento (fundos) com foco em ativos verdes ou em empresas com alto desempenho ESG.</li>
+                        <li>Criação de mecanismos de financiamento para agricultura sustentável, certificação orgânica ou manejo florestal responsável.</li>
+                        <li>Uso de dados geográficos e IA para avaliar e mitigar riscos climáticos na carteira de crédito da cooperativa.</li>
+                    </ul>
+                    <p class="font-semibold text-[#3FA110]"><strong>Propósito Central:</strong> Atuar como um agente financeiro de transformação, direcionando capital para a proteção ambiental e o desenvolvimento econômico sustentável e resiliente.</p>
+                </div>
+            </div>
+
+            <div id="content-radar" class="content-section bg-white p-6 rounded-lg shadow-xl w-full max-w-7xl mx-auto hidden flex-col items-center">
+                <div class="w-full text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Análise de Projetos</h2>
+                    <p class="text-lg text-gray-600">Visualização por Dimensões de Inovação</p>
                 </div>
 
-                
-                <div id="view-multidimensional" class="view-content">
-                    <p class="text-gray-700 mb-6">
-                        Selecione um projeto na lista para visualizar como ele se encaixa em cada uma das cinco dimensões do RECIP e leia sua descrição completa.
+                <div class="explanation-section w-full">
+                    <p>
+                        O <strong>Radar de Práticas RECIP</strong> é uma ferramenta de visualização para mapear e categorizar as iniciativas de inovação, alinhando-as às cinco dimensões estratégicas da cooperativa. O gráfico é dividido em setores radiais (as Dimensões) e camadas concêntricas (a maturidade da adoção). 
                     </p>
-                    <div class="flex flex-col lg:flex-row gap-8">
-                        <div class="w-full lg:w-1/3 p-4 bg-gray-50 rounded-xl shadow-inner">
-                            <h3 class="text-xl font-bold text-gray-700 mb-3 border-b pb-2">Projetos em Destaque</h3>
-                            <ul id="project-list" class="space-y-1">
-                                </ul>
-                        </div>
-                        <div class="w-full lg:w-2/3">
-                            <div class="mb-4 text-sm text-gray-600 p-2 bg-gray-100 rounded-lg">
-                                **Legenda (Teia):** A distância do centro indica a pontuação (Próximo à borda = 1.0, Alto Impacto).
-                            </div>
-                            <div class="radar-container mx-auto max-w-md">
-                                <svg id="dynamic-radar-chart"></svg>
-                            </div>
-                            <div id="project-details" class="mt-6 p-4 border border-blue-200 bg-blue-50 rounded-lg hidden">
-                                <h4 id="details-title" class="text-xl font-bold text-blue-800 mb-2">Selecione um Projeto</h4>
-                                <p class="text-sm font-semibold text-gray-600 mb-2">Encaixe Forte em: <span id="details-dimensions" class="text-green-600"></span></p>
-                                <p id="details-description" class="text-gray-700"></p>
-                            </div>
-                        </div>
-                    </div>
+                    <p><strong>Interpretação da Posição dos Pontos:</strong></p>
+                    <ul class="explanation-list">
+                        <li><strong>Eixos Radiais (Setores):</strong> Indicam a <strong>Dimensão de Inovação</strong> principal do projeto (ex: Participativa, ESG, Finanças Verdes).</li>
+                        <li style="font-weight: bold;">
+                            — Linha mais Externa (R=250): Prática em <strong>Prospecção</strong> (Estudo de Viabilidade/Ideação).
+                        </li>
+                        <li style="font-weight: bold;">
+                            — Linha do Meio (R=200): Prática em <strong>Desenvolvimento</strong> (MVP, Piloto, Implementação Inicial).
+                        </li>
+                        <li style="font-weight: bold;">
+                            — Linha mais Interna (R=150): Prática em <strong>Uso Pleno</strong> (Produção, Adoção Ampliada, Otimização Contínua).
+                        </li>
+                    </ul>
+                    <p>Passe o mouse sobre o ponto para ver o nome do projeto e clique para ver a descrição detalhada e a Maturidade de Adoção.</p>
                 </div>
 
-                <div id="view-single-radar" class="view-content hidden">
-                    <p class="text-gray-700 mb-6">
-                        Nesta visão, os projetos são mapeados para sua **dimensão principal**. Passe o mouse para ver o nome e **clique** para abrir a descrição detalhada.
-                    </p>
-                    <div class="radar-container mx-auto max-w-3xl">
-                        <svg id="single-point-radar-chart"></svg>
+                <div class="content-filter-section w-full flex flex-wrap justify-center gap-4 mb-8" id="filterSection">
                     </div>
-                     <div id="project-tooltip-single" class="absolute bg-gray-800 text-white text-xs px-2 py-1 rounded-lg shadow-lg pointer-events-none opacity-0 transition-opacity duration-300" style="z-index: 100;"></div>
+
+                <div class="radar-container mx-auto" style="width: 600px; max-width: 95vw;">
+                    <svg class="radar-svg" id="radarSVG" viewBox="0 0 700 400">
+                        <path d="M100,350 A250,250 0 0,1 600,350" stroke="#3FA110" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <path d="M150,350 A200,200 0 0,1 550,350" stroke="#3FA110" stroke-width="1.5" fill="none" opacity="0.4"/>
+                        <path d="M200,350 A150,150 0 0,1 500,350" stroke="#3FA110" stroke-width="1.5" fill="none" opacity="0.2"/>
+                        <line x1="350" y1="350" x2="100" y2="350" stroke="#6B6B6B" stroke-width="0.5" opacity="0.8"/>
+                        <line x1="350" y1="350" x2="350" y2="100" stroke="#6B6B6B" stroke-width="0.5" opacity="0.8"/>
+                        <line x1="350" y1="350" x2="600" y2="350" stroke="#6B6B6B" stroke-width="0.5" opacity="0.8"/>
+                        <line x1="350" y1="350" x2="552.25" y2="202.9" stroke="#6B6B6B" stroke-width="0.5" opacity="0.8"/>
+                        <line x1="350" y1="350" x2="427.32" y2="101.3" stroke="#6B6B6B" stroke-width="0.5" opacity="0.8"/>
+                        <line x1="350" y1="350" x2="272.68" y2="101.3" stroke="#6B6B6B" stroke-width="0.5" opacity="0.8"/>
+                        <line x1="350" y1="350" x2="147.75" y2="202.9" stroke="#6B6B6B" stroke-width="0.5" opacity="0.8"/>
+                    </svg>
+                    <div class="tooltip" id="tooltip"></div>
                 </div>
-                
-            </div>
 
-            <div id="content-participativa" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-blue-700 mb-4">1. Dimensão Participativa</h2>
-                <p class="text-gray-700">Foco no **fortalecimento da voz dos associados**, promovendo a participação ativa e democrática. Exemplos: Criação de canais de diálogo direto, fóruns de deliberação digital e pesquisas aprofundadas sobre as necessidades da comunidade.</p>
+                <div class="selected-card-container w-full" id="selectedCardContainer"></div>
             </div>
-            <div id="content-colaborativa" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-blue-700 mb-4">2. Dimensão Colaborativa</h2>
-                <p class="text-gray-700">Relacionada à **intercooperação e parcerias estratégicas**. Avalia como a cooperativa compartilha conhecimento, colabora com o ecossistema (startups, outras instituições) para cocriar soluções e difundir o bem-estar social.</p>
-            </div>
-            <div id="content-capacidades" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-blue-700 mb-4">3. Dimensão Desenvolvimento de Capacidades</h2>
-                <p class="text-gray-700">Concentrada em **formação, capacitação e educação**. Reconhece ações voltadas a elevar as competências (financeiras, digitais, empreendedoras) de associados e colaboradores, preparando-os para o futuro.</p>
-            </div>
-            <div id="content-esg" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-blue-700 mb-4">4. Dimensão ESG</h2>
-                <p class="text-gray-700">Abrange as práticas de **Ambiental, Social e Governança**. Avalia o compromisso da cooperativa com metas de inclusão, diversidade, ética, sustentabilidade interna e governança transparente.</p>
-            </div>
-            <div id="content-financas-verdes" class="content-section hidden">
-                <h2 class="text-3xl font-bold text-blue-700 mb-4">5. Dimensão Finanças Verdes</h2>
-                <p class="text-gray-700">Avalia o direcionamento de recursos para a **sustentabilidade ambiental**. Isso inclui linhas de crédito específicas para energia renovável, agricultura sustentável, ou qualquer produto financeiro que mitigue as mudanças climáticas.</p>
-            </div>
-
         </section>
-
     </main>
-    
-    <div id="project-modal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center opacity-0 pointer-events-none p-4" aria-modal="true" role="dialog" aria-labelledby="modal-title">
-        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 transform transition-transform duration-300 scale-95">
-            <h3 id="modal-title" class="text-2xl font-bold text-blue-800 mb-3">Título do Projeto</h3>
-            <div id="modal-details" class="mb-4 text-gray-700">
-                <p><strong>Dimensão Principal:</strong> <span id="modal-dimension" class="font-semibold text-green-600"></span></p>
-            </div>
-            <p id="modal-description" class="text-gray-600 border-t pt-4"></p>
-            <button onclick="closeModal()" id="modal-close-button" class="mt-6 w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                Fechar
+
+    <div id="project-modal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 z-[60] flex items-center justify-center hidden" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+        <div class="bg-white rounded-lg p-6 w-11/12 md:w-1/2 max-w-lg shadow-2xl relative" role="document">
+            <button id="close-modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
+            <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-2"></h3>
+            <p id="modal-dimension" class="text-md font-medium text-[#3FA110] mb-4"></p>
+            <p id="modal-description" class="text-gray-700 leading-relaxed"></p>
+            <p id="modal-maturity-status" class="text-lg font-semibold text-gray-600 mt-4 pt-3 border-t border-gray-200"></p>
         </div>
     </div>
 
+
     <script>
-        // Dados de todas as dimensões e projetos
-        const dimensions = [
-            'Participativa',
-            'Colaborativa',
-            'Desenvolvimento de Capacidades',
-            'ESG',
-            'Finanças Verdes'
-        ];
+        // Funções da Página Principal (Mantidas)
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const modal = document.getElementById('project-modal');
+        const closeModalButton = document.getElementById('close-modal');
 
-        // Projetos de exemplo com SCORES (0.0 a 1.0) para cada dimensão
-        const projects = [
-            // Scores: [Partic., Colab., Capacidades, ESG, Fin. Verdes]
-            { id: 'proj-1', name: 'Plataforma de Voto Digital', dimension: 'Participativa', description: 'Sistema que permite aos associados votar em assembleias e decisões importantes de forma remota, segura e transparente, aumentando o engajamento.', scores: [1.0, 0.0, 0.6, 0.0, 0.0] },
-            { id: 'proj-2', name: 'Programa de Educação Financeira', dimension: 'Desenvolvimento de Capacidades', description: 'Série de workshops e cursos online para capacitar associados em gestão de finanças pessoais e investimentos, promovendo a prosperidade.', scores: [0.0, 0.0, 0.9, 0.7, 0.0] },
-            { id: 'proj-3', name: 'Linha de Crédito Solar', dimension: 'Finanças Verdes', description: 'Crédito com taxa especial para a aquisição de sistemas de energia solar por empresas e residências, incentivando a sustentabilidade energética.', scores: [0.0, 0.0, 0.0, 0.5, 1.0] },
-            { id: 'proj-4', name: 'Parceria com Fintech Local', dimension: 'Colaborativa', description: 'Acordo de intercooperação com uma startup local para integrar novas soluções digitais e ampliar o alcance dos serviços cooperativos.', scores: [0.0, 0.9, 0.5, 0.0, 0.0] },
-            { id: 'proj-5', name: 'Relatório de Impacto Social Anual', dimension: 'ESG', description: 'Documento público que mede e divulga os resultados não-financeiros da cooperativa, incluindo métricas de diversidade, apoio social e ambiental.', scores: [0.6, 0.0, 0.0, 1.0, 0.0] },
-            { id: 'proj-6', name: 'Fundo de Microcrédito Comunitário', dimension: 'Participativa', description: 'Fundo gerido em conjunto com a comunidade para apoiar microempreendedores locais em situação de vulnerabilidade.', scores: [0.9, 0.0, 0.0, 0.7, 0.0] }
-        ];
-
-        // VARIÁVEIS DO RADAR (GEOMETRIA)
-        const RADAR_VIEW_SIZE = 120; 
-        const CENTER = RADAR_VIEW_SIZE / 2;
-        const PADDING = 10;
-        const MAX_RADIUS = CENTER - PADDING;
-        const NUM_AXES = dimensions.length;
-        const startAngle = Math.PI / 2;
-        const angleStep = (2 * Math.PI) / NUM_AXES;
-
-        // --- Pré-processamento de dados (Melhoria de Manutenção) ---
-
-        /**
-         * Pré-calcula a string de dimensões principais para cada projeto.
-         */
-        function preProcessProjects() {
-            projects.forEach(project => {
-                const mainDimensions = project.scores
-                    .map((score, index) => ({ score, name: dimensions[index] }))
-                    .filter(d => d.score >= 0.7) 
-                    .sort((a, b) => b.score - a.score)
-                    .map(d => d.name)
-                    .join(', ');
-                
-                project.mainDimensionsText = mainDimensions || 'Múltiplas Dimensões';
-            });
-        }
-        preProcessProjects();
-
-
-        // --- Funções de Geometria e Desenho de Fundo ---
-
-        /**
-         * Converte coordenadas polares (ângulo e raio) para coordenadas cartesianas (x, y).
-         */
-        function getCoords(angle, radius) {
-            const r = radius * MAX_RADIUS;
-            return {
-                x: CENTER + r * Math.cos(angle),
-                y: CENTER + r * Math.sin(angle)
-            };
-        }
-
-        /**
-         * Desenha o gráfico de radar de fundo (eixos, anéis e rótulos).
-         */
-        function drawRadarBackground(svg) {
-            
-            // 1. Desenha os anéis de fundo
-            for (let i = 1; i <= 3; i++) {
-                const ringRadius = (MAX_RADIUS / 3) * i;
-                const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                ring.setAttribute('cx', CENTER);
-                ring.setAttribute('cy', CENTER);
-                ring.setAttribute('r', ringRadius);
-                ring.setAttribute('fill', 'none');
-                ring.setAttribute('stroke', '#e5e7eb');
-                svg.appendChild(ring);
-            }
-
-            // 2. Desenha os eixos e rótulos das dimensões (Ajustado para ancoragem melhor)
-            dimensions.forEach((dimName, index) => {
-                const angle = startAngle - (index * angleStep);
-                const end = getCoords(angle, 1);
-                
-                // Linha do eixo
-                const axisLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                axisLine.setAttribute('x1', CENTER);
-                axisLine.setAttribute('y1', CENTER);
-                axisLine.setAttribute('x2', end.x);
-                axisLine.setAttribute('y2', end.y);
-                axisLine.setAttribute('class', 'radar-axis');
-                svg.appendChild(axisLine);
-
-                // Rótulo da dimensão
-                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                const textPos = getCoords(angle, 1.1);
-                
-                // Ancoragem horizontal
-                let textAnchor = 'middle';
-                if (textPos.x > CENTER + 1) textAnchor = 'start';
-                else if (textPos.x < CENTER - 1) textAnchor = 'end';
-                
-                // Ajuste vertical (dy)
-                let dy = 0.5; // Padrão
-                if (Math.abs(Math.cos(angle)) < 0.05) { // Vertical (topo/base)
-                    dy = (Math.sin(angle) > 0) ? -1 : 4; 
-                } else if (Math.sin(angle) < 0) { // Parte de baixo
-                    dy = 4;
-                }
-
-                text.setAttribute('x', textPos.x);
-                text.setAttribute('y', textPos.y + dy); 
-                text.setAttribute('text-anchor', textAnchor);
-                text.setAttribute('fill', '#4b5563');
-                text.setAttribute('font-size', '3');
-                text.setAttribute('font-weight', 'bold');
-                text.textContent = dimName;
-                svg.appendChild(text);
-            });
-        }
-
-        // --- Funções da Visão Multidimensional (Teia) ---
-
-        /**
-         * Desenha a "teia" (polígono) de um projeto com base nos seus scores.
-         */
-        function drawProjectWeb(scores) {
-            const svg = document.getElementById('dynamic-radar-chart');
-            if (!svg) return;
-            svg.innerHTML = ''; 
-            svg.setAttribute('viewBox', `0 0 ${RADAR_VIEW_SIZE} ${RADAR_VIEW_SIZE}`); 
-
-            drawRadarBackground(svg);
-
-            let pathD = '';
-            let pointsCoords = []; // Para desenhar os pontos após o polígono
-
-            scores.forEach((score, index) => {
-                const angle = startAngle - (index * angleStep);
-                const coords = getCoords(angle, score); 
-                pointsCoords.push(coords);
-                
-                if (index === 0) {
-                    pathD += `M ${coords.x} ${coords.y}`;
-                } else {
-                    pathD += ` L ${coords.x} ${coords.y}`;
-                }
-            });
-            pathD += ' Z'; 
-
-            const polygon = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            polygon.setAttribute('d', pathD);
-            polygon.setAttribute('fill', '#10b981'); 
-            polygon.setAttribute('fill-opacity', 0.5);
-            polygon.setAttribute('stroke', '#047857');
-            polygon.setAttribute('stroke-width', 0.8);
-            svg.appendChild(polygon);
-
-            // Desenha os pontos (círculos) no polígono
-            pointsCoords.forEach(coords => {
-                const point = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                point.setAttribute('cx', coords.x);
-                point.setAttribute('cy', coords.y);
-                point.setAttribute('r', 1.5);
-                point.setAttribute('fill', '#047857');
-                svg.appendChild(point);
-            });
-        }
-
-        /**
-         * Popula a lista de projetos na interface.
-         */
-        function populateProjectList() {
-            const ul = document.getElementById('project-list');
-            if (!ul) return;
-            ul.innerHTML = '';
-
-            projects.forEach(project => {
-                const li = document.createElement('li');
-                li.className = 'cursor-pointer px-3 py-2 rounded-lg hover:bg-green-100 transition-colors project-item';
-                li.textContent = project.name;
-                li.dataset.projectId = project.id;
-                // Adiciona atributo de estado (data-active)
-                li.dataset.active = 'false'; 
-
-                li.addEventListener('click', () => selectProject(project.id));
-                ul.appendChild(li);
-            });
-            
-            // Seleciona o primeiro projeto por padrão
-            if (projects.length > 0) {
-                selectProject(projects[0].id);
-            }
-        }
-
-        /**
-         * Seleciona um projeto, atualiza a descrição e o gráfico (Multidimensional).
-         */
-        function selectProject(projectId) {
-            const project = projects.find(p => p.id === projectId);
-            if (!project) return;
-
-            // Remove o estado ativo de todos e adiciona ao selecionado
-            document.querySelectorAll('.project-item').forEach(item => {
-                item.classList.remove('bg-green-200', 'font-bold');
-                item.dataset.active = 'false';
-            });
-
-            const selectedItem = document.querySelector(`[data-project-id="${projectId}"]`);
-            if (selectedItem) {
-                selectedItem.classList.add('bg-green-200', 'font-bold');
-                selectedItem.dataset.active = 'true';
-            }
-
-            document.getElementById('details-title').textContent = project.name;
-            
-            // Usa o texto pré-calculado (Melhoria de Manutenção)
-            document.getElementById('details-dimensions').textContent = project.mainDimensionsText;
-            document.getElementById('details-description').textContent = project.description;
-            document.getElementById('project-details').classList.remove('hidden');
-
-            drawProjectWeb(project.scores);
-        }
-
-        // --- Funções da Visão Radar de Pontos (Single-Radar) ---
-
-        /**
-         * Desenha o radar com um ponto fixo por projeto na sua dimensão principal.
-         */
-        function drawSinglePointRadar() {
-            const svg = document.getElementById('single-point-radar-chart');
-            if (!svg) return;
-            svg.innerHTML = ''; 
-            svg.setAttribute('viewBox', `0 0 ${RADAR_VIEW_SIZE} ${RADAR_VIEW_SIZE}`); 
-
-            drawRadarBackground(svg);
-
-            const FIXED_RADIUS = 0.8; 
-
-            projects.forEach(project => {
-                const dimensionIndex = dimensions.indexOf(project.dimension);
-                
-                if (dimensionIndex === -1) return; 
-
-                const angle = startAngle - (dimensionIndex * angleStep);
-                const coords = getCoords(angle, FIXED_RADIUS);
-
-                const point = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                point.setAttribute('cx', coords.x);
-                point.setAttribute('cy', coords.y);
-                point.setAttribute('r', 2.5); 
-                point.setAttribute('fill', '#f59e0b'); 
-                point.setAttribute('stroke', '#b45309');
-                point.setAttribute('stroke-width', 0.5);
-                point.setAttribute('class', 'radar-point'); 
-                point.dataset.projectId = project.id;
-
-                // Eventos de MOUSEOVER (Tooltip)
-                point.addEventListener('mouseenter', (e) => showTooltipSingle(e, project.name));
-                point.addEventListener('mouseleave', hideTooltipSingle);
-                
-                // Evento de clique (Modal)
-                point.addEventListener('click', () => openModal(project));
-                
-                svg.appendChild(point);
-            });
-        }
-
-        function showTooltipSingle(e, text) {
-            const tooltip = document.getElementById('project-tooltip-single');
-            tooltip.textContent = text;
-            
-            // Lógica de ajuste de posição para evitar sair da tela
-            let x = e.clientX + 15;
-            let y = e.clientY + 15;
-
-            // Determina a posição da janela de visualização
-            const vw = window.innerWidth || document.documentElement.clientWidth;
-            const vh = window.innerHeight || document.documentElement.clientHeight;
-            
-            // Se o tooltip for para além da borda direita, move para a esquerda do cursor
-            if (x + tooltip.offsetWidth > vw - 10) {
-                x = e.clientX - tooltip.offsetWidth - 15;
-            }
-            
-            // Se o tooltip for para além da borda inferior, move para cima do cursor
-            if (y + tooltip.offsetHeight > vh - 10) {
-                y = e.clientY - tooltip.offsetHeight - 15;
-            }
-
-            tooltip.style.left = `${x}px`; 
-            tooltip.style.top = `${y}px`;
-            
-            tooltip.style.opacity = '1';
-        }
-
-        function hideTooltipSingle() {
-            const tooltip = document.getElementById('project-tooltip-single');
-            tooltip.style.opacity = '0';
-        }
-
-        // --- Funções de Modal e Acessibilidade ---
-
-        function openModal(project) {
-            document.getElementById('modal-title').textContent = project.name;
-            document.getElementById('modal-dimension').textContent = project.dimension;
-            document.getElementById('modal-description').textContent = project.description;
-            
-            const modal = document.getElementById('project-modal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            // Torna o conteúdo do modal acessível ao leitor de tela
-            modal.setAttribute('aria-hidden', 'false'); 
-
-            // Aplica a transição visual
-            modal.querySelector('div').classList.remove('scale-95');
-            modal.querySelector('div').classList.add('scale-100');
-            
-            // Foca no botão de fechar para acessibilidade
-            document.getElementById('modal-close-button').focus();
-
-            // Adiciona listener para fechar com ESC (Acessibilidade)
-            document.addEventListener('keydown', handleEscapeKey);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('project-modal');
-            modal.querySelector('div').classList.remove('scale-100');
-            modal.querySelector('div').classList.add('scale-95');
-            
-            setTimeout(() => {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.setAttribute('aria-hidden', 'true'); 
-            }, 100); 
-
-            // Remove listener do ESC
-            document.removeEventListener('keydown', handleEscapeKey);
-        }
-
-        function handleEscapeKey(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        }
-        
-        // --- Funções de Navegação e Conteúdo ---
-
-        /**
-         * Alterna entre as duas visualizações do radar.
-         */
-        function switchRadarView(viewId) {
-            // Esconde/Mostra os containers de visualização
-            document.querySelectorAll('#content-radar .view-content').forEach(view => {
-                view.classList.add('hidden');
-            });
-            document.getElementById(`view-${viewId}`).classList.remove('hidden');
-
-            // Atualiza o estilo dos botões/tabs (Usando a nova classe 'active')
-            document.querySelectorAll('#content-radar .tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
-            const activeTab = document.getElementById(`tab-${viewId}`);
-            activeTab.classList.add('active');
-
-            // Inicializa a view selecionada
-            if (viewId === 'multidimensional') {
-                populateProjectList();
-            } else if (viewId === 'single-radar') {
-                drawSinglePointRadar();
-            }
-        }
-        
-        /**
-         * Gerencia a troca de conteúdo na área principal.
-         */
         function switchContent(contentId) {
-            // Esconde todas as seções de conteúdo
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.add('hidden');
             });
-
-            // Mostra a seção desejada
-            const target = document.getElementById(`content-${contentId}`);
-            if (target) {
-                target.classList.remove('hidden');
-            }
-
-            // Se for o radar, carrega a view padrão (Multidimensional)
-            if (contentId === 'radar') {
-                switchRadarView('multidimensional');
-            }
-
-            // Atualiza o estado ativo no menu lateral (A11y: aria-current)
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.classList.remove('bg-blue-50', 'text-blue-700', 'font-semibold');
-                item.classList.add('text-gray-700');
-                item.removeAttribute('aria-current');
-            });
-            const activeItem = document.querySelector(`[data-content="${contentId}"]`);
-            if (activeItem) {
-                activeItem.classList.add('bg-blue-50', 'text-blue-700', 'font-semibold');
-                activeItem.classList.remove('text-gray-700');
-                activeItem.setAttribute('aria-current', 'page');
-            }
-            
-            // Oculta o menu lateral em mobile após a seleção
-            if (window.innerWidth < 1024) {
-                const sidebar = document.getElementById('sidebar');
-                sidebar.classList.add('hidden');
-                sidebar.setAttribute('aria-hidden', 'true');
-            }
-        }
-
-        // --- Inicialização e Eventos ---
-        window.onload = function() {
-            
-            const sidebar = document.getElementById('sidebar');
-            const menuToggle = document.getElementById('menu-toggle');
-            
-            // Listener para o botão de menu móvel (Hambúrguer)
-            menuToggle.addEventListener('click', function() {
-                const isHidden = sidebar.classList.toggle('hidden');
-                sidebar.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
-            });
-            
-            // Adiciona listeners para os itens do menu
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const contentId = this.getAttribute('data-content');
-                    switchContent(contentId);
-                    
-                    if (window.innerWidth < 1024) {
-                        document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // Exibe a introdução ao carregar
-            switchContent('intro');
-            
-            // Se o hash na URL for o radar, carrega o radar
-            if (window.location.hash === '#radar') {
-                switchContent('radar');
-            }
-        };
-
-        // Redesenha o radar em caso de redimensionamento da janela
-        window.addEventListener('resize', () => {
-            const radarContainer = document.getElementById('content-radar');
-            if (!radarContainer.classList.contains('hidden')) {
-                // Checa qual view está ativa
-                if (!document.getElementById('view-multidimensional').classList.contains('hidden')) {
-                    // Visão Multidimensional
-                    const activeProject = document.querySelector('.project-item[data-active="true"]');
-                    if (activeProject) {
-                        selectProject(activeProject.dataset.projectId);
-                    } else if (projects.length > 0) {
-                        drawProjectWeb(projects[0].scores); 
-                    }
-                } else if (!document.getElementById('view-single-radar').classList.contains('hidden')) {
-                    // Visão Radar de Pontos
-                    drawSinglePointRadar();
+            const activeSection = document.getElementById(`content-${contentId}`);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+                
+                // Inicializa o radar se a seção for ativada
+                if (contentId === 'radar') {
+                    // Inicializa ou redesenha o novo radar semicircular
+                    renderFilters();
+                    setupFilterEvents();
+                    renderRadarPoints('Todas');
                 }
             }
+            // Atualiza o estado ativo do menu
+            menuItems.forEach(item => {
+                if (item.getAttribute('data-content-id') === contentId) {
+                    item.classList.add('bg-[#3FA110]', 'text-white', 'font-bold');
+                    item.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                    item.setAttribute('aria-current', 'true');
+                } else {
+                    item.classList.remove('bg-[#3FA110]', 'text-white', 'font-bold');
+                    item.classList.add('text-gray-700', 'hover:bg-gray-100');
+                    item.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
         });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contentId = this.getAttribute('data-content-id');
+                switchContent(contentId);
+                
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('hidden');
+                }
+                
+                // Scroll para o topo do conteúdo
+                mainContent.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Lógica do Modal (Mantida)
+        closeModalButton.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+            }
+        });
+
+
+        // ====================================================================
+        // NOVO CÓDIGO DO RADAR DE PRÁTICAS RECIP
+        // ====================================================================
+
+        // Passo 1: Definir as 5 Dimensões do RECIP (Filtros e Eixos)
+        const desafios = [
+            "Todas",
+            "Participativa", 
+            "Colaborativa",  
+            "Desenvolvimento de Capacidades", 
+            "ESG", 
+            "Finanças Verdes" 
+        ];
+
+        // Mapeamento de cor único para o RECIP (o verde Sicredi)
+        const sicrediGreen = "#3FA110";
+        const desafioColors = {};
+        desafios.filter(d => d !== "Todas").forEach(d => {
+            desafioColors[d] = sicrediGreen;
+        });
+
+        // Parâmetros do radar (5 dimensões = 36 graus cada)
+        function getDesafioParams() {
+            const filteredDesafios = desafios.filter(d => d !== "Todas");
+            const total = filteredDesafios.length;
+            let params = {};
+            // Ângulo de cada setor = 180 / 5 = 36 graus
+            const angleSize = 180 / total;
+
+            filteredDesafios.forEach((d, i) => {
+                // Posição: 180 - (36 * i) é o início; 180 - (36 * (i + 1)) é o fim
+                const start = 180 - angleSize * i;
+                const end = 180 - angleSize * (i + 1);
+                params[d] = {
+                    start: start,
+                    end: end,
+                    color: desafioColors[d] || "#3FA110"
+                };
+            });
+            return params;
+        }
+
+        // Camadas de Maturidade
+        const layers = [250, 200, 150]; // Prospecção (externa), Desenvolvimento (meio), Uso Pleno (interna)
+
+        // Passo 2: Definir os Projetos/Práticas de Inovação do RECIP
+        const originalRadarData = [
+            {
+                nome: "Plataforma de Voto Digital",
+                desafio: "Participativa",
+                descricao: "Implementação de um sistema seguro e acessível para votação em assembleias através de canais digitais, aumentando a participação dos associados e a transparência.",
+                maturidade: "Em Uso Pleno (Adoção Ampliada)"
+            },
+            {
+                nome: "Programa de Intercooperação Local",
+                desafio: "Colaborativa",
+                descricao: "Criação de um fórum e plataforma para compartilhamento de melhores práticas e recursos entre cooperativas Singulares da mesma Central.",
+                maturidade: "Em Desenvolvimento (Piloto)"
+            },
+            {
+                nome: "Crédito para Energia Solar",
+                desafio: "Finanças Verdes",
+                descricao: "Linha de crédito com taxas e prazos especiais para associados investirem em painéis solares e outras soluções de eficiência energética.",
+                maturidade: "Em Uso Pleno (Produção Plena)"
+            },
+            {
+                nome: "Escola de Liderança Jovem",
+                desafio: "Desenvolvimento de Capacidades",
+                descricao: "Programa de formação focado em jovens líderes, com temas de cooperativismo, inovação e sustentabilidade (ESG), visando a sucessão no quadro social e diretivo.",
+                maturidade: "Em Desenvolvimento (Implementação Inicial)"
+            },
+            {
+                nome: "Relatório de Impacto Social Integrado",
+                desafio: "ESG",
+                descricao: "Desenvolvimento de métricas e publicação anual do impacto social, econômico e ambiental da cooperativa, alinhado aos Objetivos de Desenvolvimento Sustentável (ODS).",
+                maturidade: "Em Uso Pleno (Otimização Contínua)"
+            },
+            {
+                nome: "Parceria com Fintech de Agrotech",
+                desafio: "Colaborativa",
+                descricao: "Estudo de viabilidade para integrar serviços de monitoramento de safra via satélite, oferecidos por uma Agrotech parceira, com a oferta de crédito rural.",
+                maturidade: "Em Prospecção (Estudo de Viabilidade)"
+            },
+            {
+                nome: "Mentoria de Inovação para Conselheiros",
+                desafio: "Desenvolvimento de Capacidades",
+                descricao: "Série de workshops e sessões de mentoria para membros do Conselho, focada em tendências de tecnologia e modelos de negócio disruptivos.",
+                maturidade: "Em Desenvolvimento (MVP)"
+            },
+            {
+                nome: "Fundo de Microcrédito Comunitário",
+                desafio: "Participativa",
+                descricao: "Criação de um fundo com recursos próprios e doações de associados para oferecer microcrédito a empreendedores de baixa renda na comunidade de atuação.",
+                maturidade: "Em Uso Pleno (Adoção Ampliada)"
+            },
+            {
+                nome: "Política de Diversidade e Inclusão",
+                desafio: "ESG",
+                descricao: "Criação e implementação de uma política institucional robusta para promover a diversidade e inclusão em todos os níveis da cooperativa.",
+                maturidade: "Em Uso Pleno (Otimização Contínua)"
+            },
+            {
+                nome: "Plano de Sustentabilidade Hídrica",
+                desafio: "Finanças Verdes",
+                descricao: "Iniciativa para financiar projetos de uso eficiente da água e conservação de nascentes na região de atuação, com foco em associados rurais.",
+                maturidade: "Em Desenvolvimento (Piloto)"
+            }
+        ];
+
+        // Funções de Distribuição, Renderização e Interatividade
+
+        function distributePoints(data, desafioParams, layers, filter="Todas") {
+            let points = [];
+            Object.keys(desafioParams).forEach(cat => {
+                if (filter !== "Todas" && filter !== cat) return;
+                const items = data.filter(d => d.desafio === cat);
+                const {start, end, color} = desafioParams[cat];
+                const angleStep = (end - start) / (items.length + 1);
+                items.forEach((item, i) => {
+                    const angle = start + angleStep * (i + 1);
+                    
+                    // Lógica de mapeamento de maturidade para a camada (radius)
+                    let radius;
+                    if (item.maturidade.includes("Prospecção")) {
+                        radius = layers[0]; // 250 (Externa)
+                    } else if (item.maturidade.includes("Desenvolvimento") || item.maturidade.includes("Piloto") || item.maturidade.includes("MVP")) {
+                        radius = layers[1]; // 200 (Meio)
+                    } else if (item.maturidade.includes("Uso Pleno") || item.maturidade.includes("Otimização Contínua")) {
+                        radius = layers[2]; // 150 (Interna)
+                    } else {
+                        radius = layers[1]; // Padrão
+                    }
+
+                    const rad = Math.PI * angle / 180;
+                    const x = 350 + radius * Math.cos(rad);
+                    const y = 350 - radius * Math.sin(rad);
+                    points.push({...item, x, y, color});
+                });
+            });
+            return points;
+        }
+
+        function renderFilters() {
+            const section = document.getElementById('filterSection');
+            section.innerHTML = ''; 
+            desafios.forEach((d, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'content-item' + (idx === 0 ? ' active' : '');
+                btn.setAttribute('data-filter', d);
+                btn.textContent = d;
+                section.appendChild(btn);
+            });
+        }
+
+        function renderRadarPoints(filter) {
+            const svg = document.getElementById('radarSVG');
+            Array.from(svg.querySelectorAll('.radar-point')).forEach(e => e.remove());
+            
+            const desafioParams = getDesafioParams();
+            const points = distributePoints(originalRadarData, desafioParams, layers, filter);
+            
+            points.forEach((pt) => {
+                const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", pt.x);
+                circle.setAttribute("cy", pt.y);
+                circle.setAttribute("r", 12); 
+                circle.setAttribute("fill", pt.color);
+                circle.setAttribute("opacity", "0.85");
+                circle.setAttribute("class", "radar-point");
+                circle.setAttribute("style", "cursor:pointer; transition: fill 0.2s, r 0.2s;");
+                
+                circle.addEventListener("mouseenter", function() {
+                    this.setAttribute("r", 16); 
+                    showTooltip(pt, this);
+                });
+                circle.addEventListener("mouseleave", function() {
+                    this.setAttribute("r", 12);
+                    hideTooltip();
+                });
+                
+                circle.onclick = function() {
+                    showSelectedCard(pt);
+                };
+                svg.appendChild(circle);
+            });
+        }
+
+        function showTooltip(pt, element) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.innerHTML = `<strong>${pt.nome}</strong><br><span style="color:#ffffff">${pt.desafio}</span>`;
+            tooltip.style.display = 'block';
+
+            const rect = element.getBoundingClientRect();
+            
+            tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+            tooltip.style.top = (rect.top - tooltip.offsetHeight - 8) + 'px';
+        }
+        
+        function hideTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none';
+        }
+
+        function showSelectedCard(pt) {
+            const container = document.getElementById('selectedCardContainer');
+            
+            container.innerHTML = `
+                <div class="selected-card">
+                    <div class="card-title text-xl"><strong>${pt.nome}</strong></div>
+                    <div class="card-category text-sm font-light text-gray-600">${pt.desafio}</div>
+                    <div class="card-desc">${pt.descricao}</div>
+                    <div class="card-maturity">Maturidade de Adoção: ${pt.maturidade}</div>
+                </div>
+            `;
+        }
+
+        function setupFilterEvents() {
+            document.querySelectorAll('.content-filter-section .content-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.content-filter-section .content-item').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    
+                    document.getElementById('selectedCardContainer').innerHTML = '';
+                    renderRadarPoints(filter);
+                });
+            });
+        }
+
+
+        window.onload = function() {
+            const initialContentId = window.location.hash.substring(1) || 'intro';
+            const defaultId = initialContentId === 'dimensao-participativa' || initialContentId === 'dimensao-colaborativa' || initialContentId === 'dimensao-capacidades' || initialContentId === 'dimensao-esg' || initialContentId === 'dimensao-financas-verdes' || initialContentId === 'radar' ? initialContentId : 'intro';
+            
+            switchContent(defaultId);
+            
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.add('sidebar-fixed');
+            }
+            
+            window.addEventListener('resize', () => {
+                const radarContainer = document.getElementById('content-radar');
+                if (radarContainer && !radarContainer.classList.contains('hidden')) {
+                    const activeFilter = document.querySelector('.content-filter-section .content-item.active');
+                    const filter = activeFilter ? activeFilter.getAttribute('data-filter') : 'Todas';
+                    renderRadarPoints(filter);
+                }
+            });
+        };
     </script>
 </body>
-
 </html>
-
-
