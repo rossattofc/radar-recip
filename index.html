@@ -16,42 +16,38 @@
             overflow-y: auto;
         }
 
-        /* Estilos das Abas */
+        /* Estilos das Abas (Visual Limpo) */
         .tab-btn {
             border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-            color: #6b7280;
+            transition: all 0.2s;
+            color: #6b7280; 
         }
-        .tab-btn:hover { color: #3FA110; background-color: #f9fafb; }
+        .tab-btn:hover {
+            color: #111827;
+        }
         .tab-btn.active {
-            border-bottom-color: currentColor; /* Usa a cor do texto definida via style inline no HTML ou classe */
-            font-weight: 700;
-            background-color: #f0fdf4; /* Fundo bem suave */
+            border-bottom-color: #3FA110; /* Verde Sicredi */
+            color: #3FA110;
+            font-weight: 600;
         }
 
-        /* Estilização da Barra de Rolagem da Lista de Projetos */
-        .projects-scroll-area::-webkit-scrollbar {
-            width: 8px;
-        }
-        .projects-scroll-area::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-            border-radius: 4px;
-        }
-        .projects-scroll-area::-webkit-scrollbar-thumb {
-            background: #c1c1c1; 
-            border-radius: 4px;
-        }
-        .projects-scroll-area::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8; 
-        }
+        /* Scrollbar customizada */
+        .projects-scroll-area::-webkit-scrollbar { width: 6px; }
+        .projects-scroll-area::-webkit-scrollbar-track { background: #f3f4f6; }
+        .projects-scroll-area::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        .projects-scroll-area::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
 
-        /* Animação suave */
-        .animate-fade {
-            animation: fadeIn 0.3s ease-in-out;
-        }
+        /* Animações */
+        .animate-fade { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
         }
     </style>
 </head>
@@ -62,145 +58,97 @@
             <button id="menu-toggle" class="lg:hidden p-2 text-white hover:bg-[#327a0d] rounded-md">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
-            <h1 class="text-xl lg:text-2xl font-bold text-white tracking-wider">RECIP</h1>
+            <h1 class="text-xl lg:text-2xl font-bold text-white tracking-wider">RECIP | Reconhecimento Inovação com Propósito</h1>
         </div>
-        <div class="text-white text-xs lg:text-sm opacity-90 font-light">
-            Reconhecimento Inovação com Propósito
+        <div class="flex items-center space-x-4">
+            <img src="img/sicredi-logo.png" alt="Logo Sicredi" class="h-8 hidden sm:block">
+            <img src="img/inovacao-logo.png" alt="Logo Inovação" class="h-8 hidden md:block">
         </div>
     </header>
 
     <main class="pt-16 flex">
 
         <nav id="sidebar" class="fixed top-16 left-0 w-64 bg-white shadow-xl h-[calc(100vh-4rem)] overflow-y-auto z-40 lg:block hidden">
-            <div class="p-5 space-y-3">
-                <a href="#intro" data-content-id="intro" class="menu-item block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition" aria-current="true">
-                    <span class="text-[#3FA110] mr-2">●</span> O que é RECIP
+            <div class="p-4 space-y-2">
+                <a href="#intro" data-content-id="intro" class="menu-item block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out" aria-current="true">
+                    <span class="font-bold text-[#3FA110] mr-2">⚫</span> O que é RECIP
                 </a>
                 
-                <div class="pt-4 pb-1">
-                    <p class="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Dimensões</p>
-                </div>
-
-                <a href="#dimensao-participativa" data-content-id="dimensao-participativa" class="menu-item group block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-                    <div class="flex items-center">
-                        <span class="w-2 h-2 rounded-full bg-[#F59E0B] mr-3 group-hover:scale-125 transition"></span> Participativa
-                    </div>
-                </a>
-                <a href="#dimensao-colaborativa" data-content-id="dimensao-colaborativa" class="menu-item group block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-                    <div class="flex items-center">
-                        <span class="w-2 h-2 rounded-full bg-[#3B82F6] mr-3 group-hover:scale-125 transition"></span> Colaborativa
-                    </div>
-                </a>
-                <a href="#dimensao-capacidades" data-content-id="dimensao-capacidades" class="menu-item group block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-                    <div class="flex items-center">
-                        <span class="w-2 h-2 rounded-full bg-[#8B5CF6] mr-3 group-hover:scale-125 transition"></span> Capacidades
-                    </div>
-                </a>
-                <a href="#dimensao-esg" data-content-id="dimensao-esg" class="menu-item group block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-                    <div class="flex items-center">
-                        <span class="w-2 h-2 rounded-full bg-[#10B981] mr-3 group-hover:scale-125 transition"></span> ESG
-                    </div>
-                </a>
-                <a href="#dimensao-financas-verdes" data-content-id="dimensao-financas-verdes" class="menu-item group block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-                    <div class="flex items-center">
-                        <span class="w-2 h-2 rounded-full bg-[#06B6D4] mr-3 group-hover:scale-125 transition"></span> Finanças Verdes
-                    </div>
-                </a>
+                <h3 class="px-4 pt-4 text-xs font-semibold uppercase text-gray-400">Dimensões de Inovação</h3>
+                <a href="#dimensao-participativa" data-content-id="dimensao-participativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">1. Participativa</a>
+                <a href="#dimensao-colaborativa" data-content-id="dimensao-colaborativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">2. Colaborativa</a>
+                <a href="#dimensao-capacidades" data-content-id="dimensao-capacidades" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">3. Desenvolvimento de Capacidades</a>
+                <a href="#dimensao-esg" data-content-id="dimensao-esg" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">4. ESG</a>
+                <a href="#dimensao-financas-verdes" data-content-id="dimensao-financas-verdes" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">5. Finanças Verdes</a>
             </div>
         </nav>
 
         <section id="main-content" class="flex-grow p-4 lg:p-8 lg:ml-64 bg-gray-50 min-h-screen">
             
-            <div id="content-intro" class="content-section bg-white p-8 rounded-xl shadow-sm border border-gray-100 w-full max-w-6xl mx-auto animate-fade">
-                <h2 class="text-3xl font-bold text-gray-800 mb-6">O que é RECIP</h2>
-                <div class="text-gray-600 space-y-6 text-lg leading-relaxed">
-                    <p>O <strong>RECIP (Reconhecimento Inovação com Propósito)</strong> é a bússola que orienta nossa inovação. Não inovamos por inovar; inovamos para gerar prosperidade, inclusão e sustentabilidade.</p>
-                    <p>Esta plataforma centraliza nossa inteligência coletiva, categorizada em <strong>cinco dimensões</strong> vitais para o futuro do cooperativismo.</p>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
-                        <div class="p-4 bg-white border-l-4 border-[#F59E0B] shadow-sm rounded-r-lg">
-                            <strong class="text-gray-800 block mb-1">Participativa</strong>
-                            <span class="text-xs text-gray-500">Governança & Voz</span>
-                        </div>
-                        <div class="p-4 bg-white border-l-4 border-[#3B82F6] shadow-sm rounded-r-lg">
-                            <strong class="text-gray-800 block mb-1">Colaborativa</strong>
-                            <span class="text-xs text-gray-500">Parcerias & Ecossistema</span>
-                        </div>
-                        <div class="p-4 bg-white border-l-4 border-[#8B5CF6] shadow-sm rounded-r-lg">
-                            <strong class="text-gray-800 block mb-1">Capacidades</strong>
-                            <span class="text-xs text-gray-500">Educação & Futuro</span>
-                        </div>
-                        <div class="p-4 bg-white border-l-4 border-[#10B981] shadow-sm rounded-r-lg">
-                            <strong class="text-gray-800 block mb-1">ESG</strong>
-                            <span class="text-xs text-gray-500">Impacto Positivo</span>
-                        </div>
-                        <div class="p-4 bg-white border-l-4 border-[#06B6D4] shadow-sm rounded-r-lg">
-                            <strong class="text-gray-800 block mb-1">Fin. Verdes</strong>
-                            <span class="text-xs text-gray-500">Economia Sustentável</span>
-                        </div>
-                    </div>
+            <div id="content-intro" class="content-section bg-white p-8 rounded-lg shadow-md w-full max-w-6xl mx-auto animate-fade">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-4">O que é RECIP</h2>
+                <div class="text-gray-700 space-y-6 text-lg leading-relaxed">
+                    <p>O <strong>RECIP (Reconhecimento Inovação com Propósito)</strong> é uma iniciativa estratégica para reconhecer, catalogar e catalisar a inovação dentro do sistema cooperativo.</p>
+                    <p>Para isso, categorizamos nossas inovações em <strong>cinco dimensões estratégicas</strong>. Navegue pelo menu lateral para explorar cada uma delas em detalhes.</p>
                 </div>
             </div>
 
             <div id="content-dimensao-participativa" class="content-section hidden w-full max-w-6xl mx-auto space-y-6 animate-fade">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-8 border-[#F59E0B]">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#3FA110]">
                     <h2 class="text-2xl font-bold text-gray-800">Dimensão Participativa</h2>
-                    <p class="text-gray-500 mt-1">Fortalecendo a voz do associado na era digital.</p>
+                    <p class="text-gray-500">Fortalecimento da voz e do engajamento dos associados.</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden min-h-[600px]">
-                    <div class="flex border-b border-gray-200 overflow-x-auto">
-                        <button class="tab-btn active px-6 py-4 font-medium text-sm text-[#F59E0B]" onclick="switchInnerTab('participativa', 'oquee', '#F59E0B')">O QUE É</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('participativa', 'praticas', '#F59E0B')">NOSSAS PRÁTICAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('participativa', 'forcas', '#F59E0B')">FORÇAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('participativa', 'oportunidades', '#F59E0B')">OPORTUNIDADES</button>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden min-h-[600px]">
+                    <div class="flex border-b border-gray-200 px-4 space-x-4 overflow-x-auto">
+                        <button class="tab-btn active px-4 py-3 font-medium text-sm" onclick="switchInnerTab('participativa', 'oquee')">O que é</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('participativa', 'praticas')">Nossas Práticas</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('participativa', 'forcas')">Forças</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('participativa', 'oportunidades')">Oportunidades</button>
                     </div>
-
-                    <div class="p-6 bg-gray-50/50 h-full">
+                    <div class="p-6">
                         <div id="participativa-oquee" class="inner-tab-content block">
-                            <div class="max-w-3xl">
-                                <h3 class="text-lg font-bold text-gray-800 mb-3">Conceito</h3>
-                                <p class="text-gray-600 mb-4">Inovação focada em mecanismos democráticos, transparência radical e engajamento da base social.</p>
-                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                            <p class="text-gray-700">Foco em inovar nos mecanismos que fortalecem a voz e a influência dos associados na gestão.</p>
                         </div>
-                        <div id="participativa-praticas" class="inner-tab-content hidden h-full">
-                            <div class="mb-6 relative">
-                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent text-sm" onkeyup="filterProjects(this.value, 'Participativa')">
-                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <div id="participativa-praticas" class="inner-tab-content hidden">
+                            <div class="mb-4 relative">
+                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Participativa')">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
-                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Participativa" data-color="#F59E0B"></div>
+                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Participativa"></div>
                             </div>
                         </div>
-                        <div id="participativa-forcas" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo de Forças...</p></div>
-                        <div id="participativa-oportunidades" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo de Oportunidades...</p></div>
+                        <div id="participativa-forcas" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo sobre forças...</p></div>
+                        <div id="participativa-oportunidades" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo sobre oportunidades...</p></div>
                     </div>
                 </div>
             </div>
 
             <div id="content-dimensao-colaborativa" class="content-section hidden w-full max-w-6xl mx-auto space-y-6 animate-fade">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-8 border-[#3B82F6]">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#3FA110]">
                     <h2 class="text-2xl font-bold text-gray-800">Dimensão Colaborativa</h2>
-                    <p class="text-gray-500 mt-1">Intercooperação e Open Innovation.</p>
+                    <p class="text-gray-500">Intercooperação e Alianças Estratégicas.</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden min-h-[600px]">
-                    <div class="flex border-b border-gray-200 overflow-x-auto">
-                        <button class="tab-btn active px-6 py-4 font-medium text-sm text-[#3B82F6]" onclick="switchInnerTab('colaborativa', 'oquee', '#3B82F6')">O QUE É</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'praticas', '#3B82F6')">NOSSAS PRÁTICAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'forcas', '#3B82F6')">FORÇAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'oportunidades', '#3B82F6')">OPORTUNIDADES</button>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden min-h-[600px]">
+                    <div class="flex border-b border-gray-200 px-4 space-x-4 overflow-x-auto">
+                        <button class="tab-btn active px-4 py-3 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'oquee')">O que é</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'praticas')">Nossas Práticas</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'forcas')">Forças</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'oportunidades')">Oportunidades</button>
                     </div>
-                    <div class="p-6 bg-gray-50/50 h-full">
+                    <div class="p-6">
                         <div id="colaborativa-oquee" class="inner-tab-content block">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3">Conceito</h3>
-                            <p class="text-gray-600">Criar valor além das fronteiras da cooperativa através de parcerias estratégicas.</p>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                            <p class="text-gray-700">Transcender as fronteiras internas da cooperativa para construir valor em parceria.</p>
                         </div>
-                        <div id="colaborativa-praticas" class="inner-tab-content hidden h-full">
-                            <div class="mb-6 relative">
-                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent text-sm" onkeyup="filterProjects(this.value, 'Colaborativa')">
-                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <div id="colaborativa-praticas" class="inner-tab-content hidden">
+                            <div class="mb-4 relative">
+                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Colaborativa')">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
-                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Colaborativa" data-color="#3B82F6"></div>
+                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Colaborativa"></div>
                             </div>
                         </div>
                         <div id="colaborativa-forcas" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo...</p></div>
@@ -210,29 +158,29 @@
             </div>
 
             <div id="content-dimensao-capacidades" class="content-section hidden w-full max-w-6xl mx-auto space-y-6 animate-fade">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-8 border-[#8B5CF6]">
-                    <h2 class="text-2xl font-bold text-gray-800">Desenv. de Capacidades</h2>
-                    <p class="text-gray-500 mt-1">Capital humano e educação continuada.</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#3FA110]">
+                    <h2 class="text-2xl font-bold text-gray-800">Desenvolvimento de Capacidades</h2>
+                    <p class="text-gray-500">Educação, formação e capital humano.</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden min-h-[600px]">
-                    <div class="flex border-b border-gray-200 overflow-x-auto">
-                        <button class="tab-btn active px-6 py-4 font-medium text-sm text-[#8B5CF6]" onclick="switchInnerTab('capacidades', 'oquee', '#8B5CF6')">O QUE É</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('capacidades', 'praticas', '#8B5CF6')">NOSSAS PRÁTICAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('capacidades', 'forcas', '#8B5CF6')">FORÇAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('capacidades', 'oportunidades', '#8B5CF6')">OPORTUNIDADES</button>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden min-h-[600px]">
+                    <div class="flex border-b border-gray-200 px-4 space-x-4 overflow-x-auto">
+                        <button class="tab-btn active px-4 py-3 font-medium text-sm" onclick="switchInnerTab('capacidades', 'oquee')">O que é</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('capacidades', 'praticas')">Nossas Práticas</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('capacidades', 'forcas')">Forças</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('capacidades', 'oportunidades')">Oportunidades</button>
                     </div>
-                    <div class="p-6 bg-gray-50/50 h-full">
+                    <div class="p-6">
                         <div id="capacidades-oquee" class="inner-tab-content block">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3">Conceito</h3>
-                            <p class="text-gray-600">Preparar associados e colaboradores para o futuro.</p>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                            <p class="text-gray-700">Garantir habilidades para prosperar em um mundo em rápida transformação.</p>
                         </div>
-                        <div id="capacidades-praticas" class="inner-tab-content hidden h-full">
-                            <div class="mb-6 relative">
-                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:border-transparent text-sm" onkeyup="filterProjects(this.value, 'Capacidades')">
-                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <div id="capacidades-praticas" class="inner-tab-content hidden">
+                            <div class="mb-4 relative">
+                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Capacidades')">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
-                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Capacidades" data-color="#8B5CF6"></div>
+                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Capacidades"></div>
                             </div>
                         </div>
                         <div id="capacidades-forcas" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo...</p></div>
@@ -242,29 +190,29 @@
             </div>
 
             <div id="content-dimensao-esg" class="content-section hidden w-full max-w-6xl mx-auto space-y-6 animate-fade">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-8 border-[#10B981]">
-                    <h2 class="text-2xl font-bold text-gray-800">Dimensão ESG</h2>
-                    <p class="text-gray-500 mt-1">Sustentabilidade integrada ao negócio.</p>
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#3FA110]">
+                    <h2 class="text-2xl font-bold text-gray-800">ESG</h2>
+                    <p class="text-gray-500">Ambiental, Social e Governança.</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden min-h-[600px]">
-                    <div class="flex border-b border-gray-200 overflow-x-auto">
-                        <button class="tab-btn active px-6 py-4 font-medium text-sm text-[#10B981]" onclick="switchInnerTab('esg', 'oquee', '#10B981')">O QUE É</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('esg', 'praticas', '#10B981')">NOSSAS PRÁTICAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('esg', 'forcas', '#10B981')">FORÇAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('esg', 'oportunidades', '#10B981')">OPORTUNIDADES</button>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden min-h-[600px]">
+                    <div class="flex border-b border-gray-200 px-4 space-x-4 overflow-x-auto">
+                        <button class="tab-btn active px-4 py-3 font-medium text-sm" onclick="switchInnerTab('esg', 'oquee')">O que é</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('esg', 'praticas')">Nossas Práticas</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('esg', 'forcas')">Forças</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('esg', 'oportunidades')">Oportunidades</button>
                     </div>
-                    <div class="p-6 bg-gray-50/50 h-full">
+                    <div class="p-6">
                         <div id="esg-oquee" class="inner-tab-content block">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3">Conceito</h3>
-                            <p class="text-gray-600">Práticas Ambientais, Sociais e de Governança.</p>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                            <p class="text-gray-700">Incorporar ativamente a sustentabilidade e a responsabilidade social em todas as operações.</p>
                         </div>
-                        <div id="esg-praticas" class="inner-tab-content hidden h-full">
-                            <div class="mb-6 relative">
-                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#10B981] focus:border-transparent text-sm" onkeyup="filterProjects(this.value, 'ESG')">
-                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <div id="esg-praticas" class="inner-tab-content hidden">
+                            <div class="mb-4 relative">
+                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'ESG')">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
-                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="ESG" data-color="#10B981"></div>
+                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="ESG"></div>
                             </div>
                         </div>
                         <div id="esg-forcas" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo...</p></div>
@@ -274,33 +222,33 @@
             </div>
 
             <div id="content-dimensao-financas-verdes" class="content-section hidden w-full max-w-6xl mx-auto space-y-6 animate-fade">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-8 border-[#06B6D4]">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#3FA110]">
                     <h2 class="text-2xl font-bold text-gray-800">Finanças Verdes</h2>
-                    <p class="text-gray-500 mt-1">Crédito e investimento de impacto.</p>
+                    <p class="text-gray-500">Economia de baixo carbono e crédito sustentável.</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden min-h-[600px]">
-                    <div class="flex border-b border-gray-200 overflow-x-auto">
-                        <button class="tab-btn active px-6 py-4 font-medium text-sm text-[#06B6D4]" onclick="switchInnerTab('financas', 'oquee', '#06B6D4')">O QUE É</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('financas', 'praticas', '#06B6D4')">NOSSAS PRÁTICAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('financas', 'forcas', '#06B6D4')">FORÇAS</button>
-                        <button class="tab-btn px-6 py-4 font-medium text-sm" onclick="switchInnerTab('financas', 'oportunidades', '#06B6D4')">OPORTUNIDADES</button>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden min-h-[600px]">
+                    <div class="flex border-b border-gray-200 px-4 space-x-4 overflow-x-auto">
+                        <button class="tab-btn active px-4 py-3 font-medium text-sm" onclick="switchInnerTab('financas-verdes', 'oquee')">O que é</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('financas-verdes', 'praticas')">Nossas Práticas</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('financas-verdes', 'forcas')">Forças</button>
+                        <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('financas-verdes', 'oportunidades')">Oportunidades</button>
                     </div>
-                    <div class="p-6 bg-gray-50/50 h-full">
-                        <div id="financas-oquee" class="inner-tab-content block">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3">Conceito</h3>
-                            <p class="text-gray-600">Alocação de capital para transição energética e ambiental.</p>
+                    <div class="p-6">
+                        <div id="financas-verdes-oquee" class="inner-tab-content block">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                            <p class="text-gray-700">Motor da transição para uma economia de baixo carbono, utilizando o poder do crédito.</p>
                         </div>
-                        <div id="financas-praticas" class="inner-tab-content hidden h-full">
-                            <div class="mb-6 relative">
-                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#06B6D4] focus:border-transparent text-sm" onkeyup="filterProjects(this.value, 'Finanças Verdes')">
-                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <div id="financas-verdes-praticas" class="inner-tab-content hidden">
+                            <div class="mb-4 relative">
+                                <input type="text" placeholder="Buscar projeto..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Finanças Verdes')">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
-                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Finanças Verdes" data-color="#06B6D4"></div>
+                                <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Finanças Verdes"></div>
                             </div>
                         </div>
-                        <div id="financas-forcas" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo...</p></div>
-                        <div id="financas-oportunidades" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo...</p></div>
+                        <div id="financas-verdes-forcas" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo...</p></div>
+                        <div id="financas-verdes-oportunidades" class="inner-tab-content hidden"><p class="text-gray-500 italic">Conteúdo...</p></div>
                     </div>
                 </div>
             </div>
@@ -308,39 +256,248 @@
         </section>
     </main>
 
+    <div id="project-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="modal-backdrop absolute inset-0 transition-opacity" onclick="closeModal()"></div>
+
+        <div class="flex items-center justify-center min-h-screen p-4 text-center sm:p-0">
+            <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl leading-6 font-bold text-gray-900" id="modal-title">Título do Projeto</h3>
+                                <button type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none" onclick="closeModal()">
+                                    <span class="sr-only">Fechar</span>
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <span id="modal-maturity" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    Maturidade
+                                </span>
+                            </div>
+
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500" id="modal-description">
+                                    Descrição detalhada aqui.
+                                </p>
+                                <div class="mt-4 pt-4 border-t border-gray-100">
+                                    <h4 class="text-sm font-bold text-gray-700 mb-1">Mais Detalhes:</h4>
+                                    <p class="text-sm text-gray-600 leading-relaxed" id="modal-full-details">
+                                        Aqui ficam os textos mais longos explicando o projeto em profundidade.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#3FA110] text-base font-medium text-white hover:bg-[#327a0d] focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal()">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ==========================================
-        // 1. GERADOR DE DADOS FAKE (Para Demo)
+        // 1. DADOS DOS PROJETOS (EDITÁVEIS AQUI)
         // ==========================================
-        function generateFakeProjects() {
-            const projects = [];
-            const dimensions = ["Participativa", "Colaborativa", "Capacidades", "ESG", "Finanças Verdes"];
-            const prefixes = ["Programa", "Projeto", "Iniciativa", "Sistema", "Plataforma", "Hub", "Jornada"];
-            const adjectives = ["Digital", "Integrado", "Sustentável", "Ágil", "Conectado", "Futuro", "Coop", "Smart", "Open"];
-            const nouns = ["Growth", "Connect", "Voz", "Impacto", "Verde", "Tech", "Educa", "Agro", "Inova"];
-            const maturities = ["Em Prospecção", "MVP / Piloto", "Em Expansão", "Consolidado"];
+        const projectsData = [
+            // --- Participativa ---
+            {
+                id: "part-01",
+                nome: "Plataforma de Voto Digital",
+                desafio: "Participativa",
+                maturidade: "Consolidado",
+                descricao: "Sistema seguro para votação em assembleias digitais, aumentando a participação dos associados.",
+                detalhes: "Esta plataforma utiliza blockchain para garantir a auditabilidade dos votos. Permitiu um aumento de 300% na participação de associados que moram longe das agências."
+            },
+            {
+                id: "part-02",
+                nome: "Fundo Social da Comunidade",
+                desafio: "Participativa",
+                maturidade: "Em Expansão",
+                descricao: "Fundo gerido pelos próprios associados para investir em melhorias locais.",
+                detalhes: "Os associados decidem o destino de 2% das sobras líquidas para projetos sociais locais através de votação direta no aplicativo."
+            },
+            {
+                id: "part-03",
+                nome: "Hub de Ideias Cooperativas",
+                desafio: "Participativa",
+                maturidade: "MVP / Piloto",
+                descricao: "Canal direto para envio de sugestões de novos produtos pelos cooperados.",
+                detalhes: "Um portal onde associados podem sugerir, votar e comentar em ideias de novos produtos. As 5 melhores ideias anuais são aceleradas."
+            },
 
-            dimensions.forEach(dim => {
-                // Criar 12 projetos para cada dimensão
-                for (let i = 0; i < 12; i++) {
-                    const name = `${prefixes[Math.floor(Math.random() * prefixes.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]} ${adjectives[Math.floor(Math.random() * adjectives.length)]}`;
-                    
-                    projects.push({
-                        id: Math.random().toString(36).substr(2, 9),
-                        nome: name,
-                        desafio: dim,
-                        descricao: "Uma breve descrição gerada automaticamente para ilustrar como o layout comporta múltiplas linhas de texto sem quebrar a harmonia visual do card.",
-                        maturidade: maturities[Math.floor(Math.random() * maturities.length)]
-                    });
-                }
-            });
-            return projects;
+            // --- Colaborativa ---
+            {
+                id: "colab-01",
+                nome: "Programa de Intercooperação",
+                desafio: "Colaborativa",
+                maturidade: "Consolidado",
+                descricao: "Compartilhamento de estruturas administrativas entre singulares.",
+                detalhes: "Redução de custos operacionais em 15% através do compartilhamento de serviços de backoffice e TI entre três cooperativas regionais."
+            },
+            {
+                id: "colab-02",
+                nome: "Conexão Startup-Coop",
+                desafio: "Colaborativa",
+                maturidade: "MVP / Piloto",
+                descricao: "Aceleração de startups que resolvem dores do agronegócio.",
+                detalhes: "Programa de inovação aberta que seleciona 10 startups por ano para rodar pilotos dentro das propriedades dos associados."
+            },
+
+            // --- Capacidades ---
+            {
+                id: "cap-01",
+                nome: "Escola de Líderes do Futuro",
+                desafio: "Capacidades",
+                maturidade: "Em Expansão",
+                descricao: "Formação focada em jovens associados para sucessão e governança.",
+                detalhes: "Trilha de 12 meses focada em gestão, cooperativismo e inovação digital para preparar a próxima geração de conselheiros."
+            },
+            {
+                id: "cap-02",
+                nome: "Letramento Digital 60+",
+                desafio: "Capacidades",
+                maturidade: "Consolidado",
+                descricao: "Workshops para inclusão digital de associados seniores.",
+                detalhes: "Aulas práticas nas agências ensinando o uso do Internet Banking, segurança digital e prevenção contra golpes."
+            },
+
+            // --- ESG ---
+            {
+                id: "esg-01",
+                nome: "Agência Carbono Zero",
+                desafio: "ESG",
+                maturidade: "Em Expansão",
+                descricao: "Projeto para neutralizar 100% das emissões das agências físicas.",
+                detalhes: "Instalação de painéis solares e compra de créditos de carbono de projetos de reflorestamento local para compensar o consumo."
+            },
+            {
+                id: "esg-02",
+                nome: "Relatório de Impacto Transparente",
+                desafio: "ESG",
+                maturidade: "Consolidado",
+                descricao: "Dashboard em tempo real sobre o impacto social da cooperativa.",
+                detalhes: "Plataforma aberta onde qualquer pessoa pode ver, em tempo real, quanto a cooperativa investiu na comunidade e os resultados gerados."
+            },
+
+            // --- Finanças Verdes ---
+            {
+                id: "fin-01",
+                nome: "Crédito Solar Facilitado",
+                desafio: "Finanças Verdes",
+                maturidade: "Consolidado",
+                descricao: "Linha de financiamento com taxas reduzidas para energia fotovoltaica.",
+                detalhes: "Prazo estendido de até 120 meses e carência de 6 meses para instalação de sistemas de energia solar em residências e empresas."
+            },
+            {
+                id: "fin-02",
+                nome: "CPR Verde",
+                desafio: "Finanças Verdes",
+                maturidade: "MVP / Piloto",
+                descricao: "Título financeiro para produtores que preservam florestas nativas.",
+                detalhes: "Emissão de Cédula de Produto Rural Verde, remunerando o produtor rural pela manutenção de áreas de preservação acima do exigido por lei."
+            }
+        ];
+
+        // ==========================================
+        // 2. LÓGICA DO MODAL
+        // ==========================================
+        const modal = document.getElementById('project-modal');
+
+        function openModal(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+
+            document.getElementById('modal-title').textContent = project.nome;
+            document.getElementById('modal-description').textContent = project.descricao;
+            document.getElementById('modal-full-details').textContent = project.detalhes;
+            document.getElementById('modal-maturity').textContent = project.maturidade;
+            
+            // Ajustar cor da badge no modal
+            const badge = document.getElementById('modal-maturity');
+            if(project.maturidade.includes("Consolidado")) {
+                badge.className = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800";
+            } else if(project.maturidade.includes("Prospecção") || project.maturidade.includes("MVP")) {
+                badge.className = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800";
+            } else {
+                badge.className = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800";
+            }
+
+            modal.classList.remove('hidden');
         }
 
-        const allProjects = generateFakeProjects();
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Fechar com ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
 
         // ==========================================
-        // 2. LÓGICA DE NAVEGAÇÃO
+        // 3. RENDERIZAÇÃO E FILTROS
+        // ==========================================
+        function renderProjects(projects, container) {
+            if (projects.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 italic py-4 col-span-full text-center">Nenhum projeto encontrado.</p>';
+                return;
+            }
+
+            container.innerHTML = projects.map(p => {
+                let badgeClass = "bg-blue-50 text-blue-700 border border-blue-100";
+                if(p.maturidade.includes("Consolidado")) badgeClass = "bg-green-50 text-green-700 border border-green-100";
+                if(p.maturidade.includes("Prospecção") || p.maturidade.includes("MVP")) badgeClass = "bg-yellow-50 text-yellow-700 border border-yellow-100";
+
+                return `
+                <div class="bg-white p-5 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
+                    <h4 class="font-bold text-gray-800 mb-2 text-lg">${p.nome}</h4>
+                    <span class="inline-block self-start px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-md mb-3 ${badgeClass}">
+                        ${p.maturidade}
+                    </span>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4 flex-grow line-clamp-3">
+                        ${p.descricao}
+                    </p>
+                    <button onclick="openModal('${p.id}')" class="text-xs font-semibold text-gray-400 hover:text-[#3FA110] self-start border-b border-dotted border-gray-400 pb-0.5 transition-colors cursor-pointer">
+                        Ver detalhes
+                    </button>
+                </div>
+            `}).join('');
+        }
+
+        function filterProjects(searchTerm, dimensionName) {
+            const containers = document.querySelectorAll('.projects-container');
+            let targetContainer = null;
+            
+            containers.forEach(c => {
+                if(c.getAttribute('data-dimension') === dimensionName) targetContainer = c;
+            });
+
+            if(!targetContainer) return;
+
+            const term = searchTerm.toLowerCase();
+            const filtered = projectsData.filter(p => {
+                let dimMatch = p.desafio === dimensionName;
+                if (dimensionName === "Capacidades" && p.desafio === "Capacidades") dimMatch = true;
+
+                return dimMatch && (p.nome.toLowerCase().includes(term) || p.descricao.toLowerCase().includes(term));
+            });
+
+            renderProjects(filtered, targetContainer);
+        }
+
+        // ==========================================
+        // 4. NAVEGAÇÃO
         // ==========================================
         const sidebar = document.getElementById('sidebar');
         const menuToggle = document.getElementById('menu-toggle');
@@ -353,10 +510,12 @@
             
             menuItems.forEach(item => {
                 if (item.getAttribute('data-content-id') === contentId) {
-                    item.classList.add('bg-gray-100', 'font-semibold');
+                    item.classList.add('bg-gray-100', 'text-[#3FA110]', 'font-bold');
+                    item.classList.remove('text-gray-700');
                     item.setAttribute('aria-current', 'true');
                 } else {
-                    item.classList.remove('bg-gray-100', 'font-semibold');
+                    item.classList.remove('bg-gray-100', 'text-[#3FA110]', 'font-bold');
+                    item.classList.add('text-gray-700');
                     item.removeAttribute('aria-current');
                 }
             });
@@ -373,124 +532,40 @@
             });
         });
 
-        // ==========================================
-        // 3. ABAS INTERNAS + RENDERIZAÇÃO
-        // ==========================================
-        
-        function switchInnerTab(dimensionPrefix, tabName, activeColor) {
+        function switchInnerTab(dimensionPrefix, tabName) {
             const container = document.getElementById(`content-dimensao-${dimensionPrefix}`);
             if(!container) return;
-
-            // Esconde conteúdos
             container.querySelectorAll('.inner-tab-content').forEach(c => c.classList.add('hidden'));
-            // Remove active dos botões
-            container.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-                btn.style.color = '#6b7280'; // Reset para cinza
-                btn.style.backgroundColor = 'transparent';
-            });
-
-            // Mostra conteúdo alvo
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             const target = document.getElementById(`${dimensionPrefix}-${tabName}`);
             if (target) target.classList.remove('hidden');
-
-            // Estiliza botão ativo
-            if(event && event.target) {
-                event.target.classList.add('active');
-                event.target.style.color = activeColor;
-                event.target.style.borderColor = activeColor;
-            }
-        }
-
-        // ==========================================
-        // 4. FILTRO E RENDERIZAÇÃO DE CARDS
-        // ==========================================
-
-        function renderProjects(projects, container, color) {
-            if (projects.length === 0) {
-                container.innerHTML = '<p class="text-gray-400 italic py-4">Nenhum projeto encontrado.</p>';
-                return;
-            }
-
-            container.innerHTML = projects.map(p => {
-                // Define a cor da "tag" de maturidade baseada no status
-                let pillColor = "bg-gray-100 text-gray-600";
-                if(p.maturidade.includes("Consolidado")) pillColor = "bg-green-100 text-green-700";
-                if(p.maturidade.includes("Prospecção")) pillColor = "bg-yellow-50 text-yellow-700 border border-yellow-100";
-
-                return `
-                <div class="bg-white p-5 rounded-lg border border-gray-200 hover:shadow-md hover:border-[${color}] transition-all duration-200 group h-full flex flex-col">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="font-bold text-gray-800 group-hover:text-[${color}] transition-colors">${p.nome}</h4>
-                        <div class="w-2 h-2 rounded-full mt-2" style="background-color: ${color}"></div>
-                    </div>
-                    <span class="inline-block self-start px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-md mb-3 ${pillColor}">
-                        ${p.maturidade}
-                    </span>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-4 flex-grow line-clamp-3">
-                        ${p.descricao}
-                    </p>
-                    <button class="text-xs font-semibold text-gray-400 hover:text-gray-700 self-start border-b border-dotted border-gray-400 pb-0.5">
-                        Ver detalhes
-                    </button>
-                </div>
-            `}).join('');
-        }
-
-        function filterProjects(searchTerm, dimensionName) {
-            // Acha o container certo baseado na dimensão
-            const containers = document.querySelectorAll('.projects-container');
-            let targetContainer = null;
-            
-            containers.forEach(c => {
-                // A lógica aqui é simples: mapear o nome da dimensão para o atributo data-dimension
-                if(c.getAttribute('data-dimension') === dimensionName) targetContainer = c;
-            });
-
-            if(!targetContainer) return;
-
-            const color = targetContainer.getAttribute('data-color');
-            const term = searchTerm.toLowerCase();
-
-            const filtered = allProjects.filter(p => {
-                // Mapeamento simples de nomes de dimensão (o gerador usa nomes curtos as vezes)
-                // Ajuste conforme necessário se os nomes divergirem
-                const dimMatch = (dimensionName === "Capacidades") ? p.desafio === "Capacidades" : p.desafio === dimensionName;
-                
-                return dimMatch && (p.nome.toLowerCase().includes(term) || p.descricao.toLowerCase().includes(term));
-            });
-
-            renderProjects(filtered, targetContainer, color);
+            if(event && event.target) event.target.classList.add('active');
         }
 
         // ==========================================
         // INIT
         // ==========================================
         window.onload = function() {
-            // Renderiza todos os projetos inicialmente
             document.querySelectorAll('.projects-container').forEach(container => {
                 const dimName = container.getAttribute('data-dimension');
-                const color = container.getAttribute('data-color');
-                
-                // Filtra projetos iniciais (sem termo de busca)
-                const initialProjects = allProjects.filter(p => {
-                     if(dimName === "Capacidades") return p.desafio === "Capacidades";
+                const initialProjects = projectsData.filter(p => {
+                     if(dimName === "Desenvolvimento de Capacidades") return p.desafio === "Capacidades";
                      return p.desafio === dimName;
                 });
-                
-                renderProjects(initialProjects, container, color);
+                renderProjects(initialProjects, container);
             });
 
-            // Navegação inicial
             const hash = window.location.hash.substring(1) || 'intro';
             switchContent(hash);
 
             if (window.innerWidth >= 1024) sidebar.classList.add('sidebar-fixed');
         };
 
-        // Torna as funções globais para o HTML acessar
+        // Expor funções globais
         window.switchInnerTab = switchInnerTab;
         window.filterProjects = filterProjects;
+        window.openModal = openModal;
+        window.closeModal = closeModal;
     </script>
 </body>
 </html>
