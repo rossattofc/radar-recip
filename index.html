@@ -2279,10 +2279,9 @@
         window.onload = function() {
             document.querySelectorAll('.projects-container').forEach(container => {
                 const dimName = container.getAttribute('data-dimension');
-                const initialProjects = projectsData.filter(p => {
-                     if(dimName === "Desenvolvimento de Capacidades") return p.desafio === "Capacidades";
-                     return p.desafio === dimName;
-                });
+                const initialProjects = projectsData.filter(p => p.desafio === dimName
+                    );
+                
                 renderProjects(initialProjects, container);
             });
 
@@ -2300,6 +2299,7 @@
     </script>
 </body>
 </html>
+
 
 
 
