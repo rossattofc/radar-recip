@@ -2191,12 +2191,11 @@
                 if(p.maturidade.includes("Prospecção") || p.maturidade.includes("MVP")) badgeClass = "bg-yellow-50 text-yellow-700 border border-yellow-100";
 
                 return `
-                <!--
+                
                 <div class="bg-white p-5 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
                     <h4 class="font-bold text-gray-800 mb-2 text-lg">${p.nome}</h4>
                     <span class="inline-block self-start px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-md mb-3 ${badgeClass}">
                         ${p.maturidade}
-                -->
                     </span>
                     <p class="text-sm text-gray-500 leading-relaxed mb-4 flex-grow line-clamp-3">
                         ${p.descricao}
@@ -2301,6 +2300,7 @@
     </script>
 </body>
 </html>
+
 
 
 
