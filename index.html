@@ -9,7 +9,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         .sidebar-fixed { position: sticky; top: 4rem; height: calc(100vh - 4rem); overflow-y: auto; }
-        .tab-btn { border-bottom: 3px solid transparent; transition: all 0.2s; color: #6b7280; }
+        .tab-btn { border-bottom: 3px solid transparent; transition: all 0.2s; color: #6b7280; cursor: pointer; }
         .tab-btn:hover { color: #111827; }
         .tab-btn.active { border-bottom-color: #3FA110; color: #3FA110; font-weight: 600; }
         .projects-scroll-area::-webkit-scrollbar { width: 6px; }
@@ -31,22 +31,21 @@
         </div>
         <div class="flex items-center space-x-4">
             <img src="img/sicredi-logo.png" alt="Logo Sicredi" class="h-8 hidden sm:block">
-            <img src="img/inovacao-logo.png" alt="Logo Inovação" class="h-8 hidden md:block">
         </div>
     </header>
 
     <main class="pt-16 flex">
         <nav id="sidebar" class="fixed top-16 left-0 w-64 bg-white shadow-xl h-[calc(100vh-4rem)] overflow-y-auto z-40 lg:block hidden">
             <div class="p-4 space-y-2">
-                <a href="#intro" data-content-id="intro" class="menu-item block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out">
+                <a href="javascript:void(0)" onclick="switchContent('intro')" data-content-id="intro" class="menu-item block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                     <span class="font-bold text-[#3FA110] mr-2">⚫</span> O que é RECIP
                 </a>
                 <h3 class="px-4 pt-4 text-xs font-semibold uppercase text-gray-400">Dimensões de Inovação</h3>
-                <a href="#dimensao-participativa" data-content-id="dimensao-participativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Participativa</a>
-                <a href="#dimensao-colaborativa" data-content-id="dimensao-colaborativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Colaborativa</a>
-                <a href="#dimensao-capacidades" data-content-id="dimensao-capacidades" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Desenvolvimento de Capacidades</a>
-                <a href="#dimensao-esg" data-content-id="dimensao-esg" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">ESG</a>
-                <a href="#dimensao-financas-verdes" data-content-id="dimensao-financas-verdes" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Finanças Verdes</a>
+                <a href="javascript:void(0)" onclick="switchContent('dimensao-participativa')" data-content-id="dimensao-participativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Participativa</a>
+                <a href="javascript:void(0)" onclick="switchContent('dimensao-colaborativa')" data-content-id="dimensao-colaborativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Colaborativa</a>
+                <a href="javascript:void(0)" onclick="switchContent('dimensao-capacidades')" data-content-id="dimensao-capacidades" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Desenvolvimento de Capacidades</a>
+                <a href="javascript:void(0)" onclick="switchContent('dimensao-esg')" data-content-id="dimensao-esg" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">ESG</a>
+                <a href="javascript:void(0)" onclick="switchContent('dimensao-financas-verdes')" data-content-id="dimensao-financas-verdes" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Finanças Verdes</a>
             </div>
         </nav>
 
@@ -56,7 +55,7 @@
                 <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-4">O que é RECIP</h2>
                 <div class="text-gray-700 space-y-6 text-lg leading-relaxed">
                     <p>O <strong>RECIP (Reconhecimento Inovação com Propósito)</strong> é uma iniciativa estratégica para reconhecer, catalogar e catalisar a inovação dentro do sistema cooperativo.</p>
-                    <p>Categorizamos nossas inovações em <strong>cinco dimensões estratégicas</strong>. Navegue pelo menu lateral para explorar cada uma delas.</p>
+                    <p>Para isso, categorizamos nossas inovações em <strong>cinco dimensões estratégicas</strong>. Navegue pelo menu lateral para explorar cada uma delas em detalhes.</p>
                 </div>
             </div>
 
@@ -75,18 +74,18 @@
                     <div class="p-6">
                         <div id="participativa-oquee" class="inner-tab-content block">
                             <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">Está vinculada à gestão democrática e escuta ativa das comunidades locais.</p>
+                            <p class="text-gray-700">A Dimensão Participativa está diretamente vinculada ao princípio cooperativista da gestão democrática, pois envolve tanto o relacionamento com os cooperados quanto o processo de tomada de decisões.</p>
                         </div>
                         <div id="participativa-praticas" class="inner-tab-content hidden">
                             <div class="mb-4 relative">
                                 <input type="text" placeholder="Buscar prática..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 text-sm" onkeyup="filterProjects(this.value, 'Participativa')">
-                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Participativa"></div>
                             </div>
                         </div>
-                        <div id="participativa-forcas" class="inner-tab-content hidden">
+                        <div id="participativa-forcas" class="inner-tab-content hidden animate-fade">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                                 <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 Pontos fortes da Cooperativa
@@ -94,11 +93,11 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
                                     <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Centralidade no Cooperado</h4><p class="text-sm text-gray-600 mt-1">Modelo maduro baseado em evidências.</p></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Centralidade no Cooperado</h4><p class="text-sm text-gray-600 mt-1">Modelo maduro baseado em evidências e escuta ativa contínua.</p></div>
                                 </div>
                             </div>
                         </div>
-                        <div id="participativa-oportunidades" class="inner-tab-content hidden">
+                        <div id="participativa-oportunidades" class="inner-tab-content hidden animate-fade">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                                 <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                                 Fronteiras de Evolução
@@ -106,7 +105,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
                                     <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Inteligência Analítica</h4><p class="text-sm text-gray-600 mt-1">Expandir modelos preditivos e mapas de experiência.</p></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Inteligência Analítica</h4><p class="text-sm text-gray-600 mt-1">Expandir modelos preditivos e integração de mapas de experiência.</p></div>
                                 </div>
                             </div>
                         </div>
@@ -128,14 +127,15 @@
                     </div>
                     <div class="p-6">
                         <div id="colaborativa-oquee" class="inner-tab-content block">
-                             <p class="text-gray-700">Envolve unir esforços com outras cooperativas e instituições para gerar impacto.</p>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                            <p class="text-gray-700">Está diretamente ligada ao princípio cooperativista da intercooperação, pois envolve unir esforços para gerar soluções inovadoras.</p>
                         </div>
                         <div id="colaborativa-praticas" class="inner-tab-content hidden">
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Colaborativa"></div>
                             </div>
                         </div>
-                        <div id="colaborativa-forcas" class="inner-tab-content hidden">
+                        <div id="colaborativa-forcas" class="inner-tab-content hidden animate-fade">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                                 <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857"></path></svg>
                                 Pontos fortes da Cooperativa
@@ -143,19 +143,19 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
                                     <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Intercooperação</h4><p class="text-sm text-gray-600 mt-1">Participação ativa em iniciativas sistêmicas.</p></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Intercooperação Exemplar</h4><p class="text-sm text-gray-600 mt-1">Participação ativa em iniciativas sistêmicas regionais.</p></div>
                                 </div>
                             </div>
                         </div>
-                        <div id="colaborativa-oportunidades" class="inner-tab-content hidden">
+                        <div id="colaborativa-oportunidades" class="inner-tab-content hidden animate-fade">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1"></path></svg>
+                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A10.003 10.003 0 0012 11c0-1.823-.487-3.53-1.338-5"></path></svg>
                                 Fronteiras de Evolução
                             </h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
                                     <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Inovação Aberta</h4><p class="text-sm text-gray-600 mt-1">Consolidar métricas de impacto social e parcerias estruturadas.</p></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Open Finance Estratégico</h4><p class="text-sm text-gray-600 mt-1">Construir modelos preditivos e dashboards integrados.</p></div>
                                 </div>
                             </div>
                         </div>
@@ -177,26 +177,27 @@
                     </div>
                     <div class="p-6">
                         <div id="capacidades-oquee" class="inner-tab-content block">
-                             <p class="text-gray-700">Foca no fortalecimento contínuo das competências de cooperados e colaboradores.</p>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                            <p class="text-gray-700">Envolve o fortalecimento contínuo das competências de cooperados, dirigentes e colaboradores.</p>
                         </div>
                         <div id="capacidades-praticas" class="inner-tab-content hidden">
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Desenvolvimento de Capacidades"></div>
                             </div>
                         </div>
-                        <div id="capacidades-forcas" class="inner-tab-content hidden">
-                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <div id="capacidades-forcas" class="inner-tab-content hidden animate-fade">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                                 <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
                                 Pontos fortes da Cooperativa
                             </h3>
-                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
                                     <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Cultura de Inovação</h4><p class="text-sm text-gray-600 mt-1">Ambientes que estimulam a proposição de ideias.</p></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Cultura de Inovação</h4><p class="text-sm text-gray-600 mt-1">Ambientes que estimulam proposição de ideias e qualificação contínua.</p></div>
                                 </div>
                             </div>
                         </div>
-                        <div id="capacidades-oportunidades" class="inner-tab-content hidden">
+                        <div id="capacidades-oportunidades" class="inner-tab-content hidden animate-fade">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                                 <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                                 Fronteiras de Evolução
@@ -204,7 +205,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
                                     <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Competências Digitais</h4><p class="text-sm text-gray-600 mt-1">Expandir trilhas em dados, IA e automação.</p></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Competências Digitais</h4><p class="text-sm text-gray-600 mt-1">Expandir trilhas em dados, IA e automação para tomada de decisão.</p></div>
                                 </div>
                             </div>
                         </div>
@@ -226,33 +227,34 @@
                     </div>
                     <div class="p-6">
                         <div id="esg-oquee" class="inner-tab-content block">
-                             <p class="text-gray-700">Compromisso com práticas responsáveis que integram sustentabilidade e transparência.</p>
+                             <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                             <p class="text-gray-700">Expressa o compromisso da cooperativa com práticas responsáveis de impacto social e ambiental.</p>
                         </div>
                         <div id="esg-praticas" class="inner-tab-content hidden">
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="ESG"></div>
                             </div>
                         </div>
-                        <div id="esg-forcas" class="inner-tab-content hidden">
+                        <div id="esg-forcas" class="inner-tab-content hidden animate-fade">
                              <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
+                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064"></path></svg>
                                 Pontos fortes da Cooperativa
                             </h3>
                              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
                                     <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Segurança Cibernética</h4><p class="text-sm text-gray-600 mt-1">Política estruturada de governança digital.</p></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Segurança Cibernética</h4><p class="text-sm text-gray-600 mt-1">Robustez de governança digital e proteção de dados.</p></div>
                                 </div>
                             </div>
                         </div>
-                        <div id="esg-oportunidades" class="inner-tab-content hidden">
+                        <div id="esg-oportunidades" class="inner-tab-content hidden animate-fade">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                                 <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 Fronteiras de Evolução
                             </h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
-                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04"></path></svg></div>
                                     <div><h4 class="font-bold text-gray-800 text-lg">Frameworks ESG</h4><p class="text-sm text-gray-600 mt-1">Aderir formalmente a GRI, ODS e Pacto Global.</p></div>
                                 </div>
                             </div>
@@ -275,34 +277,35 @@
                     </div>
                     <div class="p-6">
                         <div id="financas-verdes-oquee" class="inner-tab-content block">
-                             <p class="text-gray-700">Promove práticas financeiras que conciliam crescimento e preservação ambiental.</p>
+                             <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
+                             <p class="text-gray-700">Reflete a responsabilidade em promover práticas financeiras que conciliem crescimento e preservação.</p>
                         </div>
                         <div id="financas-verdes-praticas" class="inner-tab-content hidden">
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Finanças Verdes"></div>
                             </div>
                         </div>
-                        <div id="financas-verdes-forcas" class="inner-tab-content hidden">
+                        <div id="financas-verdes-forcas" class="inner-tab-content hidden animate-fade">
                              <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2"></path></svg>
                                 Pontos fortes da Cooperativa
                             </h3>
                              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
-                                    <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Linhas Agro Sustentáveis</h4><p class="text-sm text-gray-600 mt-1">Instrumentos para transição ambiental no campo.</p></div>
+                                    <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Linhas Agro Sustentáveis</h4><p class="text-sm text-gray-600 mt-1">Apoio na transição sustentável e baixo carbono no campo.</p></div>
                                 </div>
                             </div>
                         </div>
-                        <div id="financas-verdes-oportunidades" class="inner-tab-content hidden">
+                        <div id="financas-verdes-oportunidades" class="inner-tab-content hidden animate-fade">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9"></path></svg>
                                 Fronteiras de Evolução
                             </h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
-                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg></div>
-                                    <div><h4 class="font-bold text-gray-800 text-lg">Métricas Net Zero</h4><p class="text-sm text-gray-600 mt-1">Desenvolver métricas de impacto climático.</p></div>
+                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Métricas Net Zero</h4><p class="text-sm text-gray-600 mt-1">Desenvolver métricas de impacto climático e compensação de emissões.</p></div>
                                 </div>
                             </div>
                         </div>
@@ -338,52 +341,53 @@
     <script>
         const projectsData = [
             // Participativa
-            { id: "part-01", nome: "NPS (Relacional, Transacional, Competitiva)", desafio: "Participativa", descricao: "Avaliação da satisfação dos associados em diferentes interações.", detalhes: "O Net Promoter Score é aplicado em múltiplas frentes para medir a experiência do associado e direcionar estratégias de relacionamento." },
-            { id: "part-02", nome: "Coordenação da Jornada do Associado", desafio: "Participativa", descricao: "Gestão integrada da experiência do associado.", detalhes: "Garante que todas as etapas da jornada sejam coordenadas, oferecendo uma experiência fluida e consistente." },
-            { id: "part-03", nome: "Plataforma de Relacionamento", desafio: "Participativa", descricao: "Canal digital para interação contínua.", detalhes: "Ferramenta que centraliza informações e serviços, permitindo maior proximidade e personalização." },
-            { id: "part-04", nome: "Matriz de Comunicação", desafio: "Participativa", descricao: "Estrutura para organizar canais e mensagens.", detalhes: "Define fluxos e responsáveis pelas comunicações, garantindo alinhamento estratégico." },
-            { id: "part-05", nome: "Rituais de Comunicação", desafio: "Participativa", descricao: "Encontros regulares para alinhamento.", detalhes: "Práticas formais que reforçam a governança e disseminam a cultura organizacional." },
-            { id: "part-08", nome: "Podcast “Momento Sicredi Conexão”", desafio: "Participativa", descricao: "Conteúdo em áudio para engajamento.", detalhes: "Canal informativo que aproxima associados e colaboradores sobre cooperativismo." },
-            { id: "part-13", nome: "Crédito à Acessibilidade", desafio: "Participativa", descricao: "Linha de crédito com taxas diferenciadas.", detalhes: "Apoia investimentos em acessibilidade, promovendo inclusão social." },
-            { id: "part-18", nome: "Cooperativas Escolares", desafio: "Participativa", descricao: "Educação cooperativista para jovens.", detalhes: "Incentiva a criação de cooperativas em escolas para aprendizado sobre gestão e cidadania." },
+            { id: "part-01", nome: "NPS Relacional e Transacional", desafio: "Participativa", descricao: "Avaliação da satisfação dos associados.", detalhes: "Medição em múltiplas frentes para estratégias de relacionamento." },
+            { id: "part-02", nome: "Coordenação da Jornada", desafio: "Participativa", descricao: "Gestão integrada da experiência.", detalhes: "Garante fluidez desde o primeiro contato até serviços complexos." },
+            { id: "part-08", nome: "Podcast Sicredi Conexão", desafio: "Participativa", descricao: "Conteúdo em áudio para engajamento.", detalhes: "Aproxima associados sobre cooperativismo e negócios." },
+            { id: "part-18", nome: "Cooperativas Escolares", desafio: "Participativa", descricao: "Educação para jovens.", detalhes: "Promove aprendizado prático sobre gestão e cidadania." },
             
             // Colaborativa
-            { id: "colab-01", nome: "Capacitação Empresa Rural", desafio: "Colaborativa", descricao: "Formação em gestão de empresas rurais.", detalhes: "Parceria com a Auriverde para fortalecer a competitividade no agronegócio." },
-            { id: "colab-04", nome: "Ações do Dia C", desafio: "Colaborativa", descricao: "Mobilização social cooperativista.", detalhes: "Atividades voluntárias que reforçam os princípios do cooperativismo." },
-            { id: "colab-05", nome: "Open Finance", desafio: "Colaborativa", descricao: "Integração financeira para associados.", detalhes: "Permite maior transparência e personalização dos serviços financeiros." },
-            { id: "colab-10", nome: "Small Farm Hub", desafio: "Colaborativa", descricao: "Hub de soluções para pequenas propriedades.", detalhes: "Espaço dedicado a tecnologias e suporte para pequenos produtores." },
+            { id: "colab-01", nome: "Capacitação Empresa Rural", desafio: "Colaborativa", descricao: "Gestão de empresas rurais.", detalhes: "Parceria com Auriverde para competitividade no campo." },
+            { id: "colab-05", nome: "Open Finance", desafio: "Colaborativa", descricao: "Integração financeira.", detalhes: "Personalização baseada em dados abertos." },
+            { id: "colab-10", nome: "Small Farm Hub", desafio: "Colaborativa", descricao: "Hub para pequenos produtores.", detalhes: "Tecnologia e suporte para inovação rural." },
 
             // Capacidades
-            { id: "cap-01", nome: "Avaliações no Castlight", desafio: "Desenvolvimento de Capacidades", descricao: "Avaliação contínua de performance.", detalhes: "Ferramenta utilizada para acompanhamento estruturado dos colaboradores." },
-            { id: "cap-08", nome: "Programa de Ideias", desafio: "Desenvolvimento de Capacidades", descricao: "Fomento à inovação interna.", detalhes: "Incentiva colaboradores a propor ideias inovadoras para melhoria contínua." },
-            { id: "cap-11", nome: "Workshop Copilot", desafio: "Desenvolvimento de Capacidades", descricao: "Capacitação sobre uso de IA.", detalhes: "Treinamento prático para utilizar inteligência artificial no dia a dia." },
-            { id: "cap-16", nome: "South Summit", desafio: "Desenvolvimento de Capacidades", descricao: "Imersão em evento global de inovação.", detalhes: "Participação para absorção de tendências globais." },
+            { id: "cap-01", nome: "Avaliações no Castlight", desafio: "Desenvolvimento de Capacidades", descricao: "Avaliação contínua de performance.", detalhes: "Acompanhamento estruturado via plataforma digital." },
+            { id: "cap-11", nome: "Workshop Copilot", desafio: "Desenvolvimento de Capacidades", descricao: "IA no trabalho.", detalhes: "Treinamento prático para eficiência operacional." },
+            { id: "cap-16", nome: "South Summit", desafio: "Desenvolvimento de Capacidades", descricao: "Imersão em inovação.", detalhes: "Absorção de tendências e networking global." },
 
             // ESG
-            { id: "esg-01", nome: "Energia Renovável", desafio: "ESG", descricao: "Uso de energia limpa (RenovaEco).", detalhes: "Implantação de energia solar para reduzir impactos ambientais." },
-            { id: "esg-05", nome: "Relatório de Sustentabilidade", desafio: "ESG", descricao: "Transparência em práticas ESG.", detalhes: "Documento que apresenta resultados e ações sustentáveis à sociedade." },
-            { id: "esg-15", nome: "Liderança Feminina", desafio: "ESG", descricao: "Representatividade em cargos estratégicos.", detalhes: "Foco em equidade de gênero e diversidade na gestão." },
-            { id: "esg-21", nome: "Comitê de Inclusão", desafio: "ESG", descricao: "Grupo estratégico para diversidade.", detalhes: "Responsável por promover políticas de equidade na cooperativa." },
-            { id: "esg-30", nome: "Segurança Cibernética", desafio: "ESG", descricao: "Proteção contra ameaças digitais.", detalhes: "Práticas para prevenir riscos e garantir integridade de dados." },
+            { id: "esg-01", nome: "Energia Renovável", desafio: "ESG", descricao: "Energia Solar (RenovaEco).", detalhes: "Redução de impactos através de matriz limpa." },
+            { id: "esg-15", nome: "Liderança Feminina", desafio: "ESG", descricao: "Equidade na gestão.", detalhes: "Representatividade feminina em cargos estratégicos." },
+            { id: "esg-30", nome: "Segurança Cibernética", desafio: "ESG", descricao: "Proteção de dados.", detalhes: "Governança digital contra ameaças cibernéticas." },
 
             // Finanças Verdes
-            { id: "fin-01", nome: "RENOVAGRO", desafio: "Finanças Verdes", descricao: "Crédito para práticas sustentáveis no agro.", detalhes: "Financiamento para projetos de energia renovável no campo." },
-            { id: "fin-02", nome: "INOVAGRO", desafio: "Finanças Verdes", descricao: "Crédito para inovação tecnológica.", detalhes: "Apoia modernização no campo com foco em produtividade sustentável." },
-            { id: "fin-03", nome: "PRONAF Bioeconomia", desafio: "Finanças Verdes", descricao: "Agricultura sustentável e agroecologia.", detalhes: "Fomenta a bioeconomia e a inclusão de mulheres no agronegócio." }
+            { id: "fin-01", nome: "RENOVAGRO", desafio: "Finanças Verdes", descricao: "Crédito agro sustentável.", detalhes: "Financiamento para projetos de baixo carbono." },
+            { id: "fin-02", nome: "INOVAGRO", desafio: "Finanças Verdes", descricao: "Inovação tecnológica rural.", detalhes: "Apoia modernização com foco em produtividade verde." }
         ];
 
-        function openModal(id) {
-            const p = projectsData.find(x => x.id === id);
-            if (!p) return;
-            document.getElementById('modal-title').textContent = p.nome;
-            document.getElementById('modal-description').textContent = p.descricao;
-            document.getElementById('modal-full-details').textContent = p.detalhes;
-            document.getElementById('project-modal').classList.remove('hidden');
+        function switchContent(id) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+            const target = document.getElementById(`content-${id}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.menu-item').forEach(m => {
+                if (m.getAttribute('data-content-id') === id) m.classList.add('bg-gray-100', 'text-[#3FA110]', 'font-bold');
+                else m.classList.remove('bg-gray-100', 'text-[#3FA110]', 'font-bold');
+            });
+            if (window.innerWidth < 1024) document.getElementById('sidebar').classList.add('hidden');
         }
 
-        function closeModal() { document.getElementById('project-modal').classList.add('hidden'); }
+        function switchInnerTab(dim, tab) {
+            const container = document.getElementById(`content-dimensao-${dim}`);
+            container.querySelectorAll('.inner-tab-content').forEach(x => x.classList.add('hidden'));
+            container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`${dim}-${tab}`).classList.remove('hidden');
+            event.currentTarget.classList.add('active');
+        }
 
         function renderProjects(projects, container) {
+            if (!container) return;
             if (projects.length === 0) {
                 container.innerHTML = '<p class="text-gray-400 italic py-4 col-span-full text-center">Nenhum projeto encontrado.</p>';
                 return;
@@ -403,25 +407,23 @@
             renderProjects(filtered, container);
         }
 
-        function switchContent(id) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(`content-${id}`).classList.remove('hidden');
-            document.querySelectorAll('.menu-item').forEach(m => {
-                if(m.dataset.contentId === id) m.classList.add('bg-gray-100', 'text-[#3FA110]', 'font-bold');
-                else m.classList.remove('bg-gray-100', 'text-[#3FA110]', 'font-bold');
-            });
+        function openModal(id) {
+            const p = projectsData.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('modal-title').textContent = p.nome;
+            document.getElementById('modal-description').textContent = p.descricao;
+            document.getElementById('modal-full-details').textContent = p.detalhes;
+            document.getElementById('project-modal').classList.remove('hidden');
         }
 
-        function switchInnerTab(dim, tab) {
-            const c = document.getElementById(`content-dimensao-${dim}`);
-            c.querySelectorAll('.inner-tab-content').forEach(x => x.classList.add('hidden'));
-            c.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`${dim}-${tab}`).classList.remove('hidden');
-            event.target.classList.add('active');
-        }
+        function closeModal() { document.getElementById('project-modal').classList.add('hidden'); }
+
+        document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('hidden'));
 
         window.onload = () => {
-            document.querySelectorAll('.projects-container').forEach(c => renderProjects(projectsData.filter(p => p.desafio === c.dataset.dimension), c));
+            document.querySelectorAll('.projects-container').forEach(c => {
+                renderProjects(projectsData.filter(p => p.desafio === c.dataset.dimension), c);
+            });
             switchContent('intro');
         };
     </script>
