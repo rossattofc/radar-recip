@@ -8,47 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        
-        .sidebar-fixed {
-            position: sticky;
-            top: 4rem;
-            height: calc(100vh - 4rem);
-            overflow-y: auto;
-        }
-
-        /* Estilos das Abas (Visual Limpo) */
-        .tab-btn {
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
-            color: #6b7280; 
-        }
-        .tab-btn:hover {
-            color: #111827;
-        }
-        .tab-btn.active {
-            border-bottom-color: #3FA110; /* Verde Sicredi */
-            color: #3FA110;
-            font-weight: 600;
-        }
-
-        /* Scrollbar customizada */
+        .sidebar-fixed { position: sticky; top: 4rem; height: calc(100vh - 4rem); overflow-y: auto; }
+        .tab-btn { border-bottom: 3px solid transparent; transition: all 0.2s; color: #6b7280; }
+        .tab-btn:hover { color: #111827; }
+        .tab-btn.active { border-bottom-color: #3FA110; color: #3FA110; font-weight: 600; }
         .projects-scroll-area::-webkit-scrollbar { width: 6px; }
         .projects-scroll-area::-webkit-scrollbar-track { background: #f3f4f6; }
         .projects-scroll-area::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
-        .projects-scroll-area::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
-
-        /* Animações */
         .animate-fade { animation: fadeIn 0.3s ease-in-out; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Modal Backdrop */
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(2px);
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-backdrop { background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px); }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -67,13 +36,11 @@
     </header>
 
     <main class="pt-16 flex">
-
         <nav id="sidebar" class="fixed top-16 left-0 w-64 bg-white shadow-xl h-[calc(100vh-4rem)] overflow-y-auto z-40 lg:block hidden">
             <div class="p-4 space-y-2">
-                <a href="#intro" data-content-id="intro" class="menu-item block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out" aria-current="true">
+                <a href="#intro" data-content-id="intro" class="menu-item block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out">
                     <span class="font-bold text-[#3FA110] mr-2">⚫</span> O que é RECIP
                 </a>
-                
                 <h3 class="px-4 pt-4 text-xs font-semibold uppercase text-gray-400">Dimensões de Inovação</h3>
                 <a href="#dimensao-participativa" data-content-id="dimensao-participativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Participativa</a>
                 <a href="#dimensao-colaborativa" data-content-id="dimensao-colaborativa" class="menu-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Colaborativa</a>
@@ -89,7 +56,7 @@
                 <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-4">O que é RECIP</h2>
                 <div class="text-gray-700 space-y-6 text-lg leading-relaxed">
                     <p>O <strong>RECIP (Reconhecimento Inovação com Propósito)</strong> é uma iniciativa estratégica para reconhecer, catalogar e catalisar a inovação dentro do sistema cooperativo.</p>
-                    <p>Para isso, categorizamos nossas inovações em <strong>cinco dimensões estratégicas</strong>. Navegue pelo menu lateral para explorar cada uma delas em detalhes.</p>
+                    <p>Categorizamos nossas inovações em <strong>cinco dimensões estratégicas</strong>. Navegue pelo menu lateral para explorar cada uma delas.</p>
                 </div>
             </div>
 
@@ -108,198 +75,44 @@
                     <div class="p-6">
                         <div id="participativa-oquee" class="inner-tab-content block">
                             <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão Participativa está diretamente vinculada ao princípio cooperativista da gestão democrática, pois envolve tanto o relacionamento com os cooperados quanto o processo de tomada de decisões. Essa abordagem exige que a cooperativa compreenda profundamente as necessidades e a dinâmica das comunidades locais, garantindo que os serviços oferecidos estejam alinhados às demandas reais dos associados.</p>
-
-                            <p class="text-gray-700">A participação ativa da comunidade na criação de produtos e serviços gera valor concreto para a cooperativa de crédito, já que os benefícios são definidos pelos próprios cooperados. Nessa dimensão, a avaliação concentra-se em práticas que fortalecem o vínculo entre cooperativa e associados, como:</p>
-
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Escuta ativa e análise das necessidades;</li>
-                                <li>Uso de ferramentas para identificar demandas;.</li>
-                                <li>Adoção de canais de comunicação bidirecionais e inclusivos;</li>
-                                <li>Estratégias que apoiem a transição digital e promovam a inclusão de públicos mais jovens.</li>
-                            </ul>    
-
-                            <p class="text-gray-700">O objetivo é assegurar que os cooperados se sintam parte das decisões e da construção do futuro da cooperativa, consolidando a gestão democrática como elemento central da inovação participativa.</p>
-
+                            <p class="text-gray-700">Está vinculada à gestão democrática e escuta ativa das comunidades locais.</p>
                         </div>
                         <div id="participativa-praticas" class="inner-tab-content hidden">
                             <div class="mb-4 relative">
-                                <input type="text" placeholder="Buscar prática... " class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Participativa')">
-                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <input type="text" placeholder="Buscar prática..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 text-sm" onkeyup="filterProjects(this.value, 'Participativa')">
+                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Participativa"></div>
                             </div>
                         </div>
-                        <div id="participativa-forcas" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Pontos fortes da Cooperativa
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Centralidade no Cooperado por Evidências</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Modelo maduro que combina análises quantitativas, pesquisas qualitativas, segmentação territorial e escuta ativa contínua, com decisões amplamente baseadas em evidências.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Comunicação Multicanal e Matriz Estruturada</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estrutura de comunicação robusta, plano e matriz claramente estruturados, multicanal e segmentados; domínio sobre ferramentas, ações e indicadores.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Educação Digital como Prática Estratégica</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Materiais educativos, suporte ativo e orientação contínua que posicionam a cooperativa como referência nacional em autonomia e inclusão digital dos associados.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Cultura Comunicacional Inclusiva</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Linguagem acessível, múltiplos canais e adaptação sociocultural, atendendo diferentes públicos com clareza, acolhimento e alinhamento institucional.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Juventude como Eixo Estruturante</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Programas consistentes, mecanismos de participação juvenil, governança e indicadores, com visão de longo prazo e protagonismo regional e sistêmico.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Excelência Integrada (M5) com Governança e Continuidade</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Práticas institucionalizadas, governança madura, investimento consistente em juventude, comunicação estratégica e educação digital, com reconhecimento máximo.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
-                       <div id="participativa-oportunidades" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Fronteiras de Evolução
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Inteligência Analítica para Estratégia</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Expandir modelos preditivos e integrar mapas de experiência, dados territoriais e insights longitudinais para antecipar necessidades e tendências na criação de produtos e serviços.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Engajamento Conectado</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Unificar métricas de comunicação e comportamento, conectando participação em assembleias, núcleos e jornadas digitais, com uso de ferramentas avançadas para personalização.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Letramento Digital do Cooperado</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Desenvolver trilhas personalizadas de educação digital com níveis de proficiência, indicadores de evolução e integração com dados de adoção dos canais.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg"> Comunicação Inclusiva</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Formalizar diretrizes estruturadas de acessibilidade, incluindo protocolos para conteúdos inclusivos, comunicação multissensorial e indicadores de equidade no acesso à informação.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Protagonismo Jovem</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Implementar painéis de acompanhamento geracional e integrar novas gerações em trilhas de liderança, núcleos cooperativistas e experiências ampliadas de formação.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Personalização da Jornada do Cooperado</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Aprimorar a análise de dados para oferecer experiências personalizadas, conectando produtos, serviços e canais digitais às preferências e comportamentos individuais.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
+                        <div id="participativa-forcas" class="inner-tab-content hidden">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Pontos fortes da Cooperativa
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Centralidade no Cooperado</h4><p class="text-sm text-gray-600 mt-1">Modelo maduro baseado em evidências.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="participativa-oportunidades" class="inner-tab-content hidden">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                Fronteiras de Evolução
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Inteligência Analítica</h4><p class="text-sm text-gray-600 mt-1">Expandir modelos preditivos e mapas de experiência.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>    
 
             <div id="content-dimensao-colaborativa" class="content-section hidden w-full max-w-6xl mx-auto space-y-6 animate-fade">
                 <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#3FA110]">
@@ -315,197 +128,36 @@
                     </div>
                     <div class="p-6">
                         <div id="colaborativa-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão Colaborativa está diretamente ligada ao princípio cooperativista da intercooperação, pois envolve a capacidade de unir esforços com outras cooperativas, instituições e organizações externas para gerar soluções inovadoras e ampliar o impacto das iniciativas. Essa abordagem requer que a cooperativa estabeleça parcerias estratégicas que fortaleçam sua atuação local e regional, garantindo que os resultados beneficiem não apenas um público específico, mas toda a comunidade.</p>
-
-                            <p class="text-gray-700">A intercooperação cria valor concreto para a cooperativa de crédito ao potencializar recursos, ampliar o alcance das ações e reforçar a identidade cooperativista. Nessa dimensão, a avaliação concentra-se em práticas que promovem colaboração interna e externa, como:</p>
-
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Projetos em rede com outras cooperativas;</li>
-                                <li>Parcerias com universidades, startups, órgãos públicos e empresas;</li>
-                                <li>Iniciativas que estimulem inovação aberta e integração de ecossistemas.</li>
-                            </ul>
-
-                            <p class="text-gray-700">O objetivo é consolidar a cooperativa como um ator estratégico dentro de uma rede colaborativa, ampliando seu impacto social e econômico e reafirmando a intercooperação como elemento central da inovação colaborativa.</p>
+                             <p class="text-gray-700">Envolve unir esforços com outras cooperativas e instituições para gerar impacto.</p>
                         </div>
                         <div id="colaborativa-praticas" class="inner-tab-content hidden">
-                            <div class="mb-4 relative">
-                                <input type="text" placeholder="Buscar prática... " class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Colaborativa')">
-                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Colaborativa"></div>
                             </div>
                         </div>
-                        <div id="colaborativa-forcas" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Pontos fortes da Cooperativa
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Intercooperação Exemplar</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Participação ativa em iniciativas sistêmicas e projetos conjuntos que fortalecem integração regional e desenvolvimento cooperativista.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Replicabilidade e Escalabilidade</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Modelos, processos e metodologias que permitem replicar e escalar iniciativas com plena adesão à arquitetura sistêmica.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Uso Estratégico de Open Finance</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Domínio técnico e alinhamento à agenda nacional de dados abertos; personalização, análise comportamental e ampliação da principalidade.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Governança Sólida com a Central</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Políticas e processos estruturados que garantem comunicação fluida e alinhada com a Central, refletindo maturidade institucional elevada.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Atuação Comunitária Consistente</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Participação ativa em projetos sociais, educacionais e ambientais com parceiros locais; responsabilidade social reconhecida no território.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Excelência (M5) e Liderança em Colaboração</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Governança madura, forte integração com a Central e projetos bem estruturados, liderando e potencializando construção colaborativa no sistema.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
-                        <div id="colaborativa-oportunidades" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Fronteiras de Evolução
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Intercooperação Estruturada</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Sistematizar e divulgar estudos de caso, metodologias e resultados, criando repositórios de boas práticas e grupos temáticos permanentes.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Escalabilidade Colaborativa</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Desenvolver mecanismos de governança e padrões de replicabilidade, com relatórios estruturados e ciclos de aprendizagem contínua.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Open Finance Estratégico</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Construir modelos preditivos e dashboards integrados, usando dados do Open Finance para antecipar necessidades e mensurar impacto.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Integração com a Central</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estruturar mecanismos adicionais para registrar interações e acompanhar demandas e retornos da cooperativa central com mais eficiência.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Inovação Aberta</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Consolidar métricas robustas de impacto social, relatórios de desempenho comunitário e parcerias estruturadas de longo prazo.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Governança Colaborativa</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Criar padrões sistêmicos para intercooperação, com relatórios anuais e fóruns permanentes que consolidem práticas e resultados.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
-                            
-
-
+                        <div id="colaborativa-forcas" class="inner-tab-content hidden">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857"></path></svg>
+                                Pontos fortes da Cooperativa
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Intercooperação</h4><p class="text-sm text-gray-600 mt-1">Participação ativa em iniciativas sistêmicas.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="colaborativa-oportunidades" class="inner-tab-content hidden">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1"></path></svg>
+                                Fronteiras de Evolução
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Inovação Aberta</h4><p class="text-sm text-gray-600 mt-1">Consolidar métricas de impacto social e parcerias estruturadas.</p></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -525,195 +177,37 @@
                     </div>
                     <div class="p-6">
                         <div id="capacidades-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão de Desenvolvimento de Capacidades está diretamente ligada ao princípio cooperativista da educação, formação e informação, pois envolve o fortalecimento contínuo das competências de cooperados, dirigentes, colaboradores e da comunidade. Essa abordagem posiciona a cooperativa como um agente de aprendizado e transformação, oferecendo condições para que seus públicos estejam preparados para enfrentar mudanças no mercado, novas tecnologias e práticas de gestão inovadoras.</p>
-
-                            <p class="text-gray-700">O desenvolvimento de capacidades gera valor concreto para a cooperativa de crédito ao promover engajamento, aumentar a competitividade e contribuir para a sustentabilidade de longo prazo. Nessa dimensão, a avaliação concentra-se em práticas que estimulam a aprendizagem contínua, como:</p> 
-
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Programas de capacitação técnica e comportamental;</li>
-                                <li>Incentivo ao empreendedorismo;</li>
-                                <li>Desenvolvimento de lideranças jovens;</li>
-                                <li>Ações de educação financeira voltadas para associados e comunidade.</li>
-                            </ul>
-
-                            <p class="text-gray-700">O objetivo é consolidar a cooperativa como um polo de conhecimento e desenvolvimento humano, reafirmando a educação e a formação como elementos centrais da inovação em desenvolvimento de capacidades.</p>
+                             <p class="text-gray-700">Foca no fortalecimento contínuo das competências de cooperados e colaboradores.</p>
                         </div>
                         <div id="capacidades-praticas" class="inner-tab-content hidden">
-                            <div class="mb-4 relative">
-                                <input type="text" placeholder="Buscar prática... " class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Desenvolvimento de Capacidades')">
-                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Desenvolvimento de Capacidades"></div>
                             </div>
                         </div>
-                        <div id="capacidades-forcas" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Pontos fortes da Cooperativa
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Gestão de Desempenho Estruturada (Castlight)</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ferramentas para avaliação, feedback contínuo e acompanhamento individualizado; modelo consolidado alinhado às melhores práticas do setor financeiro.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Cultura de Inovação Centrada em Pessoas</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ambientes que estimulam proposição de ideias, participação em projetos e qualificação contínua, incorporando inovação como competência organizacional.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Transformação Digital com Capacitação Sistemática</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Formações alinhadas à modernização e demandas do setor, ampliando autonomia, eficiência operacional e agilidade institucional.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Capacitação para P&D&I</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ações de formação voltadas à inovação, pesquisa e desenvolvimento, preparando equipes para experimentação e criatividade.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Sensibilidade e Formação em Sustentabilidade (ESG)</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Práticas sustentáveis como tema estratégico, sensibilização e alinhamento institucional à agenda ESG na formação das equipes.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Excelência (M5) em Desenvolvimento Humano</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ferramentas avançadas, políticas estruturadas de formação e trilhas consistentes de capacitação tecnológica com reconhecimento máximo.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
-                        <div id="capacidades-oportunidades" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Fronteiras de Evolução
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Gestão de Competências e Desempenho Integrados</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Integrar dados das avaliações de desempenho a trilhas de desenvolvimento personalizadas, ampliando previsibilidade, mapeamento de sucessão e indicadores de evolução individual e coletiva.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Painéis Unificados de Pessoas e Negócio</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Criar painéis integrados que conectem desempenho, clima organizacional e resultados de negócio, fortalecendo a tomada de decisão baseada em evidências.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Inovação Interna Contínua</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Formalizar programas robustos de inovação interna — laboratórios, desafios de ideias, trilhas formativas e rituais sistemáticos de ideação — incentivando qualificação contínua e experimentação além das áreas de atuação.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg"> Competências Digitais para Gestão e Decisão</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Expandir trilhas específicas em dados, analytics, segurança, RPA, inteligência artificial e automação, capacitando equipes para uso efetivo de tecnologias nos processos internos e na tomada de decisão.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Pesquisa, Desenvolvimento e Inovação Aplicada</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Construir trilhas estruturadas com metodologias como design thinking, lean startup, prototipagem e gestão ágil; ampliar mecanismos formais de incentivo à experimentação e medir a evolução das competências inovadoras.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">ESG como Competência Organizacional</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Instituir trilhas estruturadas de ESG com certificações internas e conteúdos obrigatórios; criar módulos específicos por níveis hierárquicos e áreas estratégicas, com indicadores de absorção e impacto.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
+                        <div id="capacidades-forcas" class="inner-tab-content hidden">
+                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
+                                Pontos fortes da Cooperativa
+                            </h3>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Cultura de Inovação</h4><p class="text-sm text-gray-600 mt-1">Ambientes que estimulam a proposição de ideias.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="capacidades-oportunidades" class="inner-tab-content hidden">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                                Fronteiras de Evolução
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Competências Digitais</h4><p class="text-sm text-gray-600 mt-1">Expandir trilhas em dados, IA e automação.</p></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -732,340 +226,37 @@
                     </div>
                     <div class="p-6">
                         <div id="esg-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão ESG está diretamente ligada ao princípio cooperativista do interesse pela comunidade, pois expressa o compromisso da cooperativa com práticas responsáveis que integram aspectos ambientais, sociais e de governança à sua estratégia. Essa abordagem exige uma visão sistêmica e de longo prazo, equilibrando a geração de valor econômico com impactos positivos para a sociedade e para o meio ambiente.</p>
-
-                            <p class="text-gray-700">A incorporação de critérios ESG gera valor concreto para a cooperativa de crédito ao fortalecer sua credibilidade, atrair novos públicos, reduzir riscos e ampliar sua contribuição para o desenvolvimento sustentável. Nessa dimensão, a avaliação concentra-se em práticas que reforçam sustentabilidade, equidade e transparência, como:</p>
-
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Adoção de políticas ambientais internas;</li>
-                                <li>Promoção da diversidade e inclusão;</li>
-                                <li>Investimento em projetos de impacto social;</li>
-                                <li>Implementação de mecanismos robustos de governança;</li>
-                                <li>Prestação de contas clara aos associados e à sociedade.</li>
-                            </ul>
-
-                            <p class="text-gray-700">O objetivo é consolidar a cooperativa como referência em responsabilidade socioambiental, reafirmando o interesse pela comunidade como elemento central da inovação orientada por critérios ESG.</p>
+                             <p class="text-gray-700">Compromisso com práticas responsáveis que integram sustentabilidade e transparência.</p>
                         </div>
                         <div id="esg-praticas" class="inner-tab-content hidden">
-                            <div class="mb-4 relative">
-                                <input type="text" placeholder="Buscar prática... " class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'ESG')">
-                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="ESG"></div>
                             </div>
                         </div>
-                        <div id="esg-forcas" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Pontos fortes da Cooperativa
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Redução de Emissões e Eficiência Energética Interna</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Iniciativas internas alinhadas à agenda ambiental contemporânea, integrando performance operacional e responsabilidade ambiental.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Alinhamento Estratégico à Agenda ESG</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Princípios de governança, responsabilidade social e sustentabilidade incorporados à prática com robustez e visão sistêmica.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Preservação Ambiental e Proteção de Biomas</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Coerência e impacto em iniciativas de conservação alinhadas ao papel comunitário e à identidade cooperativista.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Gestão de Resíduos com Responsabilidade Comunitária</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ações de redução e incentivo à reciclagem nas comunidades, reforçando vínculo territorial e confiança.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Educação e Sensibilização Ambiental</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Atuação educativa consistente, promovendo consciência socioambiental para cooperados, colaboradores e comunidade.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Equidade de Gênero na Liderança</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Mulheres em cargos relevantes de liderança, com governança inclusiva e aderência às melhores práticas ESG.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Prevenção à Discriminação e Assédio</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ambiente organizacional saudável, transparente e seguro; maturidade elevada na integridade e respeito.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Programa e Cultura de DE&I</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Sensibilidade e atuação alinhada à diversidade, equidade e inclusão, com apoio explícito da liderança.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Controles Internos e Gestão de Riscos Maduros</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estrutura sólida, aderente a padrões regulatórios e institucionais, garantindo segurança e confiabilidade.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Código de Ética e Conflitos de Interesse Estruturados</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Governança responsável com políticas éticas bem estabelecidas e reconhecimento máximo.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Política de Segurança Cibernética Estruturada</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Robustez de governança digital alinhada às demandas contemporâneas de segurança e continuidade operacional.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Conformidade Fiscal e Relação ESG com Fornecedores</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Responsabilidade fiscal plenamente cumprida; práticas estruturadas no vínculo com fornecedores e conformidade ESG.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
-                        <div id="esg-oportunidades" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Fronteiras de Evolução
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Gestão de Emissões e Energia</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estruturar indicadores específicos para emissões de gases, consumo energético e economia de recursos, com relatórios internos e ferramentas de monitoramento contínuo.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Alinhamento a Frameworks ESG</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Aderir formalmente a frameworks reconhecidos (GRI, SASB, ODS, TCFD, Pacto Global), garantindo comparabilidade, transparência e padronização, com relatórios ESG anuais.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Preservação Ambiental e Biomas</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Documentar iniciativas ambientais com escopo, parceiros e impacto; criar indicadores e relatórios narrativos; estabelecer parcerias estruturadas para preservação contínua.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg"> Gestão de Resíduos e Economia Circular</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estruturar programas permanentes de gestão de resíduos, ampliar coleta seletiva, parcerias educacionais e campanhas; definir metas quantitativas e indicadores de impacto socioambiental.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Educação e Sensibilização Ambiental</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Implementar programas estruturados de educação ambiental com materiais pedagógicos, trilhas de aprendizagem e indicadores de alcance para cooperados, colaboradores e comunidade.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Equidade de Gênero na Liderança</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estabelecer metas formais de equidade, consolidar trilhas de desenvolvimento para lideranças femininas e monitorar indicadores de progressão de carreira.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Prevenção à Discriminação e Assédio</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Formalizar programas contínuos de prevenção, campanhas internas, treinamentos obrigatórios e protocolos de acolhimento; criar canais de denúncia e relatórios anuais de integridade.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Políticas de Diversidade, Equidade e Inclusão (DE&I)</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estruturar políticas específicas de DE&I com metas, indicadores e trilhas de conscientização; formalizar guias de liderança inclusiva e programas de sensibilização.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Controles Internos e Gestão de Riscos</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ampliar documentação pública dos controles internos, produzir relatórios periódicos e integrar tecnologias emergentes para monitoramento automatizado.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Ética, Conduta e Conflito de Interesses</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Documentar treinamentos periódicos, campanhas internas e atualizações regulares das políticas de ética e conduta, garantindo alinhamento organizacional.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Segurança Cibernética Estruturada</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Produzir relatórios públicos, integrar treinamentos avançados de cibersegurança e incluir métricas que documentem evolução e maturidade da proteção digital.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Transparência Fiscal e Cadeia ESG</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Elaborar relatórios de transparência fiscal, mesmo simplificados; formalizar critérios ESG para seleção, acompanhamento e auditoria de fornecedores; criar práticas de sucessão com trilhas formativas e relatórios estruturados.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
+                        <div id="esg-forcas" class="inner-tab-content hidden">
+                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
+                                Pontos fortes da Cooperativa
+                            </h3>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Segurança Cibernética</h4><p class="text-sm text-gray-600 mt-1">Política estruturada de governança digital.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="esg-oportunidades" class="inner-tab-content hidden">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                Fronteiras de Evolução
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Frameworks ESG</h4><p class="text-sm text-gray-600 mt-1">Aderir formalmente a GRI, ODS e Pacto Global.</p></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1084,196 +275,37 @@
                     </div>
                     <div class="p-6">
                         <div id="financas-verdes-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão de Finanças Verdes está diretamente ligada ao princípio cooperativista do interesse pela comunidade, pois reflete a responsabilidade da cooperativa em promover práticas financeiras que conciliem crescimento econômico, preservação ambiental e bem-estar social. Essa abordagem exige que a cooperativa alinhe sua estratégia de negócios a critérios de sustentabilidade, incorporando objetivos globais como os ODS da ONU e boas práticas de ESG.</p>
-
-                            <p class="text-gray-700">O engajamento com as finanças verdes gera valor concreto para a cooperativa de crédito ao ampliar sua relevância no mercado, fortalecer sua imagem institucional e contribuir para um futuro mais sustentável para associados e comunidade. Nessa dimensão, a avaliação concentra-se em práticas que reforçam a sustentabilidade ambiental e social, como:</p>
-
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Financiamento de projetos com impacto positivo;</li>
-                                <li>Implementação de políticas internas de eficiência e redução de emissões;</li>
-                                <li>Utilização de critérios socioambientais na concessão de crédito;</li>
-                                <li>Desenvolvimento de produtos financeiros sustentáveis.</li>
-                            </ul>
-
-                            <p class="text-gray-700">O objetivo é consolidar a cooperativa como um agente transformador na transição para uma economia verde, reafirmando o interesse pela comunidade como elemento central da inovação em finanças verdes.</p>
+                             <p class="text-gray-700">Promove práticas financeiras que conciliam crescimento e preservação ambiental.</p>
                         </div>
-
                         <div id="financas-verdes-praticas" class="inner-tab-content hidden">
-                            <div class="mb-4 relative">
-                                <input type="text" placeholder="Buscar prática... " class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Finanças Verdes')">
-                                <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            </div>
                             <div class="projects-scroll-area overflow-y-auto max-h-[500px] pr-2">
                                 <div class="projects-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-dimension="Finanças Verdes"></div>
                             </div>
                         </div>
-                        <div id="financas-verdes-forcas" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Pontos fortes da Cooperativa
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Linhas Agro Sustentáveis (ABC, ILPF, Baixo Carbono)</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Instrumentos sólidos para apoiar produtores na transição sustentável, integrando agenda ambiental e desenvolvimento rural com elevada competência.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Produtos para Restauração da Biodiversidade</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                   Oferta madura e operacional para recomposição e conservação, aplicável a públicos urbano e rural, com nota máxima do avaliador.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Crédito para Energia Limpa e Eficiência Energética</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estrutura bem desenvolvida para projetos de energia renovável e modernização energética, com clareza e capacidade operacional.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Financiamento para Transição Industrial Net Zero</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Linhas voltadas à mitigação de emissões com forte aderência ambiental e impacto territorial significativo.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Consumo Sustentável para Pequenos Negócios e PF</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Compromisso com desenvolvimento territorial, inclusão produtiva e fomento ao consumo responsável com maturidade elevada.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Excelência (M5) e Liderança em Crédito Verde</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Conjunto consistente de linhas verdes (energia, agro, ILPF, biodiversidade, redução de emissões) com maturidade operacional e alinhamento às políticas públicas.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
-                        <div id="financas-verdes-oportunidades" class="inner-tab-content hidden animate-fade">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-        Fronteiras de Evolução
-    </h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Crédito para Agricultura Sustentável</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Estruturar monitoramento sistemático dos resultados ambientais dos produtores beneficiados, com indicadores como área convertida para manejo sustentável, redução estimada de emissões e ganhos de eficiência hídrica.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Capacitação Técnica para Produtores</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Implementar programas contínuos de capacitação técnica ligados às linhas verdes, apoiando a transição sustentável no campo com conteúdos práticos, assistência técnica e acompanhamento pós-crédito.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Financiamento para Biodiversidade</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Formalizar critérios, metas e mecanismos de acompanhamento específicos para restauração da biodiversidade, com relatórios ambientais e registro dos benefícios ecológicos gerados pelos projetos financiados.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg"> Crédito para Energia Limpa</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Consolidar indicadores de concessão de crédito verde por categoria energética, evidenciando impacto, redução estimada de emissões e volume financiado, com relatórios periódicos integrados às metas sistêmicas.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Transição Industrial Net Zero</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Desenvolver métricas de impacto climático para acompanhar projetos voltados à redução e compensação de emissões, com relatórios anuais, metas de crédito verde e integração a metodologias como o GHG Protocol.
-                </p>
-            </div>
-        </div>
-
-        <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-start space-x-4">
-            <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-            </div>
-            <div>
-                <h4 class="font-bold text-gray-800 text-lg">Consumo Sustentável para Pessoas e Pequenos Negócios</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1">
-                    Ampliar a segmentação das linhas de crédito para pessoa física e microempreendedores, criando produtos específicos para transição sustentável, com incentivos financeiros, capacitação e acompanhamento pós-crédito.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</div>
-                </div>
+                        <div id="financas-verdes-forcas" class="inner-tab-content hidden">
+                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#F59E0B] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Pontos fortes da Cooperativa
+                            </h3>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-orange-50 rounded-lg text-[#F59E0B]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Linhas Agro Sustentáveis</h4><p class="text-sm text-gray-600 mt-1">Instrumentos para transição ambiental no campo.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="financas-verdes-oportunidades" class="inner-tab-content hidden">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg class="w-6 h-6 text-[#3FA110] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                                Fronteiras de Evolução
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start space-x-4">
+                                    <div class="flex-shrink-0 p-3 bg-green-50 rounded-lg text-[#3FA110]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg></div>
+                                    <div><h4 class="font-bold text-gray-800 text-lg">Métricas Net Zero</h4><p class="text-sm text-gray-600 mt-1">Desenvolver métricas de impacto climático.</p></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1281,1053 +313,117 @@
         </section>
     </main>
 
-    <div id="project-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="modal-backdrop absolute inset-0 transition-opacity" onclick="closeModal()"></div>
-
-        <div class="flex items-center justify-center min-h-screen p-4 text-center sm:p-0">
-            <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
-                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl leading-6 font-bold text-gray-900" id="modal-title">Título do Projeto</h3>
-                                <button type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none" onclick="closeModal()">
-                                    <span class="sr-only">Fechar</span>
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <span id="modal-maturity" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    Maturidade
-                                </span>
-                            </div>
-
-                            <div class="mt-2">
-                                <p class="text-sm text-gray-500" id="modal-description">
-                                    Descrição detalhada aqui.
-                                </p>
-                                <div class="mt-4 pt-4 border-t border-gray-100">
-                                    <h4 class="text-sm font-bold text-gray-700 mb-1">Mais Detalhes:</h4>
-                                    <p class="text-sm text-gray-600 leading-relaxed" id="modal-full-details">
-                                        Aqui ficam os textos mais longos explicando o projeto em profundidade.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+    <div id="project-modal" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+        <div class="modal-backdrop absolute inset-0" onclick="closeModal()"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="relative bg-white rounded-lg shadow-xl sm:max-w-lg w-full">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-900" id="modal-title"></h3>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4" id="modal-description"></p>
+                    <div class="pt-4 border-t border-gray-100">
+                        <h4 class="text-sm font-bold text-gray-700 mb-2">Mais Detalhes:</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed" id="modal-full-details"></p>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#3FA110] text-base font-medium text-white hover:bg-[#327a0d] focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal()">
-                        Fechar
-                    </button>
+                <div class="bg-gray-50 px-6 py-3 flex justify-end">
+                    <button onclick="closeModal()" class="px-4 py-2 bg-[#3FA110] text-white rounded-md text-sm font-medium">Fechar</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ==========================================
-        // 1. DADOS DOS PROJETOS (EDITÁVEIS AQUI)
-        // ==========================================
         const projectsData = [
-            // --- Participativa ---
-             {
-                id: "part-01",
-                nome: "NPS (Relacional, Transacional, Competitiva e do Canal)",
-                desafio: "Participativa",
-                maturidade: "Consolidado",
-                descricao: "Avaliação da satisfação dos associados em diferentes interações.",
-                detalhes: "O Net Promoter Score é aplicado em múltiplas frentes (relacional, transacional, competitiva e por canal) para medir a experiência do associado, identificar pontos de melhoria e direcionar estratégias de relacionamento mais assertivas."
-            },
-            {
-                id: "part-02",
-                nome: "Coordenação da Jornada do Associado",
-                desafio: "Participativa",
-                maturidade: "Em Expansão",
-                descricao: "Gestão integrada da experiência do associado.",
-                detalhes: " A prática garante que todas as etapas da jornada do associado sejam coordenadas, oferecendo uma experiência fluida e consistente, desde o primeiro contato até serviços mais complexos, fortalecendo vínculos e fidelização."
-            },
-            {
-                id: "part-03",
-                nome: "Plataforma de Relacionamento",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Canal digital para interação contínua.",
-                detalhes: "Ferramenta que centraliza informações, serviços e comunicação com associados, permitindo maior proximidade, agilidade no atendimento e personalização da experiência."
-            },
-
-             {
-                id: "part-04",
-                nome: "Matriz de Comunicação",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Estrutura para organizar canais e mensagens.",
-                detalhes: "Define os fluxos, responsáveis e periodicidade das comunicações, garantindo alinhamento estratégico e clareza na transmissão de informações para diferentes públicos."
-            },
-
-             {
-                id: "part-05",
-                nome: "Rituais de Comunicação (Governança, Estratégia e Cultura)",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Encontros regulares para alinhamento.",
-                detalhes: "São práticas formais que reforçam governança, disseminam cultura organizacional e asseguram que colaboradores e associados estejam alinhados às estratégias e valores da cooperativa."
-            },
-
-             {
-                id: "part-06",
-                nome: "Check-in dos Conteúdos de Negócios",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Revisão periódica de informações.",
-                detalhes: "Processo para validar e atualizar conteúdos críticos de negócios, garantindo que informações disponibilizadas aos associados sejam sempre corretas e relevantes."
-            },
-
-             {
-                id: "part-07",
-                nome: "Relatório de Assembleias",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Documento com decisões e resultados.",
-                detalhes: "Consolidado das assembleias que assegura transparência e engajamento, permitindo que associados acompanhem as deliberações e impactos das decisões tomadas."
-            },
-
-             {
-                id: "part-08",
-                nome: "Podcast “Momento Sicredi Conexão”",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Conteúdo em áudio para engajamento.",
-                detalhes: "Canal informativo que aproxima associados e colaboradores, trazendo temas relevantes sobre cooperativismo, negócios e cultura organizacional de forma acessível."
-            },
-
-             {
-                id: "part-09",
-                nome: "Notícias e Conteúdos Informativos (Site Institucional e Relatório Anual)",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Divulgação de informações estratégicas.",
-                detalhes: "Publicações periódicas que reforçam transparência e mantêm associados informados sobre resultados, projetos e ações da cooperativa."
-            },
-
-             {
-                id: "part-10",
-                nome: "Momentos Presenciais com Associados",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Encontros para fortalecer vínculos.",
-                detalhes: "Eventos presenciais que promovem interação, escuta ativa e construção de relacionamento próximo, alinhado aos princípios cooperativistas."
-            },
-
-             {
-                id: "part-11",
-                nome: "Site Sistêmico e da Cooperativa com Elementos de Acessibilidade",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Inclusão digital para todos.",
-                detalhes: "Implementação de recursos que garantem acessibilidade, como navegação adaptada, contraste adequado e compatibilidade com leitores de tela."
-            },
-
-             {
-                id: "part-12",
-                nome: "Conteúdos com Legendas e Libras",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Materiais adaptados para inclusão.",
-                detalhes: "Produção de vídeos e conteúdos com legendas e interpretação em Libras, assegurando acesso à informação para pessoas com deficiência auditiva."
-            },
-
-             {
-                id: "part-13",
-                nome: "Crédito à Acessibilidade com Taxas Diferenciadas",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Linha de crédito inclusiva.",
-                detalhes: "Produto financeiro com condições especiais para apoiar investimentos em acessibilidade, promovendo inclusão social e autonomia."
-            },
-
-             {
-                id: "part-14",
-                nome: "Cartilha de Atendimento Inclusivo",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Guia para atendimento acessível.",
-                detalhes: "Material educativo que orienta colaboradores sobre práticas inclusivas, garantindo um atendimento respeitoso e adaptado às necessidades dos associados."
-            },
-
-             {
-                id: "part-15",
-                nome: "Agências e Instalações Adequadas às Normas de Acessibilidade",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Infraestrutura inclusiva.",
-                detalhes: " Adequação física das unidades conforme legislação, com rampas, sinalização tátil e outros recursos que asseguram acessibilidade universal."
-            },
-
-             {
-                id: "part-16",
-                nome: "Cartão em Braile para Associados",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Produto adaptado para deficientes visuais.",
-                detalhes: "Cartão com informações em Braile, garantindo autonomia e inclusão para associados com deficiência visual."
-            },
-
-             {
-                id: "part-17",
-                nome: "Cursos sobre Acessibilidade para Colaboradores",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Capacitação para inclusão.",
-                detalhes: "Treinamentos que desenvolvem competências para atendimento inclusivo e conscientização sobre diversidade e acessibilidade."
-            },
-
-             {
-                id: "part-18",
-                nome: "Cooperativas Escolares",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Educação cooperativista para jovens.",
-                detalhes: "Programa que incentiva a criação de cooperativas em escolas, promovendo aprendizado prático sobre gestão, cidadania e princípios cooperativos."
-            },
-
-             {
-                id: "part-19",
-                nome: "Programa Líder Jovem",
-                desafio: "Participativa",
-                maturidade: "MVP / Piloto",
-                descricao: "Formação de lideranças jovens.",
-                detalhes: "Iniciativa para desenvolver habilidades de liderança, engajamento social e visão cooperativista entre jovens, preparando-os para papéis estratégicos no futuro."
-            },
-
-            // --- Colaborativa ---
-            {
-                id: "colab-01",
-                nome: "Capacitação Empresa Rural",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Formação voltada à gestão de empresas rurais.",
-                detalhes: "Programa desenvolvido em parceria com a Cooperativa Regional Auriverde para capacitar produtores rurais em práticas de gestão empresarial, fortalecendo a sustentabilidade e competitividade no agronegócio."
-            },
-
-            {
-                id: "colab-02",
-                nome: "Formação Agro em Foco",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Curso sobre tendências e gestão no agronegócio.",
-                detalhes: "Iniciativa conjunta com a Cooperativa Regional Itaipu que oferece conteúdos sobre inovação, mercado e gestão estratégica no setor agro, promovendo atualização e desenvolvimento dos associados."
-            },
-
-            {
-                id: "colab-03",
-                nome: "Formação Gestão de Resultados",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Capacitação para melhoria de performance.",
-                detalhes: "Treinamento realizado com a Cotrifred para desenvolver competências em gestão orientada a resultados, com foco em eficiência, planejamento e tomada de decisão."
-            },
-
-            {
-                id: "colab-04",
-                nome: "Ações do Dia C",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Mobilização social cooperativista.",
-                detalhes: "Atividades realizadas no Dia de Cooperar, envolvendo colaboradores e associados em ações sociais e voluntárias que reforçam os princípios cooperativistas e o impacto positivo na comunidade."
-            },
-
-            {
-                id: "colab-05",
-                nome: "Open Finance via Plataforma de Relacionamento",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Integração financeira para associados.",
-                detalhes: "Implementação do Open Finance na plataforma de relacionamento, permitindo maior transparência, controle e personalização dos serviços financeiros para os associados."
-            },
-
-            {
-                id: "colab-06",
-                nome: "Política de Governança Cooperativa",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para governança cooperativa.",
-                detalhes: "Documento que estabelece práticas e princípios de governança para as Centrais, garantindo transparência, equidade e responsabilidade na gestão cooperativa."
-            },
-
-            {
-                id: "colab-07",
-                nome: "Guia de Boas Práticas de Governança Corporativa",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Manual para gestão eficiente e ética.",
-                detalhes: "Material que orienta sobre práticas recomendadas de governança corporativa, fortalecendo a conformidade e a credibilidade das cooperativas perante seus associados e mercado."
-            },
-
-            {
-                id: "colab-08",
-                nome: "Calendário Anual de Eventos e Reuniões",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Planejamento de encontros estratégicos.",
-                detalhes: "Agenda organizada com eventos externos e reuniões internas, garantindo previsibilidade e alinhamento entre as cooperativas e seus públicos."
-            },
-
-            {
-                id: "colab-09",
-                nome: "Portal de Informações no SharePoint",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Repositório digital de conteúdos estratégicos.",
-                detalhes: "Plataforma que centraliza documentos, políticas e informações relevantes para as cooperativas, promovendo acesso rápido e seguro aos materiais."
-            },
-
-            {
-                id: "colab-10",
-                nome: "Small Farm Hub",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Hub de soluções para pequenas propriedades.",
-                detalhes: "Espaço dedicado a oferecer serviços, tecnologias e suporte para pequenos produtores, incentivando inovação e sustentabilidade no campo."
-            },
-
-            {
-                id: "colab-11",
-                nome: "FDR com Categoria de Empreendedorismo e Inovação",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Fundo para projetos inovadores.",
-                detalhes: "Inclusão da categoria de Empreendedorismo e Inovação no Fundo de Desenvolvimento Regional, fomentando iniciativas que impulsionem novos negócios e soluções criativas."
-            },
+            // Participativa
+            { id: "part-01", nome: "NPS (Relacional, Transacional, Competitiva)", desafio: "Participativa", descricao: "Avaliação da satisfação dos associados em diferentes interações.", detalhes: "O Net Promoter Score é aplicado em múltiplas frentes para medir a experiência do associado e direcionar estratégias de relacionamento." },
+            { id: "part-02", nome: "Coordenação da Jornada do Associado", desafio: "Participativa", descricao: "Gestão integrada da experiência do associado.", detalhes: "Garante que todas as etapas da jornada sejam coordenadas, oferecendo uma experiência fluida e consistente." },
+            { id: "part-03", nome: "Plataforma de Relacionamento", desafio: "Participativa", descricao: "Canal digital para interação contínua.", detalhes: "Ferramenta que centraliza informações e serviços, permitindo maior proximidade e personalização." },
+            { id: "part-04", nome: "Matriz de Comunicação", desafio: "Participativa", descricao: "Estrutura para organizar canais e mensagens.", detalhes: "Define fluxos e responsáveis pelas comunicações, garantindo alinhamento estratégico." },
+            { id: "part-05", nome: "Rituais de Comunicação", desafio: "Participativa", descricao: "Encontros regulares para alinhamento.", detalhes: "Práticas formais que reforçam a governança e disseminam a cultura organizacional." },
+            { id: "part-08", nome: "Podcast “Momento Sicredi Conexão”", desafio: "Participativa", descricao: "Conteúdo em áudio para engajamento.", detalhes: "Canal informativo que aproxima associados e colaboradores sobre cooperativismo." },
+            { id: "part-13", nome: "Crédito à Acessibilidade", desafio: "Participativa", descricao: "Linha de crédito com taxas diferenciadas.", detalhes: "Apoia investimentos em acessibilidade, promovendo inclusão social." },
+            { id: "part-18", nome: "Cooperativas Escolares", desafio: "Participativa", descricao: "Educação cooperativista para jovens.", detalhes: "Incentiva a criação de cooperativas em escolas para aprendizado sobre gestão e cidadania." },
             
-            {
-                id: "colab-12",
-                nome: "Linha de Crédito Sicredi Inova",
-                desafio: "Colaborativa",
-                maturidade: "Consolidado",
-                descricao: "Crédito para inovação e tecnologia.",
-                detalhes: "Produto financeiro voltado para apoiar projetos inovadores, aquisição de tecnologia e modernização de processos, fortalecendo a competitividade dos associados."
-            },
+            // Colaborativa
+            { id: "colab-01", nome: "Capacitação Empresa Rural", desafio: "Colaborativa", descricao: "Formação em gestão de empresas rurais.", detalhes: "Parceria com a Auriverde para fortalecer a competitividade no agronegócio." },
+            { id: "colab-04", nome: "Ações do Dia C", desafio: "Colaborativa", descricao: "Mobilização social cooperativista.", detalhes: "Atividades voluntárias que reforçam os princípios do cooperativismo." },
+            { id: "colab-05", nome: "Open Finance", desafio: "Colaborativa", descricao: "Integração financeira para associados.", detalhes: "Permite maior transparência e personalização dos serviços financeiros." },
+            { id: "colab-10", nome: "Small Farm Hub", desafio: "Colaborativa", descricao: "Hub de soluções para pequenas propriedades.", detalhes: "Espaço dedicado a tecnologias e suporte para pequenos produtores." },
 
-            // --- Capacidades ---
-            {
-                id: "cap-01",
-                nome: "Avaliações de desempenho no Castlight",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Avaliação contínua de performance dos colaboradores.",
-                detalhes: "Ferramenta Castlight utilizada para realizar avaliações de desempenho, permitindo acompanhamento estruturado e alinhamento com objetivos estratégicos."
-            },
-            {
-                id: "cap-02",
-                nome: "Feedback no Castlight referente às competências",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Feedback estruturado sobre competências.",
-                detalhes: "Processo de feedback realizado na plataforma Castlight, com foco no desenvolvimento das competências essenciais para a evolução profissional."
-            },
-            {
-                id: "cap-03",
-                nome: "Ciclo de objetivos e metas relacionados às aspirações estratégicas",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Definição e acompanhamento de metas estratégicas.",
-                detalhes: "Estrutura de ciclo que conecta objetivos individuais e coletivos às aspirações estratégicas da cooperativa, garantindo alinhamento e foco nos resultados."
-            },
-            {
-                id: "cap-04",
-                nome: "De olho no objetivo na Pauta do Gestor",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Monitoramento de metas em reuniões de gestão.",
-                detalhes: "Prática que insere o acompanhamento dos objetivos na pauta das reuniões de gestores, reforçando a cultura de resultados e desenvolvimento contínuo."
-            },
-            {
-                id: "cap-05",
-                nome: "Política de Gestão de Desempenho",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para avaliação e desenvolvimento.",
-                detalhes: "Documento que estabelece princípios e práticas para gestão de desempenho, garantindo equidade, transparência e evolução profissional."
-            },
-            {
-                id: "cap-06",
-                nome: "Política de Educação",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para formação e capacitação.",
-                detalhes: "Política que orienta investimentos e práticas educacionais, assegurando desenvolvimento contínuo e alinhamento às estratégias da cooperativa."
-            },
-            {
-                id: "cap-07",
-                nome: "Gestão participativa das ligas",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Engajamento em grupos temáticos.",
-                detalhes: "Modelo de gestão colaborativa em ligas temáticas, promovendo troca de conhecimento, inovação e participação ativa dos colaboradores."
-            },
-            {
-                id: "cap-08",
-                nome: "Programa de Ideias",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Fomento à inovação interna.",
-                detalhes: "Iniciativa que incentiva colaboradores a propor ideias inovadoras, fortalecendo a cultura de melhoria contínua e criatividade."
-            },
-            {
-                id: "cap-09",
-                nome: "Viagens internacionais",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Experiências globais para aprendizado.",
-                detalhes: "Oportunidades de viagens internacionais para colaboradores, visando ampliar visão estratégica, networking e absorção de boas práticas globais."
-            },
-            {
-                id: "cap-10",
-                nome: "Inspirar",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Programa de desenvolvimento e engajamento.",
-                detalhes: "Iniciativa voltada para inspirar colaboradores, com conteúdos e ações que estimulam evolução pessoal e profissional."
-            },
-            {
-                id: "cap-11",
-                nome: "Workshop Copilot",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Capacitação sobre uso de IA no trabalho.",
-                detalhes: "Treinamento prático para utilização do Copilot, promovendo eficiência e inovação no dia a dia dos colaboradores."
-            },
-            {
-                id: "cap-12",
-                nome: "Dash uso do BI na cooperativa",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Monitoramento do uso de Business Intelligence.",
-                detalhes: "Dashboard que acompanha a utilização de ferramentas de BI, incentivando a tomada de decisão baseada em dados."
-            },
-            {
-                id: "cap-13",
-                nome: "Módulo Inspirar #GentequeEvolui",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Conteúdo para evolução contínua.",
-                detalhes: "Módulo do programa Inspirar com foco em desenvolvimento pessoal e profissional, reforçando a cultura de aprendizado."
-            },
-            {
-                id: "cap-14",
-                nome: "Trilha sistêmica de Inovação",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Formação estruturada em inovação.",
-                detalhes: "Trilha de aprendizagem que aborda conceitos, ferramentas e práticas de inovação, preparando colaboradores para desafios futuros."
-            },
-            {
-                id: "cap-15",
-                nome: "Formação Copilot",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Capacitação para uso avançado do Copilot.",
-                detalhes: "Treinamento aprofundado sobre funcionalidades do Copilot, promovendo maior produtividade e integração tecnológica."
-            },
-            {
-                id: "cap-16",
-                nome: "Participação de colaboradores no South Summit",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Imersão em evento global de inovação.",
-                detalhes: "Participação no South Summit para absorção de tendências, networking e estímulo à cultura de inovação dentro da cooperativa."
-            },
-            {
-                id: "cap-17",
-                nome: "Cursos do Sicredi Aprende sobre práticas sustentáveis",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Capacitação em sustentabilidade.",
-                detalhes: "Cursos oferecidos pelo Sicredi Aprende que abordam práticas sustentáveis alinhadas aos objetivos estratégicos da cooperativa."
-            },
-            {
-                id: "cap-18",
-                nome: "Guia ESG do Sicredi (Sistêmico)",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Referência para práticas sustentáveis.",
-                detalhes: "Documento sistêmico que orienta sobre práticas ESG, reforçando compromisso com responsabilidade social, ambiental e governança."
-            },
-            {
-                id: "cap-19",
-                nome: "Guia de Boas Práticas ESG (Local)",
-                desafio: "Desenvolvimento de Capacidades",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes locais para ESG.",
-                detalhes: "Guia adaptado à realidade local que orienta sobre boas práticas de sustentabilidade e governança, fortalecendo a atuação responsável."
-            },
-            // --- ESG ---
-             {
-                id: "esg-01",
-                nome: "Energia renovável (energia Solar RenovaEco)",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Uso de energia limpa e sustentável.",
-                detalhes: "Implantação de energia solar por meio do programa RenovaEco, reduzindo impactos ambientais e promovendo eficiência energética."
-            },
-            {
-                id: "esg-02",
-                nome: "Gás ecológico nos climatizadores",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Tecnologia sustentável nos sistemas de climatização.",
-                detalhes: "Substituição de gases tradicionais por gases ecológicos nos climatizadores, diminuindo emissões nocivas e alinhando-se às práticas ambientais."
-            },
-            {
-                id: "esg-03",
-                nome: "Projetos para neutralização das emissões calculadas em 2023 e projetadas para 2024",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Compensação das emissões de carbono.",
-                detalhes: "Desenvolvimento de projetos para neutralizar emissões de gases de efeito estufa, garantindo compromisso com metas ambientais."
-            },
-            {
-                id: "esg-04",
-                nome: "Rede Brasil do Pacto",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Adesão a iniciativas globais de sustentabilidade.",
-                detalhes: "Participação na Rede Brasil do Pacto Global, reforçando compromisso com práticas responsáveis e alinhamento aos Objetivos de Desenvolvimento Sustentável (ODS)."
-            },
-            {
-                id: "esg-05",
-                nome: "Relatório de Sustentabilidade",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Transparência em práticas ESG.",
-                detalhes: "Documento que apresenta resultados e ações sustentáveis, garantindo prestação de contas aos associados e sociedade."
-            },
-            {
-                id: "esg-06",
-                nome: "Alinhamento da estratégia com frameworks globais reconhecidos de ESG",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Estratégia baseada em padrões internacionais.",
-                detalhes: "Integração das práticas ESG aos frameworks globais, assegurando conformidade e credibilidade nas ações sustentáveis."
-            },
-            {
-                id: "esg-07",
-                nome: "Programa Propriedade Sustentável",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Fomento à sustentabilidade no campo.",
-                detalhes: "Programa que incentiva práticas sustentáveis nas propriedades rurais, promovendo equilíbrio ambiental e produtividade."
-            },
-            {
-                id: "esg-08",
-                nome: "ASA – Ambiente Saudável do Agro",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Promoção de boas práticas ambientais no agro.",
-                detalhes: "Iniciativa voltada para garantir ambientes saudáveis e sustentáveis no setor agropecuário."
-            },
-            {
-                id: "esg-09",
-                nome: "GERE – Geração de Resultados",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Gestão eficiente e sustentável.",
-                detalhes: "Programa que integra práticas de gestão com foco em resultados e sustentabilidade no agronegócio."
-            },
-            {
-                id: "esg-10",
-                nome: "Agro em Foco",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Capacitação sobre práticas sustentáveis no agro.",
-                detalhes: "Formação voltada para inovação e sustentabilidade no setor agropecuário."
-            },
-            {
-                id: "esg-11",
-                nome: "Empresa Rural",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Capacitação para gestão sustentável.",
-                detalhes: "Programa que desenvolve competências para gestão eficiente e sustentável das propriedades rurais."
-            },
-            {
-                id: "esg-12",
-                nome: "Ações do Dia C",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Mobilização social cooperativista.",
-                detalhes: "Atividades voluntárias que reforçam os princípios cooperativistas e contribuem para o desenvolvimento sustentável das comunidades."
-            },
-            {
-                id: "esg-13",
-                nome: "Apoio ao projeto PISA (Produção Integrada de Sistemas Agropecuários)",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Integração sustentável na produção agropecuária.",
-                detalhes: "Projeto que promove práticas integradas e sustentáveis na produção agropecuária, garantindo equilíbrio ambiental."
-            },
-            {
-                id: "esg-14",
-                nome: "Trilhas no Sicredi Aprende voltadas à Educação Ambiental",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Capacitação em práticas ambientais.",
-                detalhes: "Cursos e trilhas educacionais que abordam temas de sustentabilidade e preservação ambiental."
-            },
-            {
-                id: "esg-15",
-                nome: "Maior parte do quadro de colaboradores é composto por mulheres",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Diversidade de gênero na equipe.",
-                detalhes: "Presença significativa de mulheres no quadro de colaboradores, reforçando compromisso com diversidade e inclusão."
-            },
-            {
-                id: "esg-16",
-                nome: "Cargos de liderança ocupados por mulheres",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Representatividade feminina em posições estratégicas.",
-                detalhes: "Mulheres ocupam cargos de liderança, garantindo equidade e diversidade na gestão."
-            },
-            {
-                id: "esg-17",
-                nome: "Código de Conduta Sistêmico",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes éticas para atuação.",
-                detalhes: "Documento que estabelece princípios éticos e condutas esperadas, reforçando integridade e responsabilidade."
-            },
-            {
-                id: "esg-18",
-                nome: "Canal de Denúncias",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Ferramenta para reporte seguro.",
-                detalhes: "Canal confidencial para denúncias, garantindo transparência e combate a práticas inadequadas."
-            },
-            {
-                id: "esg-19",
-                nome: "Formação online obrigatória sobre Inclusão, Pessoa e Respeito",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Capacitação sobre diversidade e respeito.",
-                detalhes: "Treinamento obrigatório que aborda inclusão, diversidade e respeito, fortalecendo cultura organizacional ética."
-            },
-            {
-                id: "esg-20",
-                nome: "Momentos sobre o tema, como na SIPAT",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Eventos para conscientização.",
-                detalhes: "Ações e palestras realizadas em eventos como a SIPAT, reforçando temas de inclusão e respeito."
-            },
-            {
-                id: "esg-21",
-                nome: "Comitê de Inclusão, Diversidade e Equidade",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Grupo estratégico para diversidade.",
-                detalhes: "Comitê responsável por promover políticas e ações voltadas à inclusão e equidade dentro da cooperativa."
-            },
-            {
-                id: "esg-22",
-                nome: "Consultoria especializada sobre o tema com times estratégicos",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Apoio técnico para diversidade.",
-                detalhes: "Consultoria especializada para orientar práticas inclusivas e estratégias de diversidade."
-            },
-            {
-                id: "esg-23",
-                nome: "Censo de diversidade",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Mapeamento da diversidade interna.",
-                detalhes: "Levantamento de dados sobre diversidade para embasar políticas e ações inclusivas."
-            },
-            {
-                id: "esg-24",
-                nome: "Regulamento do Comitê de Inclusão, Diversidade e Equidade",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Normas para atuação do comitê.",
-                detalhes: "Documento que define diretrizes e responsabilidades do comitê, garantindo governança e efetividade."
-            },
-            {
-                id: "esg-25",
-                nome: "Dia da Família",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Evento para integração social.",
-                detalhes: "Ação voltada para fortalecer vínculos familiares e promover bem-estar entre colaboradores."
-            },
-            {
-                id: "esg-26",
-                nome: "Norma de Risco Operacional e Controles Internos",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para gestão de riscos.",
-                detalhes: "Norma que estabelece práticas para mitigação de riscos operacionais e fortalecimento dos controles internos."
-            },
-            {
-                id: "esg-27",
-                nome: "Plano de Riscos",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Planejamento para mitigação de riscos.",
-                detalhes: "Documento que define estratégias e ações para gerenciamento de riscos corporativos."
-            },
-            {
-                id: "esg-28",
-                nome: "Código de Conduta",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Princípios éticos para atuação.",
-                detalhes: "Documento que orienta condutas e reforça compromisso com integridade e responsabilidade."
-            },
-            {
-                id: "esg-29",
-                nome: "Norma de Consequências",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para aplicação de sanções.",
-                detalhes: "Norma que define consequências para descumprimento de regras e condutas, garantindo justiça e transparência."
-            },
-            {
-                id: "esg-30",
-                nome: "Norma de Segurança Cibernética",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Proteção contra ameaças digitais.",
-                detalhes: "Norma que estabelece práticas para segurança cibernética, prevenindo riscos e garantindo integridade dos dados."
-            },
-            {
-                id: "esg-31",
-                nome: "Política de Segurança da Informação e Segurança Cibernética",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para proteção da informação.",
-                detalhes: "Política que orienta práticas para garantir segurança da informação e proteção contra ataques cibernéticos."
-            },
-            {
-                id: "esg-32",
-                nome: "Inventário de Sistemas",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Controle dos ativos tecnológicos.",
-                detalhes: "Levantamento e gestão dos sistemas utilizados, assegurando governança e segurança."
-            },
-            {
-                id: "esg-33",
-                nome: "Power BI de Controles Críticos",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Monitoramento de controles internos.",
-                detalhes: "Dashboard em Power BI para acompanhamento dos controles críticos, garantindo transparência e gestão eficiente."
-            },
-            {
-                id: "esg-34",
-                nome: "Divulgação das demonstrações contábeis e financeiras",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Transparência financeira.",
-                detalhes: "Publicação das demonstrações contábeis e financeiras, reforçando governança e prestação de contas."
-            },
-            {
-                id: "esg-35",
-                nome: "Norma de Compras e Contratação de Serviços",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para aquisições responsáveis.",
-                detalhes: "Norma que orienta processos de compras e contratação, garantindo conformidade e ética."
-            },
-            {
-                id: "esg-36",
-                nome: "Ligas Táticas",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Grupos para execução estratégica.",
-                detalhes: "Ligas que atuam em temas específicos para garantir implementação de práticas e projetos estratégicos."
-            },
-            {
-                id: "esg-37",
-                nome: "PDLE",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Programa de desenvolvimento de lideranças.",
-                detalhes: "Iniciativa voltada para capacitação e fortalecimento de lideranças, alinhada às práticas de governança."
-            },
-            {
-                id: "esg-38",
-                nome: "Política Seleção que Desenvolve",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Diretrizes para recrutamento e desenvolvimento.",
-                detalhes: "Política que assegura processos seletivos justos e foco no desenvolvimento contínuo dos colaboradores."
-            },
-            {
-                id: "esg-39",
-                nome: "Fortalecer",
-                desafio: "ESG",
-                maturidade: "Consolidado",
-                descricao: "Programa para engajamento e evolução.",
-                detalhes: "Iniciativa que promove fortalecimento da cultura organizacional e desenvolvimento das equipes."
-            },
+            // Capacidades
+            { id: "cap-01", nome: "Avaliações no Castlight", desafio: "Desenvolvimento de Capacidades", descricao: "Avaliação contínua de performance.", detalhes: "Ferramenta utilizada para acompanhamento estruturado dos colaboradores." },
+            { id: "cap-08", nome: "Programa de Ideias", desafio: "Desenvolvimento de Capacidades", descricao: "Fomento à inovação interna.", detalhes: "Incentiva colaboradores a propor ideias inovadoras para melhoria contínua." },
+            { id: "cap-11", nome: "Workshop Copilot", desafio: "Desenvolvimento de Capacidades", descricao: "Capacitação sobre uso de IA.", detalhes: "Treinamento prático para utilizar inteligência artificial no dia a dia." },
+            { id: "cap-16", nome: "South Summit", desafio: "Desenvolvimento de Capacidades", descricao: "Imersão em evento global de inovação.", detalhes: "Participação para absorção de tendências globais." },
 
-            // --- Finanças Verdes ---
-            {
-                id: "fin-01",
-                nome: "RENOVAGRO",
-                desafio: "Finanças Verdes",
-                maturidade: "Consolidado",
-                descricao: "Linha de crédito para práticas sustentáveis no agro.",
-                detalhes: "Programa RENOVAGRO oferece financiamento para projetos que promovem sustentabilidade no setor agropecuário, incluindo energias renováveis e tecnologias verdes."
-            },
-            {
-                id: "fin-02",
-                nome: "INOVAGRO",
-                desafio: "Finanças Verdes",
-                maturidade: "Consolidado",
-                descricao: "Crédito para inovação tecnológica no agronegócio.",
-                detalhes: "Linha INOVAGRO destinada a apoiar investimentos em inovação e modernização no campo, com foco em práticas sustentáveis e aumento de produtividade."
-            },
-            {
-                id: "fin-03",
-                nome: "PRONAF Bioeconomia",
-                desafio: "Finanças Verdes",
-                maturidade: "Consolidado",
-                descricao: "Financiamento para agricultura sustentável e bioeconomia.",
-                detalhes: "Programa PRONAF Bioeconomia oferece crédito para projetos voltados à agroecologia, produção sustentável e inclusão de mulheres no agronegócio."
-            },
-            {
-                id: "fin-04",
-                nome: "Mulher Manual RENOVAGRO",
-                desafio: "Finanças Verdes",
-                maturidade: "Consolidado",
-                descricao: "Material orientativo para inclusão feminina no agro.",
-                detalhes: "Manual RENOVAGRO voltado para mulheres, incentivando participação feminina em projetos sustentáveis e acesso a linhas de crédito verdes."
-            },
-            {
-                id: "fin-05",
-                nome: "BNDES Fundo Clima",
-                desafio: "Finanças Verdes",
-                maturidade: "Consolidado",
-                descricao: "Fundo para mitigação de mudanças climáticas.",
-                detalhes: "Linha de financiamento do BNDES destinada a projetos que reduzem emissões de gases de efeito estufa e promovem adaptação às mudanças climáticas."
-            },
-            {
-                id: "fin-06",
-                nome: "Pronaf Bioeconomia Agroecologia e Mulher",
-                desafio: "Finanças Verdes",
-                maturidade: "Consolidado",
-                descricao: "Crédito para práticas agroecológicas e inclusão feminina.",
-                detalhes: "Linha específica do PRONAF para fomentar agroecologia e garantir participação das mulheres em projetos sustentáveis."
-            },
-            {
-                id: "fin-07",
-                nome: "Fundo Clima",
-                desafio: "Finanças Verdes",
-                maturidade: "Consolidado",
-                descricao: "Financiamento para projetos ambientais.",
-                detalhes: "Fundo voltado para apoiar iniciativas que contribuem para redução de impactos ambientais e promoção da sustentabilidade."
-            }
+            // ESG
+            { id: "esg-01", nome: "Energia Renovável", desafio: "ESG", descricao: "Uso de energia limpa (RenovaEco).", detalhes: "Implantação de energia solar para reduzir impactos ambientais." },
+            { id: "esg-05", nome: "Relatório de Sustentabilidade", desafio: "ESG", descricao: "Transparência em práticas ESG.", detalhes: "Documento que apresenta resultados e ações sustentáveis à sociedade." },
+            { id: "esg-15", nome: "Liderança Feminina", desafio: "ESG", descricao: "Representatividade em cargos estratégicos.", detalhes: "Foco em equidade de gênero e diversidade na gestão." },
+            { id: "esg-21", nome: "Comitê de Inclusão", desafio: "ESG", descricao: "Grupo estratégico para diversidade.", detalhes: "Responsável por promover políticas de equidade na cooperativa." },
+            { id: "esg-30", nome: "Segurança Cibernética", desafio: "ESG", descricao: "Proteção contra ameaças digitais.", detalhes: "Práticas para prevenir riscos e garantir integridade de dados." },
+
+            // Finanças Verdes
+            { id: "fin-01", nome: "RENOVAGRO", desafio: "Finanças Verdes", descricao: "Crédito para práticas sustentáveis no agro.", detalhes: "Financiamento para projetos de energia renovável no campo." },
+            { id: "fin-02", nome: "INOVAGRO", desafio: "Finanças Verdes", descricao: "Crédito para inovação tecnológica.", detalhes: "Apoia modernização no campo com foco em produtividade sustentável." },
+            { id: "fin-03", nome: "PRONAF Bioeconomia", desafio: "Finanças Verdes", descricao: "Agricultura sustentável e agroecologia.", detalhes: "Fomenta a bioeconomia e a inclusão de mulheres no agronegócio." }
         ];
 
-        // ==========================================
-        // 2. LÓGICA DO MODAL
-        // ==========================================
-        const modal = document.getElementById('project-modal');
-
-        function openModal(projectId) {
-            const project = projectsData.find(p => p.id === projectId);
-            if (!project) return;
-
-            document.getElementById('modal-title').textContent = project.nome;
-            document.getElementById('modal-description').textContent = project.descricao;
-            document.getElementById('modal-full-details').textContent = project.detalhes;
-            //document.getElementById('modal-maturity').textContent = project.maturidade;
-            
-            // Ajustar cor da badge no modal
-            const badge = document.getElementById('modal-maturity');
-            if(project.maturidade.includes("Consolidado")) {
-                badge.className = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800";
-            } else if(project.maturidade.includes("Prospecção") || project.maturidade.includes("MVP")) {
-                badge.className = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800";
-            } else {
-                badge.className = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800";
-            }
-
-            modal.classList.remove('hidden');
+        function openModal(id) {
+            const p = projectsData.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('modal-title').textContent = p.nome;
+            document.getElementById('modal-description').textContent = p.descricao;
+            document.getElementById('modal-full-details').textContent = p.detalhes;
+            document.getElementById('project-modal').classList.remove('hidden');
         }
 
-        function closeModal() {
-            modal.classList.add('hidden');
-        }
+        function closeModal() { document.getElementById('project-modal').classList.add('hidden'); }
 
-        // Fechar com ESC
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                closeModal();
-            }
-        });
-
-        // ==========================================
-        // 3. RENDERIZAÇÃO E FILTROS
-        // ==========================================
         function renderProjects(projects, container) {
             if (projects.length === 0) {
                 container.innerHTML = '<p class="text-gray-400 italic py-4 col-span-full text-center">Nenhum projeto encontrado.</p>';
                 return;
             }
-
-            container.innerHTML = projects.map(p => {
-                let badgeClass = "bg-blue-50 text-blue-700 border border-blue-100";
-                if(p.maturidade.includes("Consolidado")) badgeClass = "bg-green-50 text-green-700 border border-green-100";
-                if(p.maturidade.includes("Prospecção") || p.maturidade.includes("MVP")) badgeClass = "bg-yellow-50 text-yellow-700 border border-yellow-100";
-
-                return `
-                
-                <div class="bg-white p-5 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
+            container.innerHTML = projects.map(p => `
+                <div class="bg-white p-5 rounded-lg border border-gray-200 hover:shadow-md transition-shadow h-full flex flex-col">
                     <h4 class="font-bold text-gray-800 mb-2 text-lg">${p.nome}</h4>
-                    <span class="inline-block self-start px-2 py-0.5 text-[10px] uppercase font-bold tracking-wide rounded-md mb-3 ${badgeClass}">
-                        ${p.maturidade}
-                    </span>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-4 flex-grow line-clamp-3">
-                        ${p.descricao}
-                    </p>
-                    <button onclick="openModal('${p.id}')" class="text-xs font-semibold text-gray-400 hover:text-[#3FA110] self-start border-b border-dotted border-gray-400 pb-0.5 transition-colors cursor-pointer">
-                        Ver detalhes
-                    </button>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4 flex-grow line-clamp-3">${p.descricao}</p>
+                    <button onclick="openModal('${p.id}')" class="text-xs font-semibold text-[#3FA110] hover:underline self-start">Ver detalhes</button>
                 </div>
-            `}).join('');
+            `).join('');
         }
 
-        function filterProjects(searchTerm, dimensionName) {
-            const containers = document.querySelectorAll('.projects-container');
-            let targetContainer = null;
-            
-            containers.forEach(c => {
-                if(c.getAttribute('data-dimension') === dimensionName) targetContainer = c;
-            });
-
-            if(!targetContainer) return;
-
-            const term = searchTerm.toLowerCase();
-            const filtered = projectsData.filter(p => {
-                let dimMatch = p.desafio === dimensionName;
-                if (dimensionName === "Capacidades" && p.desafio === "Capacidades") dimMatch = true;
-
-                return dimMatch && (p.nome.toLowerCase().includes(term) || p.descricao.toLowerCase().includes(term));
-            });
-
-            renderProjects(filtered, targetContainer);
+        function filterProjects(term, dim) {
+            const container = Array.from(document.querySelectorAll('.projects-container')).find(c => c.dataset.dimension === dim);
+            const filtered = projectsData.filter(p => p.desafio === dim && (p.nome.toLowerCase().includes(term.toLowerCase()) || p.descricao.toLowerCase().includes(term.toLowerCase())));
+            renderProjects(filtered, container);
         }
 
-        // ==========================================
-        // 4. NAVEGAÇÃO
-        // ==========================================
-        const sidebar = document.getElementById('sidebar');
-        const menuToggle = document.getElementById('menu-toggle');
-        const menuItems = document.querySelectorAll('.menu-item');
-
-        function switchContent(contentId) {
-            document.querySelectorAll('.content-section').forEach(section => section.classList.add('hidden'));
-            const activeSection = document.getElementById(`content-${contentId}`);
-            if (activeSection) activeSection.classList.remove('hidden');
-            
-            menuItems.forEach(item => {
-                if (item.getAttribute('data-content-id') === contentId) {
-                    item.classList.add('bg-gray-100', 'text-[#3FA110]', 'font-bold');
-                    item.classList.remove('text-gray-700');
-                    item.setAttribute('aria-current', 'true');
-                } else {
-                    item.classList.remove('bg-gray-100', 'text-[#3FA110]', 'font-bold');
-                    item.classList.add('text-gray-700');
-                    item.removeAttribute('aria-current');
-                }
+        function switchContent(id) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(`content-${id}`).classList.remove('hidden');
+            document.querySelectorAll('.menu-item').forEach(m => {
+                if(m.dataset.contentId === id) m.classList.add('bg-gray-100', 'text-[#3FA110]', 'font-bold');
+                else m.classList.remove('bg-gray-100', 'text-[#3FA110]', 'font-bold');
             });
         }
 
-        menuToggle.addEventListener('click', () => sidebar.classList.toggle('hidden'));
-        
-        menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const contentId = this.getAttribute('data-content-id');
-                switchContent(contentId);
-                if (window.innerWidth < 1024) sidebar.classList.add('hidden');
-            });
-        });
-
-        function switchInnerTab(dimensionPrefix, tabName) {
-            const container = document.getElementById(`content-dimensao-${dimensionPrefix}`);
-            if(!container) return;
-            container.querySelectorAll('.inner-tab-content').forEach(c => c.classList.add('hidden'));
-            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            const target = document.getElementById(`${dimensionPrefix}-${tabName}`);
-            if (target) target.classList.remove('hidden');
-            if(event && event.target) event.target.classList.add('active');
+        function switchInnerTab(dim, tab) {
+            const c = document.getElementById(`content-dimensao-${dim}`);
+            c.querySelectorAll('.inner-tab-content').forEach(x => x.classList.add('hidden'));
+            c.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`${dim}-${tab}`).classList.remove('hidden');
+            event.target.classList.add('active');
         }
 
-        // ==========================================
-        // INIT
-        // ==========================================
-        window.onload = function() {
-            document.querySelectorAll('.projects-container').forEach(container => {
-                const dimName = container.getAttribute('data-dimension');
-                const initialProjects = projectsData.filter(p => p.desafio === dimName
-                    );
-                
-                renderProjects(initialProjects, container);
-            });
-
-            const hash = window.location.hash.substring(1) || 'intro';
-            switchContent(hash);
-
-            if (window.innerWidth >= 1024) sidebar.classList.add('sidebar-fixed');
+        window.onload = () => {
+            document.querySelectorAll('.projects-container').forEach(c => renderProjects(projectsData.filter(p => p.desafio === c.dataset.dimension), c));
+            switchContent('intro');
         };
-
-        // Expor funções globais
-        window.switchInnerTab = switchInnerTab;
-        window.filterProjects = filterProjects;
-        window.openModal = openModal;
-        window.closeModal = closeModal;
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
