@@ -252,17 +252,57 @@
                         <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('colaborativa', 'oportunidades')">Oportunidades</button>
                     </div>
                     <div class="p-6">
-                        <div id="colaborativa-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão Colaborativa está diretamente ligada ao princípio cooperativista da intercooperação, pois envolve a capacidade de unir esforços com outras cooperativas, instituições e organizações externas para gerar soluções inovadoras e ampliar o impacto das iniciativas. Essa abordagem requer que a cooperativa estabeleça parcerias estratégicas que fortaleçam sua atuação local e regional, garantindo que os resultados beneficiem não apenas um público específico, mas toda a comunidade.</p>
-                            <p class="text-gray-700 mt-4">A intercooperação cria valor concreto para a cooperativa de crédito ao potencializar recursos, ampliar o alcance das ações e reforçar a identidade cooperativista. Nessa dimensão, a avaliação concentra-se em práticas que promovem colaboração interna e externa, como:</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Projetos em rede com outras cooperativas;</li>
-                                <li>Parcerias com universidades, startups, órgãos públicos e empresas;</li>
-                                <li>Iniciativas que estimulem inovação aberta e integração de ecossistemas.</li>
-                            </ul>
-                            <p class="text-gray-700 mt-4">O objetivo é consolidar a cooperativa como um ator estratégico dentro de uma rede colaborativa, ampliando seu impacto social e econômico e reafirmando a intercooperação como elemento central da inovação colaborativa.</p>
-                        </div>
+                        <div id="colaborativa-oquee" class="inner-tab-content hidden animate-fade">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        
+        <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center space-x-3 mb-2">
+                <div class="p-2 bg-green-100 rounded-lg text-[#3FA110]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Conceito e Definição</h3>
+            </div>
+
+            <p class="text-lg text-gray-600 leading-relaxed">
+                A <strong>Dimensão Colaborativa</strong> está diretamente ligada ao princípio cooperativista da intercooperação, envolvendo a capacidade de unir esforços com outras cooperativas, instituições e organizações externas para gerar soluções inovadoras e ampliar o impacto das iniciativas.
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                Essa abordagem requer que a cooperativa estabeleça parcerias estratégicas que fortaleçam sua atuação local e regional. A intercooperação cria valor concreto ao potencializar recursos, ampliar o alcance das ações e reforçar a identidade cooperativista.
+            </p>
+
+            <div class="bg-green-50 border-l-4 border-[#3FA110] p-5 rounded-r-lg shadow-sm">
+                <h4 class="text-[#3FA110] font-bold text-xs uppercase tracking-wider mb-2">Objetivo Principal</h4>
+                <p class="text-gray-800 font-medium italic">
+                    "Consolidar a cooperativa como um ator estratégico dentro de uma rede colaborativa, ampliando seu impacto social e econômico e reafirmando a intercooperação como elemento central."
+                </p>
+            </div>
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 sticky top-24">
+                <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-100 pb-2 flex items-center">
+                    <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    Práticas Avaliadas
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Projetos em rede com outras cooperativas.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Parcerias com universidades, startups e órgãos públicos.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Iniciativas de inovação aberta e integração de ecossistemas.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
                         <div id="colaborativa-praticas" class="inner-tab-content hidden">
                             <div class="mb-4 relative">
                                 <input type="text" placeholder="Buscar prática..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Colaborativa')">
@@ -353,18 +393,61 @@
                         <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('capacidades', 'oportunidades')">Oportunidades</button>
                     </div>
                     <div class="p-6">
-                        <div id="capacidades-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão de Desenvolvimento de Capacidades está diretamente ligada ao princípio cooperativista da educação, formação e informação, pois envolve o fortalecimento contínuo das competências de cooperados, dirigentes, colaboradores e da comunidade. Essa abordagem posiciona a cooperativa como um agente de aprendizado e transformação.</p>
-                            <p class="text-gray-700 mt-4">O desenvolvimento de capacidades gera valor concreto para a cooperativa de crédito ao promover engajamento, aumentar a competitividade e contribuir para a sustentabilidade de longo prazo. Nessa dimensão, a avaliação concentra-se em práticas que estimulam a aprendizagem contínua, como:</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Programas de capacitação técnica e comportamental;</li>
-                                <li>Incentivo ao empreendedorismo;</li>
-                                <li>Desenvolvimento de lideranças jovens;</li>
-                                <li>Ações de educação financeira voltadas para associados e comunidade.</li>
-                            </ul>
-                            <p class="text-gray-700 mt-4">O objetivo é consolidar a cooperativa como um polo de conhecimento e desenvolvimento humano, reafirmando a educação e a formação como elementos centrais da inovação em desenvolvimento de capacidades.</p>
-                        </div>
+                        <div id="capacidades-oquee" class="inner-tab-content hidden animate-fade">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        
+        <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center space-x-3 mb-2">
+                <div class="p-2 bg-green-100 rounded-lg text-[#3FA110]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Conceito e Definição</h3>
+            </div>
+
+            <p class="text-lg text-gray-600 leading-relaxed">
+                A <strong>Dimensão de Desenvolvimento de Capacidades</strong> está diretamente ligada ao princípio cooperativista da educação, formação e informação. Ela envolve o fortalecimento contínuo das competências de cooperados, dirigentes, colaboradores e da comunidade.
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                Essa abordagem posiciona a cooperativa como um agente de aprendizado e transformação, gerando valor concreto ao promover engajamento, aumentar a competitividade e contribuir para a sustentabilidade de longo prazo.
+            </p>
+
+            <div class="bg-green-50 border-l-4 border-[#3FA110] p-5 rounded-r-lg shadow-sm">
+                <h4 class="text-[#3FA110] font-bold text-xs uppercase tracking-wider mb-2">Objetivo Principal</h4>
+                <p class="text-gray-800 font-medium italic">
+                    "Consolidar a cooperativa como um polo de conhecimento e desenvolvimento humano, reafirmando a educação e a formação como elementos centrais da inovação."
+                </p>
+            </div>
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 sticky top-24">
+                <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-100 pb-2 flex items-center">
+                    <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    Práticas Avaliadas
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Programas de capacitação técnica e comportamental.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Incentivo ao empreendedorismo.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Desenvolvimento de lideranças jovens.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Ações de educação financeira.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
                         <div id="capacidades-praticas" class="inner-tab-content hidden">
                             <div class="mb-4 relative">
                                 <input type="text" placeholder="Buscar prática..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Desenvolvimento de Capacidades')">
@@ -455,19 +538,61 @@
                         <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('esg', 'oportunidades')">Oportunidades</button>
                     </div>
                     <div class="p-6">
-                        <div id="esg-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão ESG está diretamente ligada ao princípio cooperativista do interesse pela comunidade, pois expressa o compromisso da cooperativa com práticas responsáveis que integram aspectos ambientais, sociais e de governança à sua estratégia. Essa abordagem exige uma visão sistêmica e de longo prazo, equilibrando a geração de valor econômico com impactos positivos para a sociedade e para o meio ambiente.</p>
-                            <p class="text-gray-700 mt-4">A incorporação de critérios ESG gera valor concreto para a cooperativa de crédito ao fortalecer sua credibilidade, atrair novos públicos, reduzir riscos e ampliar sua contribuição para o desenvolvimento sustentável. Nessa dimensão, a avaliação concentra-se em práticas que reforçam sustentabilidade, equidade e transparência, como:</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Adoção de políticas ambientais internas;</li>
-                                <li>Promoção da diversidade e inclusão;</li>
-                                <li>Investimento em projetos de impacto social;</li>
-                                <li>Implementação de mecanismos robustos de governança;</li>
-                                <li>Prestação de contas clara aos associados e à sociedade.</li>
-                            </ul>
-                            <p class="text-gray-700 mt-4">O objetivo é consolidar a cooperativa como referência em responsabilidade socioambiental, reafirmando o interesse pela comunidade como elemento central da inovação orientada por critérios ESG.</p>
-                        </div>
+                        <div id="esg-oquee" class="inner-tab-content hidden animate-fade">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        
+        <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center space-x-3 mb-2">
+                <div class="p-2 bg-green-100 rounded-lg text-[#3FA110]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Conceito e Definição</h3>
+            </div>
+
+            <p class="text-lg text-gray-600 leading-relaxed">
+                A <strong>Dimensão ESG</strong> está diretamente ligada ao princípio cooperativista do interesse pela comunidade. Ela expressa o compromisso com práticas responsáveis que integram aspectos ambientais, sociais e de governança, exigindo uma visão sistêmica e de longo prazo.
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                A incorporação de critérios ESG fortalece a credibilidade da cooperativa, atrai novos públicos, reduz riscos e amplia a contribuição para o desenvolvimento sustentável, equilibrando a geração de valor econômico com impactos positivos.
+            </p>
+
+            <div class="bg-green-50 border-l-4 border-[#3FA110] p-5 rounded-r-lg shadow-sm">
+                <h4 class="text-[#3FA110] font-bold text-xs uppercase tracking-wider mb-2">Objetivo Principal</h4>
+                <p class="text-gray-800 font-medium italic">
+                    "Consolidar a cooperativa como referência em responsabilidade socioambiental, reafirmando o interesse pela comunidade como elemento central da inovação."
+                </p>
+            </div>
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 sticky top-24">
+                <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-100 pb-2 flex items-center">
+                    <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    Práticas Avaliadas
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Adoção de políticas ambientais internas.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Promoção da diversidade e inclusão.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Implementação de mecanismos de governança.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Transparência e prestação de contas.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
                         <div id="esg-praticas" class="inner-tab-content hidden">
                             <div class="mb-4 relative">
                                 <input type="text" placeholder="Buscar prática..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'ESG')">
@@ -606,16 +731,61 @@
                         <button class="tab-btn px-4 py-3 font-medium text-sm" onclick="switchInnerTab('financas-verdes', 'oportunidades')">Oportunidades</button>
                     </div>
                     <div class="p-6">
-                        <div id="financas-verdes-oquee" class="inner-tab-content block">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Definição</h3>
-                            <p class="text-gray-700">A Dimensão de Finanças Verdes está diretamente ligada ao princípio cooperativista do interesse pela comunidade, pois reflete a responsabilidade da cooperativa em promover práticas financeiras sustentáveis.</p>
-                            <p class="text-gray-700 mt-4">Nessa dimensão, a avaliação concentra-se em práticas como:</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                                <li>Financiamento de projetos com impacto positivo;</li>
-                                <li>Utilização de critérios socioambientais na concessão de crédito;</li>
-                                <li>Desenvolvimento de produtos financeiros sustentáveis.</li>
-                            </ul>
-                        </div>
+                        <div id="financas-verdes-oquee" class="inner-tab-content hidden animate-fade">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        
+        <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center space-x-3 mb-2">
+                <div class="p-2 bg-green-100 rounded-lg text-[#3FA110]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Conceito e Definição</h3>
+            </div>
+
+            <p class="text-lg text-gray-600 leading-relaxed">
+                A <strong>Dimensão de Finanças Verdes</strong> reflete a responsabilidade da cooperativa em promover práticas financeiras que conciliem crescimento econômico, preservação ambiental e bem-estar social. Essa abordagem alinha a estratégia de negócios a critérios de sustentabilidade, como os ODS da ONU.
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                O engajamento com as finanças verdes amplia a relevância no mercado, fortalece a imagem institucional e contribui para um futuro mais sustentável, tanto para os associados quanto para a comunidade.
+            </p>
+
+            <div class="bg-green-50 border-l-4 border-[#3FA110] p-5 rounded-r-lg shadow-sm">
+                <h4 class="text-[#3FA110] font-bold text-xs uppercase tracking-wider mb-2">Objetivo Principal</h4>
+                <p class="text-gray-800 font-medium italic">
+                    "Consolidar a cooperativa como um agente transformador na transição para uma economia verde, reafirmando o interesse pela comunidade via inovação em finanças verdes."
+                </p>
+            </div>
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 sticky top-24">
+                <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-100 pb-2 flex items-center">
+                    <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    Práticas Avaliadas
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Financiamento de projetos com impacto positivo.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Políticas internas de eficiência e redução de emissões.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Critérios socioambientais na concessão de crédito.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#3FA110] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-600">Desenvolvimento de produtos financeiros sustentáveis.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
                         <div id="financas-verdes-praticas" class="inner-tab-content hidden">
                             <div class="mb-4 relative">
                                 <input type="text" placeholder="Buscar prática..." class="w-full md:w-1/2 p-2 pl-8 rounded border border-gray-300 focus:outline-none focus:border-[#3FA110] text-sm" onkeyup="filterProjects(this.value, 'Finanças Verdes')">
@@ -905,4 +1075,5 @@
     </script>
 </body>
 </html>
+
 
